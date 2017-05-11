@@ -12,6 +12,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -48,4 +50,24 @@ public class DAODoctor {
         }
         return lst;
     }
+      public boolean alta_doctor(Doctor doctor)
+      {
+          try
+          {
+              
+          String query = "Insert into doctor values"
+                    + "('" + doctor.getId() + "','" + doctor.getFirstname() + "','" + doctor.getLastname()+ "'"
+                    + "," +doctor.getAge() + ",'"
+                    + doctor.getAddress() + "','" + doctor.getTelephone() + "','" + doctor.getEmail() + "'" + 
+                     ",'" + doctor.getDepartment() + "','" + doctor.getLicense()+"')";
+  pst = cn.prepareStatement(query);
+            pst.executeUpdate();
+            return true;
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(DAODoctor.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        return false;
+      }
 }
