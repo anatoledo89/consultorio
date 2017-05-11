@@ -32,12 +32,13 @@ public class DAOPaciente {
     
     public boolean insertPacient(Patient paciente)
     {
-        /* try {
+        try {
             String query = "Insert into paciente(nss,primernombre,apellido,edad,direccion,telefono,email,"+
                     "peso,altura,enfermedad,idcuarto,status) values"
                     + "('" + paciente.getSecurityNumber() + "','" + paciente.getFirstname() + "'"
                     + ",'" + paciente.getLastname() + "','"+paciente.getAge()+"','"+paciente.getAddress()+"'"
-                    + paciente.getTelephone() + "'," + hospita.getNumOfRooms() + ");";
+                    + paciente.getTelephone() + "'," + paciente.getEmail() + ",'"+paciente.getWeight()+"',"
+                    +"'"+paciente.getDisease()+"','"+paciente.getRoomID()+"','"+paciente.getStatus()+"');";
             pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -45,7 +46,7 @@ public class DAOPaciente {
         } catch (SQLException ex) {
             Logger.getLogger(DAOHospital.class.getName()).log(Level.SEVERE, null, ex);
         }
-        */
+        
         return false;
     }
 }
