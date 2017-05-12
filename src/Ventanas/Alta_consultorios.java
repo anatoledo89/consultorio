@@ -54,8 +54,8 @@ public class Alta_consultorios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jcmbHospital = new javax.swing.JComboBox<String>();
-        jcmDoctor = new javax.swing.JComboBox<String>();
+        jcmbHospital = new javax.swing.JComboBox<>();
+        jcmDoctor = new javax.swing.JComboBox<>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -69,6 +69,12 @@ public class Alta_consultorios extends javax.swing.JFrame {
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        jcmbHospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcmbHospitalActionPerformed(evt);
+            }
+        });
 
         jcmDoctor.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -268,6 +274,17 @@ public class Alta_consultorios extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jcmDoctorActionPerformed
 
+    private void jcmbHospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmbHospitalActionPerformed
+      try {
+          // TODO add your handling code here:
+          loadcmbDoctores();
+      } catch (SQLException ex) {
+          Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
+      } catch (ClassNotFoundException ex) {
+          Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
+      }
+    }//GEN-LAST:event_jcmbHospitalActionPerformed
+
    public void cargardatos()
    {
         Hospital h=new Hospital();
@@ -299,14 +316,13 @@ public class Alta_consultorios extends javax.swing.JFrame {
     {
         DAODoctor daodoctor=new DAODoctor();
         Doctor d=new Doctor();
+        Hospital h=(Hospital)jcmbHospital.getSelectedItem();
         DefaultComboBoxModel mode = new DefaultComboBoxModel();
           
             mode.removeAllElements();
-            d.setId("0");
-            d.setFirstname("Seleccione un doctor");
-            d.setLastname(" ");
-            mode.addElement(d);
-            for(Doctor doctor:daodoctor.loaddoctors())
+           
+           
+            for(Doctor doctor:daodoctor.loaddoctors(h.getIdhospital()))
             {
                 mode.addElement(doctor);
             }
@@ -321,10 +337,7 @@ public class Alta_consultorios extends javax.swing.JFrame {
          DefaultComboBoxModel mode = new DefaultComboBoxModel();
           
             mode.removeAllElements();
-         h.setIdhospital(0);
-          h.setName("Seleccione un hospital");
-           
-            mode.addElement(h);
+       
             for (Hospital hospital : dAOHospital.loadhospital()) {
                 mode.addElement(hospital);
             }

@@ -5,7 +5,11 @@
  */
 package Clases;
 
+import DAO.DAOPaciente;
+import java.sql.SQLException;
 import java.util.Arrays;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 
 /**
  *
@@ -19,6 +23,7 @@ public class Patient extends Person {
     }
      //Declaramos las variables 
    
+    private int patientID;
     private String securityNumber;
     private Float weight;
     private Float size;
@@ -65,9 +70,14 @@ public class Patient extends Person {
         
     }
 
-   
-    
+    public int getPatientID() {
+        return patientID;
+    }
+
     //Metodos SET
+    public void setPatientID(int patientID) {
+        this.patientID = patientID;
+    }
 
     public void setSecurityNumber(String securityNumber) {
         this.securityNumber = securityNumber;
@@ -132,21 +142,32 @@ public class Patient extends Person {
     
    public void setNewDoc(String doctorID)     
     {
-        //falta contador verificar
-        if (this.num - this.contador <=5)
-           {
-        for( int i = this.contador; i<this.num;i++)
-        {
+        try {
+            
+            DAOPaciente daopaciente=new DAOPaciente();
+            daopaciente.addDoctor(doctorID, this.patientID);
+            
+            
+            //falta contador verificar
+            /*  if (this.num - this.contador <=5)
+            {
+            for( int i = this.contador; i<this.num;i++)
+            {
             this.doctorID[i] = doctorID;
-        }
-        this.contador++;
-           }
-        else 
+            }
+            this.contador++;
+            }
+            else 
             if (this.num - this.contador ==0)
             {
-                System.out.println("Se ha alcanzado el numero maximo de doctores por paciente");
+            System.out.println("Se ha alcanzado el numero maximo de doctores por paciente");
             }
-        
+            */
+        } catch (SQLException ex) {
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
+        }
         
       
     }

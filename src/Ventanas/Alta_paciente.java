@@ -5,11 +5,16 @@
  */
 package Ventanas;
 
+import Clases.Doctor;
+import Clases.Hospital;
 import Clases.Patient;
+import DAO.DAODoctor;
+import DAO.DAOHospital;
 import DAO.DAOPaciente;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -20,11 +25,36 @@ Patient p=null;
     /**
      * Creates new form Alta_paciente
      */
-    public Alta_paciente() {
+    public Alta_paciente() throws SQLException, ClassNotFoundException {
         initComponents();
-        
+        loadcmbDepartament();
+        loadcmbDoctor();
          this.setLocationRelativeTo(null);
+         
     
+    }
+    
+    private void loadcmbDepartament() throws SQLException, ClassNotFoundException
+    {
+        DAOPaciente dAOPaciente=new DAOPaciente();
+     jcmb_Departamento.setModel(new DefaultComboBoxModel(dAOPaciente.getDepartament().toArray()));
+    }
+    
+    private void loadcmbDoctor() throws SQLException, ClassNotFoundException
+    {
+             DAOPaciente dp=new DAOPaciente();
+      
+         DefaultComboBoxModel mode = new DefaultComboBoxModel();
+          
+            mode.removeAllElements();
+        
+           
+          
+            for (Doctor d :dp.loaddoctorsbyDepartment((String)jcmb_Departamento.getSelectedItem()) ) {
+                mode.addElement(d);
+            }
+            jcmbDoctor.setModel(mode);
+        
     }
 
     /**
@@ -38,22 +68,25 @@ Patient p=null;
 
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
+        jComboBox1 = new javax.swing.JComboBox<>();
         jPanel1 = new javax.swing.JPanel();
         txt_busqueda = new javax.swing.JTextField();
         cmbBusqueda = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
         btn_buscarpaciente = new javax.swing.JButton();
         btn_regresar = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        jcmb_Departamento = new javax.swing.JComboBox<>();
         jlblInfoPaciente = new javax.swing.JLabel();
-        jComboBox3 = new javax.swing.JComboBox<>();
-        jButton1 = new javax.swing.JButton();
+        jcmbDoctor = new javax.swing.JComboBox<>();
+        jbtnAsignar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Número de seguridad:");
 
         jLabel2.setText("jLabel2");
+
+        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -89,15 +122,25 @@ Patient p=null;
             }
         });
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmb_Departamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmb_Departamento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcmb_DepartamentoActionPerformed(evt);
+            }
+        });
 
         jlblInfoPaciente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jlblInfoPaciente.setForeground(new java.awt.Color(255, 255, 255));
         jlblInfoPaciente.setText("-");
 
-        jComboBox3.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
-        jButton1.setText("Asignar");
+        jbtnAsignar.setText("Asignar");
+        jbtnAsignar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jbtnAsignarActionPerformed(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
@@ -109,7 +152,7 @@ Patient p=null;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(211, 211, 211)
-                .addComponent(jButton1)
+                .addComponent(jbtnAsignar)
                 .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -136,8 +179,8 @@ Patient p=null;
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jComboBox1, 0, 439, Short.MAX_VALUE)
-                                .addComponent(jComboBox3, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addComponent(jcmb_Departamento, 0, 439, Short.MAX_VALUE)
+                                .addComponent(jcmbDoctor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                         .addGap(0, 0, Short.MAX_VALUE))))
         );
         jPanel1Layout.setVerticalGroup(
@@ -158,11 +201,11 @@ Patient p=null;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
                 .addComponent(jLabel4)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jComboBox3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(jbtnAsignar)
                 .addGap(40, 40, 40))
         );
 
@@ -207,6 +250,23 @@ Patient p=null;
         
     }//GEN-LAST:event_btn_buscarpacienteActionPerformed
 
+    private void jcmb_DepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmb_DepartamentoActionPerformed
+    try {
+        // TODO add your handling code here:
+        loadcmbDoctor();
+    } catch (SQLException ex) {
+        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    }
+    }//GEN-LAST:event_jcmb_DepartamentoActionPerformed
+
+    private void jbtnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAsignarActionPerformed
+        // TODO add your handling code here:
+        
+        
+    }//GEN-LAST:event_jbtnAsignarActionPerformed
+
    private void buscar() throws SQLException, ClassNotFoundException
    {
        DAOPaciente daopaciente=new DAOPaciente();
@@ -233,14 +293,15 @@ Patient p=null;
     private javax.swing.JButton btn_buscarpaciente;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JComboBox cmbBusqueda;
-    private javax.swing.JButton jButton1;
     private javax.swing.JComboBox<String> jComboBox1;
-    private javax.swing.JComboBox<String> jComboBox3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JButton jbtnAsignar;
+    private javax.swing.JComboBox<String> jcmbDoctor;
+    private javax.swing.JComboBox<String> jcmb_Departamento;
     private javax.swing.JLabel jlblInfoPaciente;
     private javax.swing.JTextField txt_busqueda;
     // End of variables declaration//GEN-END:variables

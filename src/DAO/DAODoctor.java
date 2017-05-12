@@ -31,10 +31,10 @@ public class DAODoctor {
     }
     
     
-      public ArrayList<Doctor> loaddoctors() throws SQLException {
+      public ArrayList<Doctor> loaddoctors(int idhospital) throws SQLException {
         ArrayList<Doctor> lst = new ArrayList<>();
         Doctor d = null;
-        pst = cn.prepareStatement("Select * from doctor");
+        pst = cn.prepareStatement("Select * from doctor where idhospital="+idhospital+"");
         rs = pst.executeQuery();
         while (rs.next()) {
            d=new Doctor();
