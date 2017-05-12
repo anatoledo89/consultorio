@@ -5,6 +5,10 @@
  */
 package Ventanas;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author Karen
@@ -106,9 +110,15 @@ public class Menu_Doctores extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void btn_darAlta_medicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_darAlta_medicosActionPerformed
-         Alta_Medicos obj = new Alta_Medicos();
-      obj.setVisible(true);
-      this.setVisible(false);
+        try {
+            Alta_Medicos obj = new Alta_Medicos();
+            obj.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_Doctores.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_Doctores.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_darAlta_medicosActionPerformed
 
     private void btn_Modificar_medicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_Modificar_medicosActionPerformed

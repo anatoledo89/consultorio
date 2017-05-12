@@ -105,14 +105,20 @@ public class Modify_Medicos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void btn_modifyMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyMedicoActionPerformed
-        // TODO add your handling code here:
-        modif = 1;
-       Doctor doctor =new Doctor();
-       id = txt_modifyID.getText();
-        
-       Alta_Medicos obj = new Alta_Medicos();
-       obj.setVisible(true);
-       this.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            modif = 1;
+            Doctor doctor =new Doctor();
+            id = txt_modifyID.getText();
+            
+            Alta_Medicos obj = new Alta_Medicos();
+            obj.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+        }
        
                                             
 

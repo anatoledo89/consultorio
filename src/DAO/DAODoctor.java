@@ -94,10 +94,11 @@ public class DAODoctor {
     {
           try {
              String query = "Update doctor "+
-                     "SET id='"+doctor.getId()+"',primernombre='"+doctor.getFirstname()+"',"+
+                     "SET primernombre='"+doctor.getFirstname()+"',"+
                      "apellido ='"+doctor.getLastname()+"',edad= "+doctor.getAge()+","+
                      "direccion= '"+doctor.getAddress()+"', telefono= '"+ doctor.getTelephone()+"',email='"
-                     +doctor.getEmail()+"',departamento='"+doctor.getDepartment()+"', licencia='"+doctor.getLicense()+"'";
+                     +doctor.getEmail()+"',departamento='"+doctor.getDepartment()+"', licencia='"+doctor.getLicense()+"' "
+                     + "where Id="+doctor.getId();
                     
                    
              pst = cn.prepareStatement(query);

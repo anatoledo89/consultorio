@@ -20,16 +20,21 @@ import java.util.logging.Logger;
  * @author pamel
  */
 public class Alta_Medicos extends javax.swing.JFrame {
-
+Doctor doctor;
     /**
      * Creates new form Alta_Medicos
      */
-    public Alta_Medicos() {
+    public Alta_Medicos() throws SQLException, ClassNotFoundException {
         initComponents();
         this.setLocationRelativeTo(null);
         if (Modify_Medicos.modif==1)
         {
-            
+            loadDoctorsdata();
+            crearDoctor.setText("Modificar");
+            txt_ID.setEnabled(false);
+        }else
+        {crearDoctor.setText("Crear");
+        txt_ID.setEnabled(true);
         }
     }
 
@@ -228,7 +233,8 @@ public class Alta_Medicos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
-         Menu_Doctores obj = new Menu_Doctores();
+    Modify_Medicos.modif=0;
+    Menu_Doctores obj = new Menu_Doctores();
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
@@ -239,6 +245,16 @@ public class Alta_Medicos extends javax.swing.JFrame {
         Doctor d;
         d = doctor.getDoctor(Modify_Medicos.id);
         txt_nombre.setText(d.getFirstname());
+        txt_apellido.setText(d.getLastname());
+        txt_cedula.setText(d.getLicense());
+        txt_department.setText(d.getDepartment());
+        txt_edad.setText(Integer.toString(d.getAge()));
+        txt_email.setText(d.getEmail());
+        txt_direccion.setText(d.getAddress());
+        txt_telefono.setText(d.getTelephone());
+        txt_ID.setText(d.getId());
+        
+        
         
     }
     
@@ -252,16 +268,9 @@ public class Alta_Medicos extends javax.swing.JFrame {
         }
         else 
         {
-            Doctor doctor = new Doctor();
-            doctor.setFirstname(txt_nombre.getText());
-            doctor.setLastname(txt_apellido.getText());
-            doctor.setAge(Integer.parseInt(txt_edad.getText()));
-            doctor.setAddress(txt_direccion.getText());
-            doctor.setTelephone(txt_telefono.getText());
-            doctor.setEmail(txt_email.getText());
-            doctor.setId(txt_ID.getText());
-            doctor.setDepartment(txt_department.getText());
-            doctor.setLicense(txt_cedula.getText());
+            if(Modify_Medicos.modif==0)
+            {
+          cargardatos();
         
             
             try {
@@ -278,6 +287,27 @@ public class Alta_Medicos extends javax.swing.JFrame {
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
             }
+        }
+        else
+        {       try {
+            DAODoctor daod=new DAODoctor();
+            cargardatos();
+            if(daod.ModifyDoctor(doctor))
+            {
+                JOptionPane.showMessageDialog(rootPane, "Doctor modificado");
+                
+            }else
+            {
+                JOptionPane.showMessageDialog(rootPane, "ocurrió un error");
+            }
+                } catch (SQLException ex) {
+                    Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+                } catch (ClassNotFoundException ex) {
+                    Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+                }
+       
+            
+                }
         }
           
     }//GEN-LAST:event_crearDoctorActionPerformed
@@ -309,35 +339,19 @@ public class Alta_Medicos extends javax.swing.JFrame {
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Alta_Medicos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Alta_Medicos().setVisible(true);
-            }
-        });
-    }
+   private void cargardatos()
+   {   doctor = new Doctor();
+           
+        doctor.setFirstname(txt_nombre.getText());
+            doctor.setLastname(txt_apellido.getText());
+            doctor.setAge(Integer.parseInt(txt_edad.getText()));
+            doctor.setAddress(txt_direccion.getText());
+            doctor.setTelephone(txt_telefono.getText());
+            doctor.setEmail(txt_email.getText());
+            doctor.setId(txt_ID.getText());
+            doctor.setDepartment(txt_department.getText());
+            doctor.setLicense(txt_cedula.getText());
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
