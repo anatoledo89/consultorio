@@ -23,7 +23,7 @@ public class Modify_Medicos extends javax.swing.JFrame {
      * Creates new form Modify_Medicos
      * 
      */
-    public static int modif=1;
+    public static int modif=0;
     public static String id;
     
     public Modify_Medicos() {
@@ -112,8 +112,14 @@ public class Modify_Medicos extends javax.swing.JFrame {
             id = txt_modifyID.getText();
             
             Alta_Medicos obj = new Alta_Medicos();
+            if(modif==1)
+            {
             obj.setVisible(true);
             this.setVisible(false);
+            }else
+            {
+              obj.setVisible(false);
+            }
         } catch (SQLException ex) {
             Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
         } catch (ClassNotFoundException ex) {

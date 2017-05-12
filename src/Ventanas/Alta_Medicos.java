@@ -242,8 +242,10 @@ Doctor doctor;
         public void loadDoctorsdata() throws SQLException, ClassNotFoundException
     {
         DAODoctor doctor=new DAODoctor();
-        Doctor d;
+        Doctor d=null;
         d = doctor.getDoctor(Modify_Medicos.id);
+        if(d!=null)
+        {
         txt_nombre.setText(d.getFirstname());
         txt_apellido.setText(d.getLastname());
         txt_cedula.setText(d.getLicense());
@@ -254,7 +256,14 @@ Doctor doctor;
         txt_telefono.setText(d.getTelephone());
         txt_ID.setText(d.getId());
         
-        
+        }else
+        {
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningún registro");
+             Modify_Medicos.modif=0;
+   
+            
+          
+        }
         
     }
     

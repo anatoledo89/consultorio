@@ -154,14 +154,14 @@ public class Patient extends Person {
    public void freeDoc(String doctorID)
    {
       
-        for( int i = 0; i<5;i++)
+       /* for( int i = 0; i<5;i++)
         {
             if (this.doctorID[i].equals(doctorID))
             {
                 this.doctorID[i] = " ";
             }
         }
-        this.contador--;
+        this.contador--;*/
    }
 
     @Override

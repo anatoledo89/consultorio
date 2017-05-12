@@ -49,4 +49,86 @@ public class DAOPaciente {
         
         return false;
     }
+    
+    public Patient patienteSearchbyName(String name) throws SQLException
+    {
+        Patient patient=null;
+          pst = cn.prepareStatement("Select * from paciente where primernombre='"+name+"'");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+            patient=new Patient();
+       
+            patient.setFirstname(rs.getString("primernombre"));
+            patient.setLastname(rs.getString("apellido"));
+            patient.setSecurityNumber(rs.getString("nss"));
+            patient.setAddress(rs.getString("direccion"));
+            patient.setAge(rs.getInt("edad"));
+            patient.setTelephone(rs.getString("telefono"));
+            patient.setEmail(rs.getString("email"));
+            patient.setWeight(rs.getFloat("peso"));
+            patient.setSize(rs.getFloat("altura"));
+            patient.setDisease(rs.getString("enfermedad"));
+            patient.setRoomID(rs.getInt("idcuarto"));
+          patient.setStatus(rs.getInt("status"));
+            
+            
+            }
+        
+        return patient;
+    }
+    
+    
+     public Patient patienteSearchbyNumberSec(String nss) throws SQLException
+    {
+        Patient patient=null;
+          pst = cn.prepareStatement("Select * from paciente where nss='"+nss+"'");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+            patient=new Patient();
+       
+            patient.setFirstname(rs.getString("primernombre"));
+            patient.setLastname(rs.getString("apellido"));
+            patient.setSecurityNumber(rs.getString("nss"));
+            patient.setAddress(rs.getString("direccion"));
+            patient.setAge(rs.getInt("edad"));
+            patient.setTelephone(rs.getString("telefono"));
+            patient.setEmail(rs.getString("email"));
+            patient.setWeight(rs.getFloat("peso"));
+            patient.setSize(rs.getFloat("altura"));
+            patient.setDisease(rs.getString("enfermedad"));
+            patient.setRoomID(rs.getInt("idcuarto"));
+          patient.setStatus(rs.getInt("status"));
+            
+            
+            }
+        
+        return patient;
+    }
+     
+      public Patient patienteSearchbyID(String id) throws SQLException
+    {
+        Patient patient=null;
+          pst = cn.prepareStatement("Select * from paciente where Id='"+id+"'");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+            patient=new Patient();
+       
+            patient.setFirstname(rs.getString("primernombre"));
+            patient.setLastname(rs.getString("apellido"));
+            patient.setSecurityNumber(rs.getString("nss"));
+            patient.setAddress(rs.getString("direccion"));
+            patient.setAge(rs.getInt("edad"));
+            patient.setTelephone(rs.getString("telefono"));
+            patient.setEmail(rs.getString("email"));
+            patient.setWeight(rs.getFloat("peso"));
+            patient.setSize(rs.getFloat("altura"));
+            patient.setDisease(rs.getString("enfermedad"));
+            patient.setRoomID(rs.getInt("idcuarto"));
+          patient.setStatus(rs.getInt("status"));
+            
+            
+            }
+        
+        return patient;
+    }
 }
