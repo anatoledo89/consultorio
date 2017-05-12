@@ -32,21 +32,24 @@ public class Menu_Clinica extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_crearClinica = new javax.swing.JButton();
-        btn_altaconsul = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         btn_bajaconsul = new javax.swing.JButton();
-        btn_reporteconsul = new javax.swing.JButton();
-        btn_reportecuartos = new javax.swing.JButton();
+        btn_altaconsul = new javax.swing.JButton();
+        btn_crearClinica = new javax.swing.JButton();
         btn_regresarmenu = new javax.swing.JButton();
+        jPanel2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(0, 51, 255));
+        setUndecorated(true);
 
-        btn_crearClinica.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btn_crearClinica.setText("Crear clínica");
-        btn_crearClinica.addActionListener(new java.awt.event.ActionListener() {
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+
+        btn_bajaconsul.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btn_bajaconsul.setText("Dar baja un consultorio");
+        btn_bajaconsul.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_crearClinicaActionPerformed(evt);
+                btn_bajaconsulActionPerformed(evt);
             }
         });
 
@@ -58,27 +61,11 @@ public class Menu_Clinica extends javax.swing.JFrame {
             }
         });
 
-        btn_bajaconsul.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btn_bajaconsul.setText("Dar baja un consultorio");
-        btn_bajaconsul.addActionListener(new java.awt.event.ActionListener() {
+        btn_crearClinica.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        btn_crearClinica.setText("Crear clínica");
+        btn_crearClinica.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_bajaconsulActionPerformed(evt);
-            }
-        });
-
-        btn_reporteconsul.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btn_reporteconsul.setText("Reporte consultorios");
-        btn_reporteconsul.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reporteconsulActionPerformed(evt);
-            }
-        });
-
-        btn_reportecuartos.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        btn_reportecuartos.setText("Reporte de cuartos");
-        btn_reportecuartos.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reportecuartosActionPerformed(evt);
+                btn_crearClinicaActionPerformed(evt);
             }
         });
 
@@ -89,40 +76,60 @@ public class Menu_Clinica extends javax.swing.JFrame {
             }
         });
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(110, Short.MAX_VALUE)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(btn_reporteconsul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_bajaconsul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_crearClinica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_altaconsul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(btn_reportecuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(98, Short.MAX_VALUE))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+        jPanel2.setBackground(new java.awt.Color(0, 0, 51));
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 52, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_regresarmenu)
-                .addGap(25, 25, 25))
+                .addContainerGap())
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(122, 122, 122)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(btn_bajaconsul, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_crearClinica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(btn_altaconsul))
+                .addContainerGap(123, Short.MAX_VALUE))
         );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap(20, Short.MAX_VALUE)
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addContainerGap()
                 .addComponent(btn_regresarmenu)
-                .addGap(18, 18, 18)
+                .addGap(90, 90, 90)
                 .addComponent(btn_crearClinica)
                 .addGap(18, 18, 18)
                 .addComponent(btn_altaconsul)
                 .addGap(18, 18, 18)
                 .addComponent(btn_bajaconsul)
-                .addGap(18, 18, 18)
-                .addComponent(btn_reporteconsul, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(btn_reportecuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 98, Short.MAX_VALUE)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+        );
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
         );
 
         pack();
@@ -164,18 +171,6 @@ public class Menu_Clinica extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_btn_bajaconsulActionPerformed
 
-    private void btn_reporteconsulActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reporteconsulActionPerformed
-        Reporte_consultorio obj = new Reporte_consultorio();
-      obj.setVisible(true);
-      this.setVisible(false);
-    }//GEN-LAST:event_btn_reporteconsulActionPerformed
-
-    private void btn_reportecuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportecuartosActionPerformed
-        Reporte_cuartos obj = new Reporte_cuartos();
-      obj.setVisible(true);
-      this.setVisible(false);
-    }//GEN-LAST:event_btn_reportecuartosActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -186,7 +181,7 @@ public class Menu_Clinica extends javax.swing.JFrame {
     private javax.swing.JButton btn_bajaconsul;
     private javax.swing.JButton btn_crearClinica;
     private javax.swing.JButton btn_regresarmenu;
-    private javax.swing.JButton btn_reporteconsul;
-    private javax.swing.JButton btn_reportecuartos;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     // End of variables declaration//GEN-END:variables
 }

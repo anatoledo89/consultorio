@@ -59,7 +59,7 @@ public class Reporte_cuartos extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
-         Menu_Clinica obj = new Menu_Clinica();
+          Menu_reportes obj = new Menu_reportes();
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed

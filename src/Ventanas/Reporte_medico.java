@@ -9,14 +9,13 @@ package Ventanas;
  *
  * @author pamel
  */
-public class Reporte_consultorio extends javax.swing.JFrame {
+public class Reporte_medico extends javax.swing.JFrame {
 
     /**
-     * Creates new form Reporte_consultorio
+     * Creates new form Reporte_medico
      */
-    public Reporte_consultorio() {
+    public Reporte_medico() {
         initComponents();
-         this.setLocationRelativeTo(null);
     }
 
     /**
@@ -44,8 +43,9 @@ public class Reporte_consultorio extends javax.swing.JFrame {
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 315, Short.MAX_VALUE)
-                .addComponent(btn_regresar))
+                .addContainerGap(303, Short.MAX_VALUE)
+                .addComponent(btn_regresar)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -59,7 +59,8 @@ public class Reporte_consultorio extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
-          Menu_reportes obj = new Menu_reportes();
+        // TODO add your handling code here:
+        Menu_reportes obj = new Menu_reportes();
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
@@ -80,18 +81,21 @@ public class Reporte_consultorio extends javax.swing.JFrame {
                     break;
                 }
             }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            java.util.logging.Logger.getLogger(Reporte_medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (InstantiationException ex) {
+            java.util.logging.Logger.getLogger(Reporte_medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (IllegalAccessException ex) {
+            java.util.logging.Logger.getLogger(Reporte_medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
+            java.util.logging.Logger.getLogger(Reporte_medico.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
-        //</editor-fold>
-        
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
             public void run() {
-                new Reporte_consultorio().setVisible(true);
+                new Reporte_medico().setVisible(true);
             }
         });
     }
