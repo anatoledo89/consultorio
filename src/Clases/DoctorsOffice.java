@@ -104,8 +104,10 @@ public class DoctorsOffice extends Hospital{
     
     @Override
     public String toString() {
-       // return  "id=" + this.id + ", floor=" + this.floor + ", monthlyRent=" + this.monthlyRent + ", doctorID=" + this.doctorID + ", lastPayment=" + this.lastPayment + '}';
-      return  "id=" + this.id + ", floor=" + this.floor + ", monthlyRent=" + this.monthlyRent + ", doctorID=" + this.doctorID;
+        
+       //return  "id=" + this.id + ", floor=" + this.floor + ", monthlyRent=" + this.monthlyRent + ", doctorID=" + this.doctorID + ", lastPayment=" + this.lastPayment + '}';
+      return   "ID: "+this.id; 
+//", floor=" + this.floor + ", monthlyRent=" + this.monthlyRent + ", doctorID=" + this.doctorID;
     }
     
     

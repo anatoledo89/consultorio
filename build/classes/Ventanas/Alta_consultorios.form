@@ -170,8 +170,14 @@
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtFloor">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtFloorKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JTextField" name="txtMRent">
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtMRentKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JFormattedTextField" name="txtPago">
           <Properties>
@@ -179,6 +185,9 @@
               <Format format="#0.00" subtype="-1" type="0"/>
             </Property>
           </Properties>
+          <Events>
+            <EventHandler event="keyTyped" listener="java.awt.event.KeyListener" parameters="java.awt.event.KeyEvent" handler="txtPagoKeyTyped"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
           <Properties>
