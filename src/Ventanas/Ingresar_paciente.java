@@ -6,6 +6,11 @@
 package Ventanas;
 import Clases.Person;
 import Clases.Patient;
+import DAO.DAOPaciente;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 /**
  *
  * @author  amel
@@ -17,8 +22,8 @@ public class Ingresar_paciente extends javax.swing.JFrame {
      */
     public Ingresar_paciente() {
         initComponents();
-           this.setLocationRelativeTo(null);
-           this.setExtendedState(MAXIMIZED_BOTH);
+          // this.setLocationRelativeTo(null);
+        //a   this.setExtendedState(MAXIMIZED_BOTH);
     }
 
     /**
@@ -65,6 +70,8 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         setUndecorated(true);
 
         jPanel1.setBackground(new java.awt.Color(54, 54, 107));
+        jPanel1.setMaximumSize(null);
+        jPanel1.setRequestFocusEnabled(false);
 
         btn_regresar.setText("Regresar");
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -408,10 +415,6 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtalturaActionPerformed
 
-    private void txthabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthabitacionActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txthabitacionActionPerformed
-
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         String name=this.txtnombre.getText();
         String surname=this.txtapellido.getText();
@@ -429,7 +432,38 @@ public class Ingresar_paciente extends javax.swing.JFrame {
                 email.matches("") || secnum.matches("") || desease.matches("") || weight==0 ||
                 size==0 || room==0)
         {
-            
+           JOptionPane.showMessageDialog(rootPane, "Ingrese todos los campos");
+        }else
+        {
+             Patient patient=new Patient();
+            try {
+                patient.setFirstname(name);
+                patient.setLastname(surname);
+                patient.setAge(age);
+                patient.setAddress(address);
+                patient.setTelephone(tel);
+                patient.setEmail(email);
+                patient.setSecurityNumber(secnum);
+                patient.setDisease(desease);
+                patient.setWeight(weight);
+                patient.setSize(size);
+                patient.setRoomID(room);
+                patient.setStatus(1);
+                DAOPaciente dAOPaciente=new DAOPaciente();
+                
+                if(dAOPaciente.insertPacient(patient))
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Paciente dado de alta");
+                }else
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Ocurrió un error");
+                }
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(Ingresar_paciente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Ingresar_paciente.class.getName()).log(Level.SEVERE, null, ex);
+            }
         }
         
        // Person pe1= new Person(name, surname, age, address,tel,email );
@@ -441,6 +475,10 @@ public class Ingresar_paciente extends javax.swing.JFrame {
     private void txtenfermedadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtenfermedadActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txtenfermedadActionPerformed
+
+    private void txthabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthabitacionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txthabitacionActionPerformed
 
     /**
      * @param args the command line arguments

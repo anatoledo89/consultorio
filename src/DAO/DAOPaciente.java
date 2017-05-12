@@ -36,9 +36,9 @@ public class DAOPaciente {
             String query = "Insert into paciente(nss,primernombre,apellido,edad,direccion,telefono,email,"+
                     "peso,altura,enfermedad,idcuarto,status) values"
                     + "('" + paciente.getSecurityNumber() + "','" + paciente.getFirstname() + "'"
-                    + ",'" + paciente.getLastname() + "','"+paciente.getAge()+"','"+paciente.getAddress()+"'"
-                    + paciente.getTelephone() + "'," + paciente.getEmail() + ",'"+paciente.getWeight()+"',"
-                    +"'"+paciente.getDisease()+"','"+paciente.getRoomID()+"','"+paciente.getStatus()+"');";
+                    + ",'" + paciente.getLastname() + "',"+paciente.getAge()+",'"+paciente.getAddress()+"',"
+                    +"'"+paciente.getTelephone() + "','" + paciente.getEmail() + "',"+paciente.getWeight()
+                    +","+paciente.getSize()+",'"+paciente.getDisease()+"',"+paciente.getRoomID()+","+paciente.getStatus()+");";
             pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
