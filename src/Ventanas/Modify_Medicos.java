@@ -5,6 +5,14 @@
  */
 package Ventanas;
 
+import Clases.Doctor;
+import Clases.DoctorsOffice;
+import static Ventanas.Baja_consultorio.idconsultorio;
+import static Ventanas.Baja_consultorio.modif;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author pamel
@@ -13,7 +21,11 @@ public class Modify_Medicos extends javax.swing.JFrame {
 
     /**
      * Creates new form Modify_Medicos
+     * 
      */
+    public static int modif=1;
+    public static String id;
+    
     public Modify_Medicos() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -29,6 +41,9 @@ public class Modify_Medicos extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_regresar = new javax.swing.JButton();
+        lbl_modificarID = new javax.swing.JLabel();
+        txt_modifyID = new javax.swing.JTextField();
+        btn_modifyMedico = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -36,6 +51,16 @@ public class Modify_Medicos extends javax.swing.JFrame {
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_regresarActionPerformed(evt);
+            }
+        });
+
+        lbl_modificarID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbl_modificarID.setText("Ingrese ID:");
+
+        btn_modifyMedico.setText("Modificar");
+        btn_modifyMedico.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_modifyMedicoActionPerformed(evt);
             }
         });
 
@@ -47,13 +72,27 @@ public class Modify_Medicos extends javax.swing.JFrame {
                 .addContainerGap(303, Short.MAX_VALUE)
                 .addComponent(btn_regresar)
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(lbl_modificarID)
+                .addGap(27, 27, 27)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_modifyMedico)
+                    .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(23, 23, 23)
                 .addComponent(btn_regresar)
-                .addContainerGap(252, Short.MAX_VALUE))
+                .addGap(81, 81, 81)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_modificarID)
+                    .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(55, 55, 55)
+                .addComponent(btn_modifyMedico)
+                .addContainerGap(68, Short.MAX_VALUE))
         );
 
         pack();
@@ -64,6 +103,20 @@ public class Modify_Medicos extends javax.swing.JFrame {
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
+
+    private void btn_modifyMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyMedicoActionPerformed
+        // TODO add your handling code here:
+        modif = 1;
+       Doctor doctor =new Doctor();
+       id = txt_modifyID.getText();
+        
+       Alta_Medicos obj = new Alta_Medicos();
+       obj.setVisible(true);
+       this.setVisible(false);
+       
+                                            
+
+    }//GEN-LAST:event_btn_modifyMedicoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -98,6 +151,9 @@ public class Modify_Medicos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_modifyMedico;
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JLabel lbl_modificarID;
+    private javax.swing.JTextField txt_modifyID;
     // End of variables declaration//GEN-END:variables
 }

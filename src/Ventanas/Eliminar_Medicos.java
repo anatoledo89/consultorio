@@ -5,6 +5,13 @@
  */
 package Ventanas;
 
+import Clases.Doctor;
+import DAO.DAODoctor;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JOptionPane;
+
 /**
  *
  * @author pamel
@@ -29,6 +36,9 @@ public class Eliminar_Medicos extends javax.swing.JFrame {
     private void initComponents() {
 
         btn_regresar = new javax.swing.JButton();
+        lbl_medico = new javax.swing.JLabel();
+        txt_eliminarID = new javax.swing.JTextField();
+        btn_eliminar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -39,21 +49,48 @@ public class Eliminar_Medicos extends javax.swing.JFrame {
             }
         });
 
+        lbl_medico.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbl_medico.setText("Escribir ID del Medico: ");
+
+        btn_eliminar.setText("Eliminar");
+        btn_eliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_eliminarActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(btn_regresar)
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 291, Short.MAX_VALUE)
+                        .addComponent(btn_regresar))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(lbl_medico)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_eliminarID)))
                 .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(btn_eliminar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addGap(21, 21, 21)
                 .addComponent(btn_regresar)
-                .addContainerGap(254, Short.MAX_VALUE))
+                .addGap(84, 84, 84)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_medico)
+                    .addComponent(txt_eliminarID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addComponent(btn_eliminar)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
 
         pack();
@@ -65,6 +102,35 @@ public class Eliminar_Medicos extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+    private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
+        // TODO add your handling code here:
+         int result = JOptionPane.showConfirmDialog(null, 
+   "¿Desea eliminarl@?",null, JOptionPane.YES_NO_OPTION);
+if(result == JOptionPane.YES_OPTION) {
+    
+
+        Doctor doctor =new Doctor();
+        try {
+           DAODoctor daodoc=new DAODoctor();
+          if( daodoc.deleteDoctor(txt_eliminarID.getText())!=0)
+          {
+              JOptionPane.showMessageDialog(rootPane, "Doctor Eliminado");
+              clearField();
+          }else
+          {
+              JOptionPane.showMessageDialog(rootPane, "No se ha encontrado el ID");
+              clearField();
+          }
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Baja_consultorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
+}
+    }//GEN-LAST:event_btn_eliminarActionPerformed
+
+     private void clearField()
+     {
+         txt_eliminarID.setText("");
+     }
     /**
      * @param args the command line arguments
      */
@@ -89,15 +155,15 @@ public class Eliminar_Medicos extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Eliminar_Medicos().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Eliminar_Medicos().setVisible(true);
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_eliminar;
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JLabel lbl_medico;
+    private javax.swing.JTextField txt_eliminarID;
     // End of variables declaration//GEN-END:variables
 }

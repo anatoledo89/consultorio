@@ -27,6 +27,10 @@ public class Alta_Medicos extends javax.swing.JFrame {
     public Alta_Medicos() {
         initComponents();
         this.setLocationRelativeTo(null);
+        if (Modify_Medicos.modif==1)
+        {
+            
+        }
     }
 
     /**
@@ -229,6 +233,17 @@ public class Alta_Medicos extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+        public void loadDoctorsdata() throws SQLException, ClassNotFoundException
+    {
+        DAODoctor doctor=new DAODoctor();
+        Doctor d;
+        d = doctor.getDoctor(Modify_Medicos.id);
+        txt_nombre.setText(d.getFirstname());
+        
+    }
+    
+    
+    
     private void crearDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDoctorActionPerformed
         // TODO add your handling code here:
         if (txt_ID.getText().matches("")||txt_department.getText().matches("") || txt_cedula.getText().matches(""))
@@ -346,4 +361,8 @@ public class Alta_Medicos extends javax.swing.JFrame {
     private javax.swing.JTextField txt_nombre;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
+
+    private void ModifyDoctor() {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
 }

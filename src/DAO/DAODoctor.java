@@ -7,6 +7,7 @@ package DAO;
 
 import Clases.Base_dato;
 import Clases.Doctor;
+import Clases.DoctorsOffice;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -70,4 +71,66 @@ public class DAODoctor {
         
         return false;
       }
+      
+       public int deleteDoctor(String Id)
+    {
+        int rowm=0;
+          try {
+             String query = "Delete from doctor where Id="+Id+"";
+             pst = cn.prepareStatement(query);
+            rowm= pst.executeUpdate();
+             
+                        
+             
+            
+         } catch (SQLException ex) {
+             Logger.getLogger(DAOConsultorio.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+          return rowm;
+    }
+       
+        public boolean ModifyDoctor(Doctor doctor)
+    {
+          try {
+             String query = "Update doctor "+
+                     "SET id='"+doctor.getId()+"',primernombre='"+doctor.getFirstname()+"',"+
+                     "apellido ='"+doctor.getLastname()+"',edad= "+doctor.getAge()+","+
+                     "direccion= '"+doctor.getAddress()+"', telefono= '"+ doctor.getTelephone()+"',email='"
+                     +doctor.getEmail()+"',departamento='"+doctor.getDepartment()+"', licencia='"+doctor.getLicense()+"'";
+                    
+                   
+             pst = cn.prepareStatement(query);
+             pst.executeUpdate();
+             return true;
+                        
+             
+            
+         } catch (SQLException ex) {
+             Logger.getLogger(DAOConsultorio.class.getName()).log(Level.SEVERE, null, ex);
+         }
+         
+          return false;
+    }
+        
+        
+        public Doctor getDoctor(String id) throws SQLException
+    { Doctor doctor = null;
+        pst = cn.prepareStatement("Select * from doctor where Id="+id+"");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+           doctor =new Doctor();
+           doctor.setId(rs.getString("Id"));
+           doctor.setFirstname(rs.getString("primernombre"));
+           doctor.setLastname(rs.getString("apellido"));
+           doctor.setAge(rs.getInt("edad"));
+           doctor.setAddress(rs.getString("direccion"));
+           doctor.setTelephone(rs.getString("telefono"));
+           doctor.setEmail(rs.getString("email"));
+           doctor.setDepartment(rs.getString("departamento"));
+           doctor.setLicense(rs.getString("licencia"));
+        }
+        return doctor;
+        
+    }
 }
