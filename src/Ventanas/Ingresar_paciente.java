@@ -22,7 +22,7 @@ public class Ingresar_paciente extends javax.swing.JFrame {
      */
     public Ingresar_paciente() {
         initComponents();
-          // this.setLocationRelativeTo(null);
+          this.setLocationRelativeTo(null);
         //a   this.setExtendedState(MAXIMIZED_BOTH);
     }
 

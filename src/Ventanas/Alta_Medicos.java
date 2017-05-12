@@ -11,9 +11,11 @@ import Clases.DoctorsOffice;
 import Clases.Hospital;
 import DAO.DAOConsultorio;
 import DAO.DAODoctor;
+import DAO.DAOHospital;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
 
 /**
  *
@@ -27,13 +29,22 @@ Doctor doctor;
     public Alta_Medicos() throws SQLException, ClassNotFoundException {
         initComponents();
         this.setLocationRelativeTo(null);
+        
+         try {
+        // TODO add your handling code here:
+        loadcmbHospital();
+    } catch (SQLException | ClassNotFoundException ex) {
+        Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+    }
+         
         if (Modify_Medicos.modif==1)
         {
             loadDoctorsdata();
             crearDoctor.setText("Modificar");
             txt_ID.setEnabled(false);
         }else
-        {crearDoctor.setText("Crear");
+        {
+            crearDoctor.setText("Crear");
         txt_ID.setEnabled(true);
         }
     }
@@ -68,6 +79,7 @@ Doctor doctor;
         txt_apellido = new javax.swing.JTextField();
         txt_nombre = new javax.swing.JTextField();
         jPanel1 = new javax.swing.JPanel();
+        jcomb_hospital = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -143,10 +155,26 @@ Doctor doctor;
             .addGap(0, 100, Short.MAX_VALUE)
         );
 
+        jcomb_hospital.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcomb_hospital.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jcomb_hospitalActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(btn_regresar)
+                .addContainerGap())
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(crearDoctor)
+                .addGap(234, 234, 234))
             .addGroup(layout.createSequentialGroup()
                 .addGap(71, 71, 71)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -183,23 +211,19 @@ Doctor doctor;
                                 .addGap(0, 0, Short.MAX_VALUE))
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(txt_department, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addContainerGap(143, Short.MAX_VALUE))))))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
-                .addComponent(btn_regresar)
-                .addContainerGap())
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(crearDoctor)
-                .addGap(234, 234, 234))
+                                .addContainerGap(143, Short.MAX_VALUE))))
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jcomb_hospital, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(btn_regresar)
-                .addGap(86, 86, 86)
+                .addGap(37, 37, 37)
+                .addComponent(jcomb_hospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(27, 27, 27)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombre)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -260,6 +284,7 @@ Doctor doctor;
         d = doctor.getDoctor(Modify_Medicos.id);
         if(d!=null)
         {
+           
         txt_nombre.setText(d.getFirstname());
         txt_apellido.setText(d.getLastname());
         txt_cedula.setText(d.getLicense());
@@ -347,6 +372,30 @@ Doctor doctor;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
+    private void jcomb_hospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomb_hospitalActionPerformed
+   
+        
+        
+        
+    }//GEN-LAST:event_jcomb_hospitalActionPerformed
+
+    
+     public void loadcmbHospital() throws SQLException, ClassNotFoundException
+    {
+        DAOHospital dAOHospital=new DAOHospital();
+        Hospital h=new Hospital();
+         DefaultComboBoxModel mode = new DefaultComboBoxModel();
+          
+            mode.removeAllElements();
+       
+            for (Hospital hospital : dAOHospital.loadhospital()) {
+                mode.addElement(hospital);
+            }
+            jcomb_hospital.setModel(mode);
+           
+        
+        
+    }
     private void clearField()
      {
          txt_nombre.setText(" ");
@@ -380,6 +429,7 @@ Doctor doctor;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JButton crearDoctor;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JComboBox jcomb_hospital;
     private javax.swing.JLabel lbl_apellido;
     private javax.swing.JLabel lbl_direccion;
     private javax.swing.JLabel lbl_edad;
