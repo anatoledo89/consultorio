@@ -22,6 +22,7 @@ import javax.swing.JOptionPane;
 public class Baja_consultorio extends javax.swing.JFrame {
 public static int modif=0;
 public static int idconsultorio=0;
+public static Hospital hospital=null;
     /**
      * Creates new form Baja_consultorio
      */
@@ -44,8 +45,8 @@ public static int idconsultorio=0;
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jcmHospital = new javax.swing.JComboBox<String>();
-        jcmbConsultorio = new javax.swing.JComboBox<String>();
+        jcmHospital = new javax.swing.JComboBox<>();
+        jcmbConsultorio = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         btn_regresar = new javax.swing.JButton();
@@ -56,7 +57,7 @@ public static int idconsultorio=0;
         jPanel1.setBackground(new java.awt.Color(0, 0, 51));
 
         jcmHospital.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jcmHospital.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcmHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmHospitalActionPerformed(evt);
@@ -64,7 +65,7 @@ public static int idconsultorio=0;
         });
 
         jcmbConsultorio.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jcmbConsultorio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un cosultorio" }));
+        jcmbConsultorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un consultorio" }));
         jcmbConsultorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmbConsultorioActionPerformed(evt);
@@ -217,6 +218,9 @@ if(result == JOptionPane.YES_OPTION) {
        DoctorsOffice doffice=new DoctorsOffice();
        doffice=(DoctorsOffice)jcmbConsultorio.getSelectedItem();
        idconsultorio=doffice.getId();
+       
+       hospital=(Hospital)jcmHospital.getSelectedItem();
+       
         
          try {
             Alta_consultorios obj = new Alta_consultorios();

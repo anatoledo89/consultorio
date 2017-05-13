@@ -206,8 +206,7 @@ public class Alta_consultorios extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        if(txtFloor.getText().matches("") || txtMRent.getText().matches("") || 
-                jcmbHospital.getSelectedIndex()==0 || jcmDoctor.getSelectedIndex()==0)
+        if(txtFloor.getText().matches("") || txtMRent.getText().matches("") )
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
         }else
@@ -302,8 +301,8 @@ public class Alta_consultorios extends javax.swing.JFrame {
         DAOConsultorio daoconsultorio=new DAOConsultorio();
       
      doffice=daoconsultorio.getDoctorsOffice( Baja_consultorio.idconsultorio);
-        jcmbHospital.setSelectedIndex(doffice.getIdhospital()-1);
-        jcmDoctor.setSelectedIndex(Integer.parseInt(doffice.getDoctorID()));
+        jcmbHospital.getModel().setSelectedItem(Baja_consultorio.hospital);
+        jcmDoctor.getModel().setSelectedItem(daoconsultorio.getDoctorById(doffice.getDoctorID()));
         txtFloor.setText(doffice.getFloor().toString());
         txtMRent.setText(doffice.getMonthlyRent().toString());
         txtPago.setEnabled(true);
