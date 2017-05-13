@@ -9,6 +9,7 @@ package Clases;
  *
  * @author pamel
  */
+import java.io.File;
 import java.sql.*;
 public class Base_dato {
    
@@ -23,8 +24,9 @@ public class Base_dato {
        try {
     //        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
     //Conexión a access con la librería ucanaccess
- 
-          String ruta="jdbc:ucanaccess://C:/Users/A/consultorio.accdb";
+ File dbfile=new File("consultorio.accdb");
+ String path=dbfile.getAbsolutePath();
+          String ruta="jdbc:ucanaccess://"+path;
          
           connection=DriverManager.getConnection(ruta);
           //devolvemos la conexión para usarla en nuestras consultas
