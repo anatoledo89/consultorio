@@ -410,6 +410,7 @@ Doctor doctor;
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
         }
+        
             if (edad>104)
             {
                 JOptionPane.showMessageDialog(rootPane, "Edad invalida, favor de verificar");

@@ -5,6 +5,13 @@
  */
 package Ventanas;
 
+import Clases.Hospital;
+import DAO.DAOHospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author pamel
@@ -14,9 +21,10 @@ public class Reporte_medico extends javax.swing.JFrame {
     /**
      * Creates new form Reporte_medico
      */
-    public Reporte_medico() {
+    public Reporte_medico() throws SQLException, ClassNotFoundException {
         initComponents();
         this.setLocationRelativeTo(null);
+        loadcmbHospital();
     }
 
     /**
@@ -29,7 +37,7 @@ public class Reporte_medico extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        combo_medicos = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -42,8 +50,8 @@ public class Reporte_medico extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_medicos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        combo_medicos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 51));
 
@@ -106,7 +114,7 @@ public class Reporte_medico extends javax.swing.JFrame {
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(254, 254, 254)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(combo_medicos, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(31, 31, 31)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -118,7 +126,7 @@ public class Reporte_medico extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(87, 87, 87)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(combo_medicos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jButton1)))
@@ -138,7 +146,28 @@ public class Reporte_medico extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+ public void loadcmbHospital() throws SQLException, ClassNotFoundException
+    {
+        DAOHospital dAOHospital=new DAOHospital();
+        Hospital h=new Hospital();
+         DefaultComboBoxModel mode = new DefaultComboBoxModel();
+          
+            mode.removeAllElements();
+       
+            for (Hospital hospital : dAOHospital.loadhospital()) {
+                mode.addElement(hospital);
+            }
+            combo_medicos.setModel(mode);
+           
+        
+        
+    }
+    
+    
+    
+    
+    
+    
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
         // TODO add your handling code here:
         Menu_reportes obj = new Menu_reportes();
@@ -174,17 +203,19 @@ public class Reporte_medico extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new Reporte_medico().setVisible(true);
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(Reporte_medico.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JComboBox combo_medicos;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

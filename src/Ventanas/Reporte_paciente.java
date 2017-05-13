@@ -5,6 +5,13 @@
  */
 package Ventanas;
 
+import Clases.Hospital;
+import DAO.DAOHospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author pamel
@@ -13,10 +20,13 @@ public class Reporte_paciente extends javax.swing.JFrame {
 
     /**
      * Creates new form Reporte_paciente
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
-    public Reporte_paciente() {
+    public Reporte_paciente() throws SQLException, ClassNotFoundException {
         initComponents();
          this.setLocationRelativeTo(null);
+         loadcmbHospital();
     }
 
     /**
@@ -29,7 +39,7 @@ public class Reporte_paciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jComboBox1 = new javax.swing.JComboBox();
+        combo_paciente = new javax.swing.JComboBox();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
@@ -42,8 +52,13 @@ public class Reporte_paciente extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_paciente.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        combo_paciente.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_paciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_pacienteActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 51));
 
@@ -105,7 +120,7 @@ public class Reporte_paciente extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(240, 240, 240)
-                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(combo_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 498, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -119,7 +134,7 @@ public class Reporte_paciente extends javax.swing.JFrame {
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 69, Short.MAX_VALUE)
-                        .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(combo_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(127, 127, 127))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(41, 41, 41)
@@ -148,6 +163,27 @@ public class Reporte_paciente extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+    
+     public void loadcmbHospital() throws SQLException, ClassNotFoundException
+    {
+        DAOHospital dAOHospital=new DAOHospital();
+        Hospital h=new Hospital();
+         DefaultComboBoxModel mode = new DefaultComboBoxModel();
+          
+            mode.removeAllElements();
+       
+            for (Hospital hospital : dAOHospital.loadhospital()) {
+                mode.addElement(hospital);
+            }
+            combo_paciente.setModel(mode);
+           
+        
+        
+    }
+    private void combo_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_pacienteActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_combo_pacienteActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -172,18 +208,21 @@ public class Reporte_paciente extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
+        java.awt.EventQueue.invokeLater(() -> {
+            try {
                 new Reporte_paciente().setVisible(true);
+            } catch (SQLException ex) {
+                Logger.getLogger(Reporte_paciente.class.getName()).log(Level.SEVERE, null, ex);
+            } catch (ClassNotFoundException ex) {
+                Logger.getLogger(Reporte_paciente.class.getName()).log(Level.SEVERE, null, ex);
             }
         });
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JComboBox combo_paciente;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

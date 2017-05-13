@@ -5,6 +5,10 @@
  */
 package Ventanas;
 
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author pamel
@@ -247,10 +251,14 @@ public class Menu_reportes extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void btn_consultorioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_consultorioActionPerformed
-        // TODO add your handling code here:
-        Reporte_consultorio obj = new Reporte_consultorio();
-        obj.setVisible(true);
-        this.setVisible(false);  
+        try {
+            // TODO add your handling code here:
+            Reporte_consultorio obj = new Reporte_consultorio();
+            obj.setVisible(true);  
+            this.setVisible(false);
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_consultorioActionPerformed
 
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
@@ -262,22 +270,39 @@ public class Menu_reportes extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void btn_pacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_pacientesActionPerformed
-        // TODO add your handling code here:
-        Reporte_paciente obj = new Reporte_paciente();
-        obj.setVisible(true);
-        this.setVisible(false);  
+        try {
+            // TODO add your handling code here:
+            Reporte_paciente obj = new Reporte_paciente();
+            obj.setVisible(true);  
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_pacientesActionPerformed
 
     private void btn_medicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_medicosActionPerformed
-        // TODO add your handling code here:
-         Reporte_medico obj = new Reporte_medico();
-        obj.setVisible(true);
-        this.setVisible(false);  
+        try {
+            // TODO add your handling code here:
+            Reporte_medico obj = new Reporte_medico();
+            obj.setVisible(true);  
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_medicosActionPerformed
 
     private void btn_cuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_cuartosActionPerformed
         // TODO add your handling code here:
-         Reporte_cuartos obj = new Reporte_cuartos();
+         Reporte_cuartos obj = null;
+        try {
+            obj = new Reporte_cuartos();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Menu_reportes.class.getName()).log(Level.SEVERE, null, ex);
+        }
         obj.setVisible(true);
         this.setVisible(false);  
         
@@ -311,10 +336,8 @@ public class Menu_reportes extends javax.swing.JFrame {
         //</editor-fold>
 
         /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new Menu_reportes().setVisible(true);
-            }
+        java.awt.EventQueue.invokeLater(() -> {
+            new Menu_reportes().setVisible(true);
         });
     }
 

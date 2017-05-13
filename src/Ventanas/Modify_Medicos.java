@@ -232,30 +232,46 @@ public class Modify_Medicos extends javax.swing.JFrame {
 
     private void btn_modifyMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyMedicoActionPerformed
 
-      
         
-        if (txt_modifyID.getText().isEmpty())
-        {
-            JOptionPane.showMessageDialog(rootPane, "Favor de ingresar un ID");
-        }
-        
-            
         try {
-            // TODO add your handling code here:
-            modif = 1;
-            Doctor doctor =new Doctor();
-            id = txt_modifyID.getText();
             
             
-            Alta_Medicos obj = new Alta_Medicos();
-            if(modif==1)
+            if (txt_modifyID.getText().isEmpty())
             {
-            obj.setVisible(true);
-            this.setVisible(false);
-            }else
-            {
-              obj.setVisible(false);
+                JOptionPane.showMessageDialog(rootPane, "Favor de ingresar un ID");
             }
+            DAODoctor doc = new DAODoctor();
+            
+            if (doc.FindID(txt_modifyID.getText())!= 0)
+            {
+              try {
+                // TODO add your handling code here:
+                modif = 1;
+                Doctor doctor =new Doctor();
+                id = txt_modifyID.getText();
+                
+                
+                Alta_Medicos obj = new Alta_Medicos();
+                if(modif==1)
+                {
+                    obj.setVisible(true);
+                    this.setVisible(false);
+                }else
+                {
+                    obj.setVisible(false);
+                }
+            } catch (SQLException | ClassNotFoundException ex) {
+                Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
+            }   
+            }
+            else
+                
+            
+            JOptionPane.showMessageDialog(rootPane, "No se ha encontrado el ID");
+           
+            
+            
+            
         } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
         }

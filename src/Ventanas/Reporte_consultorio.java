@@ -5,6 +5,13 @@
  */
 package Ventanas;
 
+import Clases.Hospital;
+import DAO.DAOHospital;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.DefaultComboBoxModel;
+
 /**
  *
  * @author pamel
@@ -14,9 +21,10 @@ public class Reporte_consultorio extends javax.swing.JFrame {
     /**
      * Creates new form Reporte_consultorio
      */
-    public Reporte_consultorio() {
+    public Reporte_consultorio() throws SQLException, ClassNotFoundException {
         initComponents();
          this.setLocationRelativeTo(null);
+         loadcmbHospital();
     }
 
     /**
@@ -29,7 +37,7 @@ public class Reporte_consultorio extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel3 = new javax.swing.JPanel();
-        jComboBox2 = new javax.swing.JComboBox();
+        hospi_comb = new javax.swing.JComboBox();
         jButton1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
@@ -42,8 +50,13 @@ public class Reporte_consultorio extends javax.swing.JFrame {
 
         jPanel3.setBackground(new java.awt.Color(255, 255, 255));
 
-        jComboBox2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jComboBox2.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hospi_comb.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        hospi_comb.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hospi_comb.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                hospi_combActionPerformed(evt);
+            }
+        });
 
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-derecha.png"))); // NOI18N
         jButton1.setBorderPainted(false);
@@ -55,7 +68,7 @@ public class Reporte_consultorio extends javax.swing.JFrame {
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
                 .addGap(309, 309, 309)
-                .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addComponent(hospi_comb, javax.swing.GroupLayout.PREFERRED_SIZE, 451, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(51, 51, 51)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -66,7 +79,7 @@ public class Reporte_consultorio extends javax.swing.JFrame {
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(80, 80, 80)
-                        .addComponent(jComboBox2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addComponent(hospi_comb, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGap(59, 59, 59)
                         .addComponent(jButton1)))
@@ -145,42 +158,40 @@ public class Reporte_consultorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+     public void loadcmbHospital() throws SQLException, ClassNotFoundException
+    {
+        DAOHospital dAOHospital=new DAOHospital();
+        Hospital h=new Hospital();
+         DefaultComboBoxModel mode = new DefaultComboBoxModel();
+          
+            mode.removeAllElements();
+       
+            for (Hospital hospital : dAOHospital.loadhospital()) {
+                mode.addElement(hospital);
+            }
+            hospi_comb.setModel(mode);
+           
+        
+        
+    }
+    
+    
+    
+    private void hospi_combActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospi_combActionPerformed
+       
+       
+        
+    }//GEN-LAST:event_hospi_combActionPerformed
+
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                new Reporte_consultorio().setVisible(true);
-            }
-        });
-    }
+   
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JComboBox hospi_comb;
     private javax.swing.JButton jButton1;
-    private javax.swing.JComboBox jComboBox2;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
     private javax.swing.JLabel jLabel12;

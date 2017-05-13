@@ -77,11 +77,9 @@ public class DAODoctor {
     {
         int rowm=0;
           try {
-             String query = "Delete from doctor where Id="+Id+"";
+             String query = "Delete from doctor where Id='"+Id+"'";
              pst = cn.prepareStatement(query);
             rowm= pst.executeUpdate();
-             
-                        
              
             
          } catch (SQLException ex) {
@@ -156,4 +154,17 @@ public class DAODoctor {
         }
         return h;
     }
+        
+        public int FindID(String id) throws SQLException
+        {
+            int cont = 0;
+            Doctor doctor = null;
+        pst = cn.prepareStatement("Select * from doctor where Id='"+id+"'");
+        rs = pst.executeQuery();
+        
+            while (rs.next()) {
+                cont++;
+            }
+      return cont;
+        }
 }
