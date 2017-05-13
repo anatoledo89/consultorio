@@ -275,7 +275,7 @@ public class Hospital {
    
    public void assignDoctorToPatient(String SecurityNumber, String DoctorID)
    {
-       for (int i = 0; i < this.contador_patients; i++)
+    /*   for (int i = 0; i < this.contador_patients; i++)
        {
            if (this.patients[i].getSecurityNumber().equals(SecurityNumber))
            {
@@ -290,7 +290,7 @@ public class Hospital {
            {
                this.doctors[i].addPatientID(SecurityNumber);
            }
-       }
+       }*/
        
    }
    public void assignRoomToPatient(String SecurityNumber, int roomID)

@@ -59,7 +59,7 @@ public class DAOPaciente {
         rs = pst.executeQuery();
             while (rs.next()) {
             patient=new Patient();
-       
+         patient.setPatientID(rs.getInt("Id"));
             patient.setFirstname(rs.getString("primernombre"));
             patient.setLastname(rs.getString("apellido"));
             patient.setSecurityNumber(rs.getString("nss"));
@@ -88,6 +88,7 @@ public class DAOPaciente {
             while (rs.next()) {
             patient=new Patient();
        
+            patient.setPatientID(rs.getInt("Id"));
             patient.setFirstname(rs.getString("primernombre"));
             patient.setLastname(rs.getString("apellido"));
             patient.setSecurityNumber(rs.getString("nss"));
@@ -107,10 +108,10 @@ public class DAOPaciente {
         return patient;
     }
      
-      public Patient patienteSearchbyID(String id) throws SQLException
+      public Patient patienteSearchbyID(int id) throws SQLException
     {
         Patient patient=null;
-          pst = cn.prepareStatement("Select * from paciente where Id='"+id+"'");
+          pst = cn.prepareStatement("Select * from paciente where Id="+id+"");
         rs = pst.executeQuery();
             while (rs.next()) {
             patient=new Patient();
@@ -174,10 +175,12 @@ public class DAOPaciente {
         return lst;
     }
         
-       public boolean addDoctor(String iddoctor, int iddpatient) 
+       public boolean addDoctor(String iddoctor, String nss, int status) 
        {
          try {
-             pst = cn.prepareStatement("Insert into paciente doctor(iddoctor,idpaciente) values('"+iddoctor+"',"+iddpatient+")");
+             pst = cn.prepareStatement("Insert into pacientedoctor(iddoctor,nss) values('"+iddoctor+"','"+nss+"');");
+              pst.executeUpdate();
+              pst=cn.prepareStatement("Update paciente set status="+status+" where nss='"+nss+"';");
               pst.executeUpdate();
               return true;
          } catch (SQLException ex) {
@@ -186,6 +189,109 @@ public class DAOPaciente {
             
            return false;
        }
+       
+       
+       public boolean removeDoctor(String iddoctor,String nss)
+       {
+           try {
+             pst = cn.prepareStatement("Delete from pacientedoctor where iddoctor='"+iddoctor+"'and nss='"+nss+"');");
+              pst.executeUpdate();
+             
+              return true;
+         } catch (SQLException ex) {
+             Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE, null, ex);
+         }
+            
+           return false;
+       }
+       
+       public ArrayList<Doctor> getDoctorsPatientid(String nss) throws SQLException
+       {
+            ArrayList<Doctor> lst = new ArrayList<>();
+        Doctor d = null;
+        pst = cn.prepareStatement("Select iddoctor,primernombre,apellido,departamento from pacientedoctor "+
+                "inner join doctor on doctor.Id=pacientedoctor.iddoctor where nss='"+nss+"'");
+        rs = pst.executeQuery();
+        while (rs.next()) {
+           d=new Doctor();
+            d.setId(rs.getString("iddoctor"));
+            d.setFirstname(rs.getString("primernombre"));
+            d.setLastname(rs.getString("apellido"));
+            d.setDepartment(rs.getString("departamento"));
+      
         
+            
+            lst.add(d);
+        }
+        return lst;
+           
+       }
+       
+         public Doctor getDoctorPatientid(String nss) throws SQLException
+       {
+          
+        Doctor d = null;
+        pst = cn.prepareStatement("Select iddoctor,primernombre,apellido,departamento from pacientedoctor "+
+                "inner join doctor on doctor.Id=pacientedoctor.iddoctor where nss='"+nss+"'");
+        rs = pst.executeQuery();
+        while (rs.next()) {
+           d=new Doctor();
+            d.setId(rs.getString("iddoctor"));
+            d.setFirstname(rs.getString("primernombre"));
+            d.setLastname(rs.getString("apellido"));
+            d.setDepartment(rs.getString("departamento"));
+      
+        
+            
+           
+        }
+        return d;
+           
+       }
+       
+       public boolean updatePatient(Patient p, String doctorid) 
+       {
+         try {
+             String query = "Update paciente "+
+                     "SET enfermedad='"+p.getDisease()+"',"+
+                     "peso ="+p.getWeight()+",idcuarto= "+p.getRoomID()+","+
+                     "altura= "+p.getSize()+",status='"+p.getStatus()+"'"
+                     + " where nss='"+p.getSecurityNumber()+"'";
+             
+             
+             pst = cn.prepareStatement(query);
+             pst.executeUpdate();
+             
+               String query2 = "Update pacientedoctor "+
+                     "SET iddoctor='"+doctorid+"' where nss='"+p.getSecurityNumber()+"'";
+               pst = cn.prepareStatement(query2);
+             pst.executeUpdate();
+                     
+             return true;
+         } catch (SQLException ex) {
+             Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE, null, ex);
+         }
+       return false;
+       }
+        
+       public boolean deletePatient(String nss)
+       {
+          
+          try {
+             String query = "Delete from paciente where nss="+nss+"";
+             pst = cn.prepareStatement(query);
+            pst.executeUpdate();
+             return true;
+                        
+             
+            
+         } catch (SQLException ex) {
+             Logger.getLogger(DAOConsultorio.class.getName()).log(Level.SEVERE, null, ex);
+         
+             return false;
+       }
+       
+         
+       }
        
 }

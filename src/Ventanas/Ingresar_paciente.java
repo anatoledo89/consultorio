@@ -4,7 +4,7 @@
  * and open the template in the editor.
  */
 package Ventanas;
-import Clases.Person;
+
 import Clases.Patient;
 import DAO.DAOPaciente;
 import java.sql.SQLException;
@@ -16,7 +16,7 @@ import javax.swing.JOptionPane;
  * @author  amel
  */
 public class Ingresar_paciente extends javax.swing.JFrame {
-
+public static Patient paciente=null;
     /**
      * Creates new form Ingresar_paciente
      */
@@ -212,15 +212,6 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(67, 67, 67)
-                        .addComponent(jLabel12))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(165, 165, 165)
-                        .addComponent(jButton2)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(panel1Layout.createSequentialGroup()
                 .addContainerGap(50, Short.MAX_VALUE)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addGroup(panel1Layout.createSequentialGroup()
@@ -268,6 +259,15 @@ public class Ingresar_paciente extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(txttel)))
                 .addGap(0, 54, Short.MAX_VALUE))
+            .addGroup(panel1Layout.createSequentialGroup()
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(67, 67, 67)
+                        .addComponent(jLabel12))
+                    .addGroup(panel1Layout.createSequentialGroup()
+                        .addGap(165, 165, 165)
+                        .addComponent(jButton2)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -426,6 +426,7 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         {
              Patient patient=new Patient();
             try {
+               
                 patient.setFirstname(name);
                 patient.setLastname(surname);
                 patient.setAge(age);
@@ -437,12 +438,18 @@ public class Ingresar_paciente extends javax.swing.JFrame {
                 patient.setWeight(weight);
                 patient.setSize(size);
                 patient.setRoomID(room);
-                patient.setStatus(1);
+                patient.setStatus(0);
                 DAOPaciente dAOPaciente=new DAOPaciente();
                 
                 if(dAOPaciente.insertPacient(patient))
                 {
                     JOptionPane.showMessageDialog(rootPane, "Paciente dado de alta");
+                  paciente=patient;
+            // TODO add your handling code here:
+            ingreso_paciente   obj = new ingreso_paciente();
+            obj.setVisible(true);
+            this.setVisible(false);
+        
                 }else
                 {
                     JOptionPane.showMessageDialog(rootPane, "Ocurrió un error");

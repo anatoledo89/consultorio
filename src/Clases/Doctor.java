@@ -5,6 +5,8 @@
  */
 package Clases;
 
+import java.util.ArrayList;
+
 /**
  *
  * @author pamel
@@ -14,7 +16,7 @@ public class Doctor extends Person{
     private String id;
     private String department;
     private String license;
-    private String[]patientSet;
+    private ArrayList<String>patientSet=new ArrayList<>();
     private int contadorP = 0;
     private int size = 10;
     private int idhospital=0;
@@ -62,7 +64,7 @@ public class Doctor extends Person{
         this.license = license;
     }
 
-    public void setPatientSet(String[] patientSet) {
+    public void setPatientSet(ArrayList<String>patientSet) {
         this.patientSet = patientSet;
     }
     
@@ -86,13 +88,13 @@ public class Doctor extends Person{
         return license;
     }
 
-    public String[] getPatientSet() {
+    public ArrayList<String> getPatientSet() {
         return patientSet;
     }
     
     private void resize(){
             //Creamos primero un arreglo del mismo amaño que el actual
-            String []aux = new String[this.size];
+      /*      String []aux = new String[this.size];
             //Ahora respaldamos el arreglo actual en este nuevo arreglo
             for(int i=0; i<this.size;i++){
             aux[i]=this.patientSet[i];}
@@ -102,13 +104,24 @@ public class Doctor extends Person{
             //ahora solo vaciamos nuestro respaldo a data
            for(int i=0; i<this.size/2; i++){
                this.patientSet[i]=aux[i];
-           }
+           }*/
     }
     
     
-    public void addPatientID(String securityNumber)
+    public boolean addPatientID(String securityNumber)
     {
-        if (this.contadorP<this.size)
+        
+       
+        if(patientSet.size()<5)
+        {
+             
+            patientSet.add(securityNumber);
+            return true;
+        }else
+        {
+            return false;
+        }
+      /*  if (this.contadorP<this.size)
         {
              this.patientSet[this.contadorP++]=securityNumber;
         }
@@ -117,19 +130,21 @@ public class Doctor extends Person{
                 //redimensionarlo para poder añadir el dato
                 this.resize();
                 this.patientSet[this.contadorP++]=securityNumber;
-            }
+            }*/
     }
     
     public void erasePatientID(String securityNumber)
     {
-      for( int i = 0; i<this.size;i++)
+        
+        patientSet.remove(securityNumber);
+      /*for( int i = 0; i<this.size;i++)
         {
             if (this.patientSet[i].equals(securityNumber))
             {
                 this.patientSet[i] = " ";
             }
         }
-        this.contadorP--;
+        this.contadorP--;*/
     }
 
     //se comento por que usamos combo box y estos devuelven siempre un toString 

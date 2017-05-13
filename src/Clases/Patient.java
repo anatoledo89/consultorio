@@ -140,13 +140,18 @@ public class Patient extends Person {
     
   //otros metodos 
     
-   public void setNewDoc(String doctorID)     
+   public boolean setNewDoc(String doctorID, int status) throws SQLException, ClassNotFoundException     
     { Doctor d=new Doctor();
        
-        try {
+ 
             
             DAOPaciente daopaciente=new DAOPaciente();
-            daopaciente.addDoctor(doctorID, this.patientID);
+        if(    daopaciente.addDoctor(doctorID, this.securityNumber,status))
+        {
+            
+                return d.addPatientID(this.securityNumber);
+        }else return false;
+    }
             
             
             
@@ -165,18 +170,16 @@ public class Patient extends Person {
             System.out.println("Se ha alcanzado el numero maximo de doctores por paciente");
             }
             */
-        } catch (SQLException ex) {
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Patient.class.getName()).log(Level.SEVERE, null, ex);
-        }
+        
         
       
-    }
+    
    
-   public void freeDoc(String doctorID)
+   public void freeDoc(String doctorID) throws SQLException, ClassNotFoundException
    {
+       
       
+       
        /* for( int i = 0; i<5;i++)
         {
             if (this.doctorID[i].equals(doctorID))

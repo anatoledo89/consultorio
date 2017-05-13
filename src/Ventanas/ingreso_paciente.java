@@ -15,18 +15,21 @@ import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.JOptionPane;
 
 /**
  *
  * @author pamel
  */
-public class Alta_paciente extends javax.swing.JFrame {
+public class ingreso_paciente extends javax.swing.JFrame {
 Patient p=null;
+int status=0;
     /**
      * Creates new form Alta_paciente
      */
-    public Alta_paciente() throws SQLException, ClassNotFoundException {
+    public ingreso_paciente() throws SQLException, ClassNotFoundException {
         initComponents();
+        jrb_ingreso.setSelected(true);
         loadcmbDepartament();
         loadcmbDoctor();
          this.setLocationRelativeTo(null);
@@ -68,51 +71,30 @@ Patient p=null;
 
         jLabel5 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        buttonGroup1 = new javax.swing.ButtonGroup();
         jPanel1 = new javax.swing.JPanel();
-        txt_busqueda = new javax.swing.JTextField();
-        cmbBusqueda = new javax.swing.JComboBox();
         jLabel1 = new javax.swing.JLabel();
-        btn_buscarpaciente = new javax.swing.JButton();
         btn_regresar = new javax.swing.JButton();
         jcmb_Departamento = new javax.swing.JComboBox<>();
-        jlblInfoPaciente = new javax.swing.JLabel();
         jcmbDoctor = new javax.swing.JComboBox<>();
         jbtnAsignar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
+        jrb_ingreso = new javax.swing.JRadioButton();
+        jrb_tratamiento = new javax.swing.JRadioButton();
+        jrbAlta = new javax.swing.JRadioButton();
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Número de seguridad:");
 
         jLabel2.setText("jLabel2");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
         jPanel1.setBackground(new java.awt.Color(23, 56, 73));
 
-        txt_busqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        txt_busqueda.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                txt_busquedaActionPerformed(evt);
-            }
-        });
-
-        cmbBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cmbBusqueda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Por nombre", "Por ID", "Por número de seguro" }));
-
         jLabel1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel1.setText("Alta de paciente");
-
-        btn_buscarpaciente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_buscarpaciente.setText("Buscar");
-        btn_buscarpaciente.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_buscarpacienteActionPerformed(evt);
-            }
-        });
+        jLabel1.setText("Pacientes");
 
         btn_regresar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         btn_regresar.setText("Regresar");
@@ -129,10 +111,6 @@ Patient p=null;
             }
         });
 
-        jlblInfoPaciente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jlblInfoPaciente.setForeground(new java.awt.Color(255, 255, 255));
-        jlblInfoPaciente.setText("-");
-
         jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jbtnAsignar.setText("Asignar");
@@ -146,65 +124,80 @@ Patient p=null;
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Doctores:");
 
+        buttonGroup1.add(jrb_ingreso);
+        jrb_ingreso.setText("Ingreso");
+        jrb_ingreso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_ingresoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jrb_tratamiento);
+        jrb_tratamiento.setText("Tratamiento");
+        jrb_tratamiento.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrb_tratamientoActionPerformed(evt);
+            }
+        });
+
+        buttonGroup1.add(jrbAlta);
+        jrbAlta.setText("Alta");
+        jrbAlta.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jrbAltaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(211, 211, 211)
-                .addComponent(jbtnAsignar)
-                .addGap(0, 0, Short.MAX_VALUE))
-            .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel1)
-                        .addGap(56, 56, 56)
+                        .addGap(118, 118, 118)
                         .addComponent(btn_regresar))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(211, 211, 211)
-                        .addComponent(btn_buscarpaciente)
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addComponent(jlblInfoPaciente, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(52, 52, 52)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                .addGroup(jPanel1Layout.createSequentialGroup()
+                                    .addComponent(jrb_ingreso)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jrbAlta))
+                                .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(0, 0, Short.MAX_VALUE)))
                 .addContainerGap())
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(38, 38, 38)
+                .addGap(211, 211, 211)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(cmbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
-                        .addComponent(txt_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 213, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(20, 20, 20))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel4)
-                            .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(jcmb_Departamento, 0, 439, Short.MAX_VALUE)
-                                .addComponent(jcmbDoctor, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                        .addGap(0, 0, Short.MAX_VALUE))))
+                    .addComponent(jrb_tratamiento)
+                    .addComponent(jbtnAsignar))
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(31, Short.MAX_VALUE)
+                .addContainerGap(36, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel1)
-                    .addComponent(btn_regresar))
-                .addGap(37, 37, 37)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(cmbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(txt_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(31, 31, 31)
-                .addComponent(btn_buscarpaciente)
-                .addGap(18, 18, 18)
-                .addComponent(jlblInfoPaciente, javax.swing.GroupLayout.PREFERRED_SIZE, 50, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 62, Short.MAX_VALUE)
+                    .addComponent(btn_regresar)
+                    .addComponent(jLabel1))
+                .addGap(23, 23, 23)
                 .addComponent(jLabel4)
-                .addGap(18, 18, 18)
+                .addGap(26, 26, 26)
                 .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(29, 29, 29)
                 .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
+                .addGap(58, 58, 58)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jrb_ingreso)
+                    .addComponent(jrb_tratamiento)
+                    .addComponent(jrbAlta))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 141, Short.MAX_VALUE)
                 .addComponent(jbtnAsignar)
                 .addGap(40, 40, 40))
         );
@@ -214,14 +207,16 @@ Patient p=null;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 20, Short.MAX_VALUE))
+                .addGap(27, 27, 27)
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 22, Short.MAX_VALUE))
+                .addContainerGap())
         );
 
         pack();
@@ -233,67 +228,57 @@ Patient p=null;
        this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
-    private void txt_busquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_busquedaActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_txt_busquedaActionPerformed
-
-    private void btn_buscarpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarpacienteActionPerformed
-    try {
-        // TODO add your handling code here:
-        buscar();
-    } catch (SQLException ex) {
-        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
-    }
-        
-        
-    }//GEN-LAST:event_btn_buscarpacienteActionPerformed
-
     private void jcmb_DepartamentoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcmb_DepartamentoActionPerformed
     try {
         // TODO add your handling code here:
         loadcmbDoctor();
     } catch (SQLException ex) {
-        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
     } catch (ClassNotFoundException ex) {
-        Logger.getLogger(Alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_jcmb_DepartamentoActionPerformed
 
     private void jbtnAsignarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jbtnAsignarActionPerformed
+    try {
         // TODO add your handling code here:
-        
+        Doctor d=(Doctor)    jcmbDoctor.getModel().getSelectedItem();
+       p=   Ingresar_paciente.paciente;
+        if(p.setNewDoc(d.getId(),status))
+        {
+            JOptionPane.showMessageDialog(rootPane, "Paciente asignado");
+        }else
+        {
+            JOptionPane.showMessageDialog(rootPane, "No se puede asignar más pacientes a este doctor");
+        }
+    } catch (SQLException ex) {
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    }
         
     }//GEN-LAST:event_jbtnAsignarActionPerformed
 
-   private void buscar() throws SQLException, ClassNotFoundException
-   {
-       DAOPaciente daopaciente=new DAOPaciente();
-       p=null;
-      
-       switch(cmbBusqueda.getSelectedIndex())
-       {
-           case 0:
-               p=daopaciente.patienteSearchbyName(txt_busqueda.getText());
-               jlblInfoPaciente.setText(p.toString());
-               break;
-           case 1:
-               p=daopaciente.patienteSearchbyID(txt_busqueda.getText());
-                jlblInfoPaciente.setText(p.toString());
-               break;
-           case 2:
-               p=daopaciente.patienteSearchbyNumberSec(txt_busqueda.getText());
-               jlblInfoPaciente.setText(p.toString());
-               break;
-       }
-   }
+    private void jrb_tratamientoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_tratamientoActionPerformed
+        // TODO add your handling code here:
+        status=1;
+    }//GEN-LAST:event_jrb_tratamientoActionPerformed
+
+    private void jrbAltaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrbAltaActionPerformed
+        // TODO add your handling code here:
+        status=2;
+    }//GEN-LAST:event_jrbAltaActionPerformed
+
+    private void jrb_ingresoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jrb_ingresoActionPerformed
+        // TODO add your handling code here:
+        status=0;
+    }//GEN-LAST:event_jrb_ingresoActionPerformed
+
+ 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton btn_buscarpaciente;
     private javax.swing.JButton btn_regresar;
-    private javax.swing.JComboBox cmbBusqueda;
-    private javax.swing.JComboBox<String> jComboBox1;
+    private javax.swing.ButtonGroup buttonGroup1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
@@ -302,7 +287,8 @@ Patient p=null;
     private javax.swing.JButton jbtnAsignar;
     private javax.swing.JComboBox<String> jcmbDoctor;
     private javax.swing.JComboBox<String> jcmb_Departamento;
-    private javax.swing.JLabel jlblInfoPaciente;
-    private javax.swing.JTextField txt_busqueda;
+    private javax.swing.JRadioButton jrbAlta;
+    private javax.swing.JRadioButton jrb_ingreso;
+    private javax.swing.JRadioButton jrb_tratamiento;
     // End of variables declaration//GEN-END:variables
 }
