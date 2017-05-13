@@ -11,7 +11,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author Karen
+ * @author 
  */
 public class Menu_Paciente extends javax.swing.JFrame {
 
