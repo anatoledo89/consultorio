@@ -3,11 +3,13 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="CursoJava ADC">
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_consultorios.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Clases/Hospital.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Clases/Doctor.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAOConsultorio.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Clases/DoctorsOffice.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAOPaciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAODoctor.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Ingresar_paciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Modify_Medicos.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Menu_Doctores.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_paciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_Medicos.java</file>
         </group>
     </open-files>
 </project-private>
