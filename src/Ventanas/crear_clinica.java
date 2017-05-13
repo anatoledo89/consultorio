@@ -60,6 +60,11 @@ public class crear_clinica extends javax.swing.JFrame {
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jtxtTelefono.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jtxtTelefonoActionPerformed(evt);
+            }
+        });
         jtxtTelefono.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyPressed(java.awt.event.KeyEvent evt) {
                 jtxtTelefonoKeyPressed(evt);
@@ -70,8 +75,18 @@ public class crear_clinica extends javax.swing.JFrame {
         });
 
         jtxtConsultorios.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jtxtConsultorios.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtConsultoriosKeyTyped(evt);
+            }
+        });
 
         jtxtHabitaciones.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jtxtHabitaciones.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtHabitacionesKeyTyped(evt);
+            }
+        });
 
         jLabel6.setText("No. Habitaciones:");
 
@@ -252,6 +267,22 @@ public class crear_clinica extends javax.swing.JFrame {
               if(!Character.isDigit(evt.getKeyChar()))
      {evt.consume();}
     }//GEN-LAST:event_jtxtTelefonoKeyTyped
+
+    private void jtxtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtTelefonoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jtxtTelefonoActionPerformed
+
+    private void jtxtConsultoriosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtConsultoriosKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_jtxtConsultoriosKeyTyped
+
+    private void jtxtHabitacionesKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtHabitacionesKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_jtxtHabitacionesKeyTyped
 
     /**
      * @param args the command line arguments

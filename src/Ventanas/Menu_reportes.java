@@ -16,6 +16,7 @@ public class Menu_reportes extends javax.swing.JFrame {
      */
     public Menu_reportes() {
         initComponents();
+        this.setLocationRelativeTo(null);
     }
 
     /**

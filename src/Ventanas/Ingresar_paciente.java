@@ -22,7 +22,7 @@ public class Ingresar_paciente extends javax.swing.JFrame {
      */
     public Ingresar_paciente() {
         initComponents();
-          // this.setLocationRelativeTo(null);
+          this.setLocationRelativeTo(null);
         //a   this.setExtendedState(MAXIMIZED_BOTH);
     }
 
@@ -69,7 +69,7 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         setBackground(new java.awt.Color(80, 80, 116));
         setUndecorated(true);
 
-        jPanel1.setBackground(new java.awt.Color(54, 54, 107));
+        jPanel1.setBackground(new java.awt.Color(0, 0, 51));
         jPanel1.setMaximumSize(null);
         jPanel1.setRequestFocusEnabled(false);
 
@@ -152,6 +152,11 @@ public class Ingresar_paciente extends javax.swing.JFrame {
         txtedad.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtedadActionPerformed(evt);
+            }
+        });
+        txtedad.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtedadKeyTyped(evt);
             }
         });
 
@@ -479,6 +484,12 @@ public class Ingresar_paciente extends javax.swing.JFrame {
     private void txthabitacionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txthabitacionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txthabitacionActionPerformed
+
+    private void txtedadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtedadKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_txtedadKeyTyped
 
     /**
      * @param args the command line arguments

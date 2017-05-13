@@ -226,9 +226,7 @@ if(result == JOptionPane.YES_OPTION) {
             Alta_consultorios obj = new Alta_consultorios();
             obj.setVisible(true);
             this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(Menu_Clinica.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Menu_Clinica.class.getName()).log(Level.SEVERE, null, ex);
         }
         
@@ -267,13 +265,17 @@ if(result == JOptionPane.YES_OPTION) {
      
           DefaultComboBoxModel mode = new DefaultComboBoxModel();
           
-            mode.removeAllElements();
+          DoctorsOffice office = new DoctorsOffice();
+           mode.removeAllElements();
+         
+           
              
-            
+           
              for(DoctorsOffice doctorsoffice: daoconsultorio.loadDoctorsOfficebyHospital(idhospital))
              {
                  mode.addElement(doctorsoffice);
              }
+             
              jcmbConsultorio.setModel(mode);
            
         

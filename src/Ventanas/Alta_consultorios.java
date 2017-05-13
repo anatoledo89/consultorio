@@ -54,8 +54,8 @@ public class Alta_consultorios extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
-        jcmbHospital = new javax.swing.JComboBox<>();
-        jcmDoctor = new javax.swing.JComboBox<>();
+        jcmbHospital = new javax.swing.JComboBox<String>();
+        jcmDoctor = new javax.swing.JComboBox<String>();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
@@ -92,7 +92,24 @@ public class Alta_consultorios extends javax.swing.JFrame {
         jLabel4.setText("Último pago:");
         jLabel4.setEnabled(false);
 
+        txtFloor.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtFloorKeyTyped(evt);
+            }
+        });
+
+        txtMRent.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtMRentKeyTyped(evt);
+            }
+        });
+
         txtPago.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0.00"))));
+        txtPago.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txtPagoKeyTyped(evt);
+            }
+        });
 
         jButton1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jButton1.setText("Crear");
@@ -283,6 +300,24 @@ public class Alta_consultorios extends javax.swing.JFrame {
           Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
       }
     }//GEN-LAST:event_jcmbHospitalActionPerformed
+
+    private void txtFloorKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtFloorKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_txtFloorKeyTyped
+
+    private void txtMRentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtMRentKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_txtMRentKeyTyped
+
+    private void txtPagoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtPagoKeyTyped
+        // TODO add your handling code here:
+        if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_txtPagoKeyTyped
 
    public void cargardatos()
    {
