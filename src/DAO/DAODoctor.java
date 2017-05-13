@@ -8,6 +8,7 @@ package DAO;
 import Clases.Base_dato;
 import Clases.Doctor;
 import Clases.DoctorsOffice;
+import Clases.Hospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -131,8 +132,29 @@ public class DAODoctor {
            doctor.setEmail(rs.getString("email"));
            doctor.setDepartment(rs.getString("departamento"));
            doctor.setLicense(rs.getString("licencia"));
+           doctor.setIdhospital(rs.getInt("idhospital"));
         }
         return doctor;
         
+    }
+        
+        public Hospital gethospitalbyId(int idhospital) throws SQLException {
+       
+        Hospital h = null;
+        pst = cn.prepareStatement("Select * from hospital where Id="+idhospital+"");
+        rs = pst.executeQuery();
+        while (rs.next()) {
+            h = new Hospital();
+            h.setIdhospital(rs.getInt("Id"));
+            h.setName(rs.getString("nombre"));
+            h.setAddress(rs.getString("direccion"));
+            h.setTelephone(rs.getString("telefono"));
+            h.setNumOfRooms(rs.getInt("ncuartos"));
+            h.setNumOfDoctorsOffices(rs.getInt("noficinas"));
+            
+            
+           
+        }
+        return h;
     }
 }

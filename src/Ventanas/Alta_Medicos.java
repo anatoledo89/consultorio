@@ -42,10 +42,12 @@ Doctor doctor;
             loadDoctorsdata();
             crearDoctor.setText("Modificar");
             txt_ID.setEnabled(false);
+            jcomb_hospital.setEnabled(false);
         }else
         {
             crearDoctor.setText("Crear");
         txt_ID.setEnabled(true);
+         jcomb_hospital.setEnabled(true);
         }
     }
 
@@ -316,10 +318,12 @@ Doctor doctor;
     {
         DAODoctor doctor=new DAODoctor();
         Doctor d=null;
+        Hospital h=null;
         d = doctor.getDoctor(Modify_Medicos.id);
+      h= doctor.gethospitalbyId(d.getIdhospital());
         if(d!=null)
         {
-           
+        jcomb_hospital.getModel().setSelectedItem(h);
         txt_nombre.setText(d.getFirstname());
         txt_apellido.setText(d.getLastname());
         txt_cedula.setText(d.getLicense());
