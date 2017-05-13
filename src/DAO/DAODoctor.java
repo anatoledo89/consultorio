@@ -7,7 +7,6 @@ package DAO;
 
 import Clases.Base_dato;
 import Clases.Doctor;
-import Clases.DoctorsOffice;
 import Clases.Hospital;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
