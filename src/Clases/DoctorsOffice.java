@@ -10,7 +10,7 @@ package Clases;
  * @author pamel
  */
 public class DoctorsOffice extends Hospital{
-    
+    //declarando los atributos
     private int id;
     private int floor;
     private float monthlyRent;

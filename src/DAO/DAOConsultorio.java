@@ -18,10 +18,11 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author A
+ * @author pamel
  */
 public class DAOConsultorio {
    
+    //se crea 
      Base_dato bd = new Base_dato();
     PreparedStatement pst;
     ResultSet rs;

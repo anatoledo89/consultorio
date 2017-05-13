@@ -35,11 +35,12 @@ public class Doctor extends Person{
     }
     
     //constructor vacio
+   
     public Doctor()
             {
-     /*   this.id = " No se ha ingresado";
+        this.id = " No se ha ingresado";
         this.department = " No se ha ingresado";
-        this.license = " No se ha ingresado";*/
+        this.license = " No se ha ingresado";
             }
     
     
@@ -126,6 +127,8 @@ public class Doctor extends Person{
         this.contadorP--;
     }
 
+    //se comento por que usamos combo box y estos devuelven siempre un toString 
+    //asi que por estetica comentamos lo demas 
     @Override
     public String toString() {
       //  return "Firstname=" + super.getFirstname() + ", \nLastname=" + super.getLastname() + ", \nage=" + super.getAge() + ", \naddress=" + super.getAddress() + ", \ntelephone=" + super.getTelephone() + ",\n email=" + super.getEmail()+"Doctor{" + "id=" + id + ", department=" + department + ", license=" + license + ", patientSet=" + patientSet + ", contadorP=" + contadorP + '}';

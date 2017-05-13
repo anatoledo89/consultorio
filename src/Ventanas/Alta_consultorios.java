@@ -251,9 +251,7 @@ public class Alta_consultorios extends javax.swing.JFrame {
               {
                 JOptionPane.showMessageDialog(rootPane, "Ocurrió un error");
               }
-            } catch (SQLException ex) {
-                Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
-            } catch (ClassNotFoundException ex) {
+            } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
             }
            }else
@@ -270,9 +268,7 @@ public class Alta_consultorios extends javax.swing.JFrame {
                         JOptionPane.showMessageDialog(rootPane, "Ocurrió un error");
                    }
                    
-               } catch (SQLException ex) {
-                   Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
-               } catch (ClassNotFoundException ex) {
+               } catch (SQLException | ClassNotFoundException ex) {
                    Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
                }
                
@@ -294,9 +290,7 @@ public class Alta_consultorios extends javax.swing.JFrame {
       try {
           // TODO add your handling code here:
           loadcmbDoctores();
-      } catch (SQLException ex) {
-          Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
-      } catch (ClassNotFoundException ex) {
+      } catch (SQLException | ClassNotFoundException ex) {
           Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
       }
     }//GEN-LAST:event_jcmbHospitalActionPerformed
