@@ -111,6 +111,29 @@ public class DAOConsultorio {
         
     }
     
+    
+     public Doctor getDoctorById(String iddoctor) throws SQLException
+    { Doctor d= null;
+        pst = cn.prepareStatement("Select * from doctor where Id='"+iddoctor+"'");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+         
+                    d=new Doctor();
+            d.setId(rs.getString("Id"));
+            d.setFirstname(rs.getString("primernombre"));
+            d.setLastname(rs.getString("apellido"));
+            d.setAddress(rs.getString("direccion"));
+            d.setAge(rs.getInt("edad"));
+            d.setEmail(rs.getString("email"));
+            d.setDepartment("departamento");
+            d.setLicense(rs.getString("licencia"));
+            d.setIdhospital(rs.getInt("idhospital"));
+            }
+        return d;
+        
+        
+    }
+    
     public boolean UpdateDoctorsOffice(DoctorsOffice consultorio)
     {
           try {

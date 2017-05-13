@@ -46,6 +46,7 @@ public class DAODoctor {
             d.setEmail(rs.getString("email"));
             d.setDepartment("departamento");
             d.setLicense(rs.getString("licencia"));
+            d.setIdhospital(rs.getInt("idhospital"));
             
             lst.add(d);
         }

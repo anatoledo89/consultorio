@@ -141,11 +141,13 @@ public class Patient extends Person {
   //otros metodos 
     
    public void setNewDoc(String doctorID)     
-    {
+    { Doctor d=new Doctor();
+       
         try {
             
             DAOPaciente daopaciente=new DAOPaciente();
             daopaciente.addDoctor(doctorID, this.patientID);
+            
             
             
             //falta contador verificar

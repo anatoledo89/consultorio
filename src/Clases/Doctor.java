@@ -17,6 +17,7 @@ public class Doctor extends Person{
     private String[]patientSet;
     private int contadorP = 0;
     private int size = 10;
+    private int idhospital=0;
     
 //constructor con valores de atributos 
     public Doctor(String id, String department, String license) {
@@ -43,6 +44,10 @@ public class Doctor extends Person{
     
     
   //Metodos SET
+
+    public void setIdhospital(int idhospital) {
+        this.idhospital = idhospital;
+    }
 
     public void setId(String id) {
         this.id = id;
