@@ -116,6 +116,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         btn_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ventanas/historial-medico (2).png"))); // NOI18N
+        btn_reportes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_reportesActionPerformed(evt);
+            }
+        });
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
@@ -223,6 +228,13 @@ public class Menu extends javax.swing.JFrame {
         obj.setVisible(true);
         this.setVisible(false);
     }//GEN-LAST:event_btn_clinicaMouseClicked
+
+    private void btn_reportesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reportesActionPerformed
+        // TODO add your handling code here:
+         Menu_reportes obj = new Menu_reportes();
+        obj.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_reportesActionPerformed
 
     /**
      * @param args the command line arguments
