@@ -36,12 +36,12 @@ public class DAOPaciente {
     {
         try {
             String query = "Insert into paciente(nss,primernombre,apellido,edad,direccion,telefono,email,"+
-                    "peso,altura,enfermedad,idcuarto,status,idhospital,idcuarto) values"
+                    "peso,altura,enfermedad,idcuarto,status,idhospital) values"
                     + "('" + paciente.getSecurityNumber() + "','" + paciente.getFirstname() + "'"
                     + ",'" + paciente.getLastname() + "',"+paciente.getAge()+",'"+paciente.getAddress()+"',"
                     +"'"+paciente.getTelephone() + "','" + paciente.getEmail() + "',"+paciente.getWeight()
                     +","+paciente.getSize()+",'"+paciente.getDisease()+"',"+paciente.getRoomID()+","+paciente.getStatus()
-                    +","+paciente.getHospitalID()+","+paciente.getRoomID()+")";
+                    +","+paciente.getHospitalID()+")";
             pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -205,7 +205,7 @@ public class DAOPaciente {
        {
            int row=0;
            try {
-             pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+"';");
+             pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+"' and status=3;");
       row=        pst.executeUpdate();
              
              

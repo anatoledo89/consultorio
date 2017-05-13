@@ -144,7 +144,7 @@ Patient p=null;
            JOptionPane.showMessageDialog(rootPane, "Se ha dado de alta al paciente");
        }else
        {
-           JOptionPane.showMessageDialog(rootPane, "Este paciente no está ingresado");
+           JOptionPane.showMessageDialog(rootPane, "Este paciente no está listo para darse de alta");
        }
     } catch (SQLException ex) {
         Logger.getLogger(alta_paciente.class.getName()).log(Level.SEVERE, null, ex);
