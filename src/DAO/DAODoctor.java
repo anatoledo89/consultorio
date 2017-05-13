@@ -118,7 +118,7 @@ public class DAODoctor {
         
         public Doctor getDoctor(String id) throws SQLException
     { Doctor doctor = null;
-        pst = cn.prepareStatement("Select * from doctor where Id="+id+"");
+        pst = cn.prepareStatement("Select * from doctor where Id='"+id+"'");
         rs = pst.executeQuery();
             while (rs.next()) {
            doctor =new Doctor();
