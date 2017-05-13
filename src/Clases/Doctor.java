@@ -73,6 +73,11 @@ public class Doctor extends Person{
         return id;
     }
 
+    public int getIdhospital() {
+        return idhospital;
+    }
+    
+
     public String getDepartment() {
         return department;
     }
