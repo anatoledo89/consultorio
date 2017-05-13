@@ -49,8 +49,8 @@ public static Hospital hospital=null;
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
-        jcmHospital = new javax.swing.JComboBox<String>();
-        jcmbConsultorio = new javax.swing.JComboBox<String>();
+        jcmHospital = new javax.swing.JComboBox<>();
+        jcmbConsultorio = new javax.swing.JComboBox<>();
         jButton1 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
@@ -116,7 +116,7 @@ public static Hospital hospital=null;
         jPanel1.setPreferredSize(new java.awt.Dimension(1005, 651));
 
         jcmHospital.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jcmHospital.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmHospital.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcmHospital.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmHospitalActionPerformed(evt);
@@ -124,7 +124,7 @@ public static Hospital hospital=null;
         });
 
         jcmbConsultorio.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
-        jcmbConsultorio.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Seleccione un consultorio" }));
+        jcmbConsultorio.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Seleccione un consultorio" }));
         jcmbConsultorio.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmbConsultorioActionPerformed(evt);
@@ -223,7 +223,7 @@ public static Hospital hospital=null;
                 .addComponent(jcmHospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(57, 57, 57)
                 .addComponent(jcmbConsultorio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton1)
                     .addComponent(jButton2))

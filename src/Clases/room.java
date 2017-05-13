@@ -13,6 +13,7 @@ public class room {
     
     private int roomID;
     private String patientID;
+    private int hospitalID;
     private int Maxroom;
 
     //constructor que copia datos de un objeto "room"

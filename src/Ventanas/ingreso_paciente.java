@@ -24,6 +24,7 @@ import javax.swing.JOptionPane;
 public class ingreso_paciente extends javax.swing.JFrame {
 Patient p=null;
 int status=0;
+ Hospital h=null;
     /**
      * Creates new form Alta_paciente
      */
@@ -39,8 +40,9 @@ int status=0;
     
     private void loadcmbDepartament() throws SQLException, ClassNotFoundException
     {
+       h=  Ingresar_paciente.h;
         DAOPaciente dAOPaciente=new DAOPaciente();
-     jcmb_Departamento.setModel(new DefaultComboBoxModel(dAOPaciente.getDepartament().toArray()));
+     jcmb_Departamento.setModel(new DefaultComboBoxModel(dAOPaciente.getDepartament(h.getIdhospital()).toArray()));
     }
     
     private void loadcmbDoctor() throws SQLException, ClassNotFoundException
@@ -53,7 +55,7 @@ int status=0;
         
            
           
-            for (Doctor d :dp.loaddoctorsbyDepartment((String)jcmb_Departamento.getSelectedItem()) ) {
+            for (Doctor d :dp.loaddoctorsbyDepartment((String)jcmb_Departamento.getSelectedItem(),h.getIdhospital()) ) {
                 mode.addElement(d);
             }
             jcmbDoctor.setModel(mode);
@@ -244,7 +246,7 @@ int status=0;
         // TODO add your handling code here:
         Doctor d=(Doctor)    jcmbDoctor.getModel().getSelectedItem();
        p=   Ingresar_paciente.paciente;
-        if(p.setNewDoc(d.getId(),status))
+        if(p.setNewDoc(d.getId(),status,p.getPatientID(),p.getHospitalID(),p.getRoomID()))
         {
             JOptionPane.showMessageDialog(rootPane, "Paciente asignado");
         }else

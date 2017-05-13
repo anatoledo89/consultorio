@@ -36,11 +36,12 @@ public class DAOPaciente {
     {
         try {
             String query = "Insert into paciente(nss,primernombre,apellido,edad,direccion,telefono,email,"+
-                    "peso,altura,enfermedad,idcuarto,status) values"
+                    "peso,altura,enfermedad,idcuarto,status,idhospital,idcuarto) values"
                     + "('" + paciente.getSecurityNumber() + "','" + paciente.getFirstname() + "'"
                     + ",'" + paciente.getLastname() + "',"+paciente.getAge()+",'"+paciente.getAddress()+"',"
                     +"'"+paciente.getTelephone() + "','" + paciente.getEmail() + "',"+paciente.getWeight()
-                    +","+paciente.getSize()+",'"+paciente.getDisease()+"',"+paciente.getRoomID()+","+paciente.getStatus()+");";
+                    +","+paciente.getSize()+",'"+paciente.getDisease()+"',"+paciente.getRoomID()+","+paciente.getStatus()
+                    +","+paciente.getHospitalID()+","+paciente.getRoomID()+")";
             pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -72,6 +73,8 @@ public class DAOPaciente {
             patient.setDisease(rs.getString("enfermedad"));
             patient.setRoomID(rs.getInt("idcuarto"));
           patient.setStatus(rs.getInt("status"));
+           patient.setHospitalID(rs.getInt("idhospital"));
+          patient.setRoomID(rs.getInt("idcuarto"));
             
             
             }
@@ -101,6 +104,8 @@ public class DAOPaciente {
             patient.setDisease(rs.getString("enfermedad"));
             patient.setRoomID(rs.getInt("idcuarto"));
           patient.setStatus(rs.getInt("status"));
+           patient.setHospitalID(rs.getInt("idhospital"));
+          patient.setRoomID(rs.getInt("idcuarto"));
             
             
             }
@@ -128,6 +133,8 @@ public class DAOPaciente {
             patient.setDisease(rs.getString("enfermedad"));
             patient.setRoomID(rs.getInt("idcuarto"));
           patient.setStatus(rs.getInt("status"));
+          patient.setHospitalID(rs.getInt("idhospital"));
+          patient.setRoomID(rs.getInt("idcuarto"));
             
             
             }
@@ -135,12 +142,12 @@ public class DAOPaciente {
         return patient;
     }
       
-        public ArrayList<String> getDepartament() throws SQLException
+        public ArrayList<String> getDepartament(int idhospital) throws SQLException
       {
           ArrayList<String> departamentlist=new ArrayList<>();
           
            try {
-          pst = cn.prepareStatement("Select departamento from doctor");
+          pst = cn.prepareStatement("Select departamento from doctor where idhospital="+idhospital+"");
          
              rs = pst.executeQuery();
               while (rs.next()) {
@@ -154,10 +161,10 @@ public class DAOPaciente {
       }
         
         
-        public ArrayList<Doctor> loaddoctorsbyDepartment(String departamento) throws SQLException {
+        public ArrayList<Doctor> loaddoctorsbyDepartment(String departamento, int idhospital) throws SQLException {
         ArrayList<Doctor> lst = new ArrayList<>();
         Doctor d = null;
-        pst = cn.prepareStatement("Select * from doctor where departamento='"+departamento+"'");
+        pst = cn.prepareStatement("Select * from doctor where departamento='"+departamento+"' and idhospital="+idhospital+"");
         rs = pst.executeQuery();
         while (rs.next()) {
            d=new Doctor();
@@ -175,12 +182,15 @@ public class DAOPaciente {
         return lst;
     }
         
-       public boolean addDoctor(String iddoctor, String nss, int status) 
+       public boolean addDoctor(String iddoctor, String nss, int status,int idpaciente,int idhospital, int idcuarto) 
        {
          try {
              pst = cn.prepareStatement("Insert into pacientedoctor(iddoctor,nss) values('"+iddoctor+"','"+nss+"');");
               pst.executeUpdate();
               pst=cn.prepareStatement("Update paciente set status="+status+" where nss='"+nss+"';");
+              pst.executeUpdate();
+               pst=cn.prepareStatement("Insert into cuarto(idpaciente,idhospital,idcuarto) values"
+                       +"("+idpaciente+","+idhospital+","+idcuarto+")");
               pst.executeUpdate();
               return true;
          } catch (SQLException ex) {

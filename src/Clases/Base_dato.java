@@ -9,6 +9,7 @@ package Clases;
  *
  * @author pamel
  */
+import java.io.File;
 import java.sql.*;
 public class Base_dato {
    

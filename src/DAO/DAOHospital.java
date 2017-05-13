@@ -66,4 +66,16 @@ public class DAOHospital {
         }
         return lst;
     }
+    
+    public int getRoomID(int idhospital) throws SQLException
+    {
+        int ncuartos=0;
+       
+        pst = cn.prepareStatement("Select max(idcuarto) as roomid from cuarto where idhospital="+idhospital+"");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+          ncuartos=rs.getInt("roomid");
+        }
+        return ncuartos;
+    }
 }

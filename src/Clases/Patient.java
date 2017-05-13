@@ -29,6 +29,7 @@ public class Patient extends Person {
     private Float size;
     private String disease;
     private Integer roomID;
+    private int hospitalID;
     private String []doctorID;
     private int status;
     private int contador = 0;
@@ -70,6 +71,32 @@ public class Patient extends Person {
         
     }
 
+    public int getHospitalID() {
+        return hospitalID;
+    }
+
+    public void setHospitalID(int hospitalID) {
+        this.hospitalID = hospitalID;
+    }
+
+    public int getContador() {
+        return contador;
+    }
+
+    public void setContador(int contador) {
+        this.contador = contador;
+    }
+
+    public int getNum() {
+        return num;
+    }
+
+    public void setNum(int num) {
+        this.num = num;
+    }
+
+    
+    
     public int getPatientID() {
         return patientID;
     }
@@ -140,13 +167,13 @@ public class Patient extends Person {
     
   //otros metodos 
     
-   public boolean setNewDoc(String doctorID, int status) throws SQLException, ClassNotFoundException     
+   public boolean setNewDoc(String doctorID, int status, int idpaciente,int idhospital, int idcuarto) throws SQLException, ClassNotFoundException     
     { Doctor d=new Doctor();
        
  
             
             DAOPaciente daopaciente=new DAOPaciente();
-        if(    daopaciente.addDoctor(doctorID, this.securityNumber,status))
+        if(    daopaciente.addDoctor(doctorID, this.securityNumber,status,idpaciente,idhospital,idcuarto))
         {
             
                 return d.addPatientID(this.securityNumber);
