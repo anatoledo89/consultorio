@@ -61,7 +61,7 @@ public class DAODoctor {
                     + "('" + doctor.getId() + "','" + doctor.getFirstname() + "','" + doctor.getLastname()+ "'"
                     + "," +doctor.getAge() + ",'"
                     + doctor.getAddress() + "','" + doctor.getTelephone() + "','" + doctor.getEmail() + "'" + 
-                     ",'" + doctor.getDepartment() + "','" + doctor.getLicense()+"')";
+                     ",'" + doctor.getDepartment() + "','" + doctor.getLicense()+"','"+doctor.getIdhospital()+"')";
   pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
