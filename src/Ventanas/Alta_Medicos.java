@@ -7,9 +7,7 @@ package Ventanas;
 
 import javax.swing.JOptionPane;
 import Clases.Doctor;
-import Clases.DoctorsOffice;
 import Clases.Hospital;
-import DAO.DAOConsultorio;
 import DAO.DAODoctor;
 import DAO.DAOHospital;
 import java.sql.SQLException;
@@ -111,6 +109,11 @@ Doctor doctor;
                 txt_departmentActionPerformed(evt);
             }
         });
+        txt_department.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_departmentKeyTyped(evt);
+            }
+        });
 
         txt_ID.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -143,6 +146,23 @@ Doctor doctor;
         txt_edad.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txt_edadKeyTyped(evt);
+            }
+        });
+
+        txt_apellido.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_apellidoKeyTyped(evt);
+            }
+        });
+
+        txt_nombre.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_nombreActionPerformed(evt);
+            }
+        });
+        txt_nombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_nombreKeyTyped(evt);
             }
         });
 
@@ -380,10 +400,21 @@ Doctor doctor;
     
     private void crearDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDoctorActionPerformed
         // TODO add your handling code here:
-        if (txt_ID.getText().matches("")||txt_department.getText().matches("") || txt_cedula.getText().matches(""))
+        int edad = Integer.parseInt(txt_edad.getText());
+        
+        if (txt_nombre.getText().matches("")||txt_apellido.getText().matches("")||
+                txt_edad.getText().matches("")||txt_direccion.getText().matches("")
+                ||txt_telefono.getText().matches("")||txt_email.getText().matches("")||
+                txt_ID.getText().matches("")||txt_department.getText().matches("") || txt_cedula.getText().matches(""))
+                
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
         }
+            if (edad>104)
+            {
+                JOptionPane.showMessageDialog(rootPane, "Edad invalida, favor de verificar");
+            }
+        
         else 
         {
             if(Modify_Medicos.modif==0)
@@ -472,6 +503,48 @@ Doctor doctor;
     private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_direccionActionPerformed
+
+    private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
+        // TODO add your handling code here:
+        char letras = evt.getKeyChar();
+             
+          if(Character.isDigit(letras)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+               
+          } 
+              
+    }//GEN-LAST:event_txt_nombreKeyTyped
+
+    private void txt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidoKeyTyped
+        // TODO add your handling code here:
+         char letras = evt.getKeyChar();
+             
+          if(Character.isDigit(letras)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+               
+          } 
+    }//GEN-LAST:event_txt_apellidoKeyTyped
+
+    private void txt_departmentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_departmentKeyTyped
+        // TODO add your handling code here:
+         char letras = evt.getKeyChar();
+             
+          if(Character.isDigit(letras)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+               
+          } 
+        
+    }//GEN-LAST:event_txt_departmentKeyTyped
+
+    private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_nombreActionPerformed
 
     
      public void loadcmbHospital() throws SQLException, ClassNotFoundException

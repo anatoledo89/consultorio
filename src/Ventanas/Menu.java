@@ -136,79 +136,71 @@ public class Menu extends javax.swing.JFrame {
         lbl_pacientes3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_pacientes3.setText("Reportes");
 
-        btn_exit_menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        btn_exit_menu.setText("Salir");
-        btn_exit_menu.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_exit_menuActionPerformed(evt);
-            }
-        });
-
         javax.swing.GroupLayout panel1Layout = new javax.swing.GroupLayout(panel1);
         panel1.setLayout(panel1Layout);
         panel1Layout.setHorizontalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(panel1Layout.createSequentialGroup()
+                .addGap(94, 94, 94)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(641, 641, 641)
-                        .addComponent(lbl_doctores)
-                        .addGap(188, 188, 188)
-                        .addComponent(lbl_clinica)
-                        .addGap(179, 179, 179)
-                        .addComponent(jLabel1))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGap(94, 94, 94)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addGap(85, 85, 85)
-                                .addComponent(lbl_pacientes)
-                                .addGap(208, 208, 208)
-                                .addComponent(lbl_pacientes1)
-                                .addGap(183, 183, 183)
-                                .addComponent(lbl_pacientes2)
-                                .addGap(167, 167, 167)
-                                .addComponent(lbl_pacientes3))
-                            .addGroup(panel1Layout.createSequentialGroup()
-                                .addComponent(btn_pacientes)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_doctores, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_clinica)
-                                .addGap(18, 18, 18)
-                                .addComponent(btn_reportes)))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 16, Short.MAX_VALUE)
-                .addComponent(btn_exit_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 83, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap())
+                        .addComponent(btn_pacientes)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_doctores, javax.swing.GroupLayout.PREFERRED_SIZE, 297, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_clinica)
+                        .addGap(18, 18, 18)
+                        .addComponent(btn_reportes))
+                    .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addGap(547, 547, 547)
+                            .addComponent(lbl_doctores)
+                            .addGap(188, 188, 188)
+                            .addComponent(lbl_clinica)
+                            .addGap(179, 179, 179)
+                            .addComponent(jLabel1))
+                        .addGroup(panel1Layout.createSequentialGroup()
+                            .addGap(85, 85, 85)
+                            .addComponent(lbl_pacientes)
+                            .addGap(208, 208, 208)
+                            .addComponent(lbl_pacientes1)
+                            .addGap(183, 183, 183)
+                            .addComponent(lbl_pacientes2)
+                            .addGap(167, 167, 167)
+                            .addComponent(lbl_pacientes3))))
+                .addContainerGap(98, Short.MAX_VALUE))
         );
         panel1Layout.setVerticalGroup(
             panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, panel1Layout.createSequentialGroup()
-                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_doctores)
-                            .addComponent(lbl_clinica)
-                            .addComponent(jLabel1))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(lbl_pacientes)
-                            .addComponent(lbl_pacientes1)
-                            .addComponent(lbl_pacientes2)
-                            .addComponent(lbl_pacientes3)))
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(btn_exit_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 29, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addGap(18, 18, 18)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_doctores)
+                    .addComponent(lbl_clinica)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(lbl_pacientes)
+                    .addComponent(lbl_pacientes1)
+                    .addComponent(lbl_pacientes2)
+                    .addComponent(lbl_pacientes3))
+                .addGap(42, 42, 42)
                 .addGroup(panel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addGroup(panel1Layout.createSequentialGroup()
-                        .addComponent(btn_pacientes)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED))
+                    .addComponent(btn_pacientes)
                     .addComponent(btn_doctores, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_clinica, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(btn_reportes, javax.swing.GroupLayout.PREFERRED_SIZE, 278, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addContainerGap(24, Short.MAX_VALUE))
         );
+
+        btn_exit_menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_exit_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btn_exit_menu.setBorderPainted(false);
+        btn_exit_menu.setContentAreaFilled(false);
+        btn_exit_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_menuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -216,15 +208,22 @@ public class Menu extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(panel1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap()
+                .addComponent(btn_exit_menu)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jLabel2)
                 .addGap(451, 451, 451))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(53, 53, 53)
-                .addComponent(jLabel2)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(53, 53, 53)
+                        .addComponent(jLabel2))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_exit_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 64, Short.MAX_VALUE)
                 .addComponent(panel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
         );

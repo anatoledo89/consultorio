@@ -7,11 +7,13 @@ package Ventanas;
 
 import Clases.Doctor;
 import Clases.DoctorsOffice;
+import DAO.DAODoctor;
 import static Ventanas.Baja_consultorio.idconsultorio;
 import static Ventanas.Baja_consultorio.modif;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -229,11 +231,21 @@ public class Modify_Medicos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void btn_modifyMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyMedicoActionPerformed
+
+      
+        
+        if (txt_modifyID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(rootPane, "Favor de ingresar un ID");
+        }
+        
+            
         try {
             // TODO add your handling code here:
             modif = 1;
             Doctor doctor =new Doctor();
             id = txt_modifyID.getText();
+            
             
             Alta_Medicos obj = new Alta_Medicos();
             if(modif==1)
@@ -244,9 +256,7 @@ public class Modify_Medicos extends javax.swing.JFrame {
             {
               obj.setVisible(false);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
         }
        

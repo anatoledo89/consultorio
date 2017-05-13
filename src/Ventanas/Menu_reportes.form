@@ -162,11 +162,9 @@
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="0" max="-2" attributes="0">
                       <Component id="btn_cuartos" pref="213" max="32767" attributes="0"/>
-                      <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                          <Component id="btn_medicos" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btn_pacientes" alignment="1" max="32767" attributes="0"/>
-                          <Component id="btn_consultorio" alignment="1" pref="213" max="32767" attributes="0"/>
-                      </Group>
+                      <Component id="btn_medicos" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btn_pacientes" alignment="1" max="32767" attributes="0"/>
+                      <Component id="btn_consultorio" alignment="1" pref="213" max="32767" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="65" max="-2" attributes="0"/>
               </Group>

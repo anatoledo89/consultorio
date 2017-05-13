@@ -174,11 +174,16 @@ public class Eliminar_Medicos extends javax.swing.JFrame {
 
     private void btn_eliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_eliminarActionPerformed
         // TODO add your handling code here:
-         int result = JOptionPane.showConfirmDialog(null, 
-   "¿Desea eliminarl@?",null, JOptionPane.YES_NO_OPTION);
-if(result == JOptionPane.YES_OPTION) {
+        
+        if(txt_eliminarID.getText().isEmpty())
+        {
+         JOptionPane.showMessageDialog(rootPane, "Por favor ingrese ID");   
+        }
+        else
+        {
+         int result = JOptionPane.showConfirmDialog(null,"¿Desea eliminarl@?",null, JOptionPane.YES_NO_OPTION);
+         if(result == JOptionPane.YES_OPTION) {
     
-
         Doctor doctor =new Doctor();
         try {
            DAODoctor daodoc=new DAODoctor();
@@ -195,6 +200,7 @@ if(result == JOptionPane.YES_OPTION) {
             Logger.getLogger(Baja_consultorio.class.getName()).log(Level.SEVERE, null, ex);
         }
 }
+        }
     }//GEN-LAST:event_btn_eliminarActionPerformed
 
     private void txt_eliminarIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_eliminarIDActionPerformed

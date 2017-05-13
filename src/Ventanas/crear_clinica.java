@@ -64,6 +64,11 @@ public class crear_clinica extends javax.swing.JFrame {
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jtxtNombre.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        jtxtNombre.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtNombreKeyTyped(evt);
+            }
+        });
 
         jtxtDireccion.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
 
@@ -311,6 +316,18 @@ public class crear_clinica extends javax.swing.JFrame {
         if(!Character.isDigit(evt.getKeyChar()))
      {evt.consume();}
     }//GEN-LAST:event_jtxtHabitacionesKeyTyped
+
+    private void jtxtNombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtNombreKeyTyped
+        // TODO add your handling code here:
+         char letras = evt.getKeyChar();
+             
+          if(Character.isDigit(letras)) { 
+              getToolkit().beep(); 
+               
+              evt.consume();
+               
+          } 
+    }//GEN-LAST:event_jtxtNombreKeyTyped
 
     /**
      * @param args the command line arguments
