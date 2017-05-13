@@ -4,12 +4,16 @@
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group name="CursoJava ADC">
             <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAOPaciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Menu.java</file>
             <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAODoctor.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Ingresar_paciente.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Modify_Medicos.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Menu_Doctores.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_paciente.java</file>
-            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_Medicos.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/modificar_paciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/ingreso_paciente.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/DAOHospital.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Baja_consultorio.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Clases/Hospital.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/Alta_consultorios.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/Ventanas/crear_clinica.java</file>
+            <file>file:/C:/Users/A/Documents/NetBeansProjects/ProyectoKaren/src/DAO/Login.java</file>
         </group>
     </open-files>
 </project-private>

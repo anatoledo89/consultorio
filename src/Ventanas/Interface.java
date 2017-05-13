@@ -25,8 +25,10 @@ public class Interface extends javax.swing.JFrame {
     public Interface() {
         initComponents();
  
+        //para que la ventana salga en medio
         this.setLocationRelativeTo(null);
     }
+    //para que salga el simbolito en la barra menu 
     @Override
     public Image getIconImage(){
         Image retValue = Toolkit.getDefaultToolkit().getImage(ClassLoader.getSystemResource("imagenes/surgeon256_24934.png"));
@@ -48,7 +50,7 @@ public class Interface extends javax.swing.JFrame {
         Texto_usuario = new javax.swing.JTextField();
         Icono = new javax.swing.JLabel();
         Texto_contraseña = new javax.swing.JPasswordField();
-        Button1 = new javax.swing.JButton();
+        btn_salir = new javax.swing.JButton();
         Iniciar_Sesion = new javax.swing.JButton();
         Font = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
@@ -82,16 +84,16 @@ public class Interface extends javax.swing.JFrame {
         Texto_contraseña.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         getContentPane().add(Texto_contraseña, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 360, 280, -1));
 
-        Button1.setBackground(new java.awt.Color(204, 204, 204));
-        Button1.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
-        Button1.setForeground(new java.awt.Color(0, 0, 102));
-        Button1.setText("x");
-        Button1.addActionListener(new java.awt.event.ActionListener() {
+        btn_salir.setBackground(new java.awt.Color(204, 204, 204));
+        btn_salir.setFont(new java.awt.Font("Sylfaen", 1, 14)); // NOI18N
+        btn_salir.setForeground(new java.awt.Color(0, 0, 102));
+        btn_salir.setText("x");
+        btn_salir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                Button1ActionPerformed(evt);
+                btn_salirActionPerformed(evt);
             }
         });
-        getContentPane().add(Button1, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, -1, 20));
+        getContentPane().add(btn_salir, new org.netbeans.lib.awtextra.AbsoluteConstraints(830, 10, -1, 20));
 
         Iniciar_Sesion.setBackground(new java.awt.Color(0, 0, 102));
         Iniciar_Sesion.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -123,35 +125,50 @@ public class Interface extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void Button1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Button1ActionPerformed
+    //funcion que cierra el programa
+    private void btn_salirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_salirActionPerformed
      System.exit(0);
-    }//GEN-LAST:event_Button1ActionPerformed
+    }//GEN-LAST:event_btn_salirActionPerformed
 
+    //funcion cuando le dan clic
     private void Iniciar_SesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_Iniciar_SesionActionPerformed
 
+        // si cualquier casilla esta vacia, mostrara un mensaje de advertencia
 if(this.Texto_usuario.getText().isEmpty() || this.Texto_contraseña.getPassword().equals(""))
 {
     JOptionPane.showMessageDialog(rootPane, "Es necesario llenar los campos ", " ADVERTENCIA ",JOptionPane.WARNING_MESSAGE);
 }
 else
+    //si los dos tienen texto 
 if(!this.Texto_usuario.getText().isEmpty()&& !this.Texto_contraseña.getPassword().equals(""))
 {
-   
+   //con un try-catch creamos un objeto del tipo login
     try {
         Login l=new Login();
+        //creamos una variable del tipo usuario
         Usuario u=null;
+        //llamamos a la funcion acceder, esta funcion conecta la base de datos
+        //usamos el objeto login y hacemos un if, y si el usuario y contraseña 
+        //es correcto va a ser diferente a null
+        //por lo que sera verdadero y seguira...
         if(l.acceder(Texto_usuario.getText(),Texto_contraseña.getPassword())!=null)
         {
+            //esta es la manera de poner sonido 
+            AudioClip sonido;
+sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Ventanas/Grab.wav"));
+sonido.play();
+             //esta ventana deja de ser visible, y la ventana menu es visible "cambio de jframe"
             Menu obj = new Menu();
             obj.setVisible(true);
             this.setVisible(false);
         }else
         {
+            //si es nula entonces el usuario o contraseña esta incorrecto, segun 
+            //la base de datos
             JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrecta");
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
+        //esto fue recomendado por netbeans
+    } catch (SQLException | ClassNotFoundException ex) {
         Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
     }
         
@@ -167,26 +184,46 @@ if(!this.Texto_usuario.getText().isEmpty()&& !this.Texto_contraseña.getPassword
     }//GEN-LAST:event_Texto_usuarioActionPerformed
 
     private void Iniciar_SesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_Iniciar_SesionMouseClicked
-        AudioClip sonido;
-sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Ventanas/Grab.wav"));
-sonido.play();
+        
     }//GEN-LAST:event_Iniciar_SesionMouseClicked
 
+    //Funcion en caso de que el usuario le de enter 
+    //es la mismo que darle  clic 
     private void Iniciar_SesionKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_Iniciar_SesionKeyReleased
-             if(this.Texto_usuario.getText().isEmpty())
-            JOptionPane.showMessageDialog(rootPane, "Es necesario introducir tu nombre de usuario ", " ADVERTENCIA ",JOptionPane.WARNING_MESSAGE);
-if(this.Texto_contraseña.getText().isEmpty())
-            JOptionPane.showMessageDialog(rootPane, "Es necesario introducir tu contraseña ", " ADVERTENCIA ",JOptionPane.WARNING_MESSAGE);
-else
-if(!this.Texto_usuario.getText().isEmpty()&& !this.Texto_contraseña.getText().isEmpty())
+ 
+
+       
+if(this.Texto_usuario.getText().isEmpty() || this.Texto_contraseña.getPassword().equals(""))
 {
-    Menu obj = new Menu();
-      obj.setVisible(true);
-      this.setVisible(false);
+    JOptionPane.showMessageDialog(rootPane, "Es necesario llenar los campos ", " ADVERTENCIA ",JOptionPane.WARNING_MESSAGE);
 }
-        AudioClip sonido;
+else
+if(!this.Texto_usuario.getText().isEmpty()&& !this.Texto_contraseña.getPassword().equals(""))
+{
+   
+    try {
+        Login l=new Login();
+        Usuario u=null;
+        if(l.acceder(Texto_usuario.getText(),Texto_contraseña.getPassword())!=null)
+        {
+            AudioClip sonido;
 sonido = java.applet.Applet.newAudioClip(getClass().getResource("/Ventanas/Grab.wav"));
 sonido.play();
+            Menu obj = new Menu();
+            obj.setVisible(true);
+            this.setVisible(false);
+        }else
+        {
+            JOptionPane.showMessageDialog(rootPane, "Usuario y/o contraseña incorrecta");
+        }
+    } catch (SQLException | ClassNotFoundException ex) {
+        Logger.getLogger(Interface.class.getName()).log(Level.SEVERE, null, ex);
+    }
+        
+        
+    
+  
+}
     }//GEN-LAST:event_Iniciar_SesionKeyReleased
 
     /**
@@ -223,7 +260,6 @@ sonido.play();
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton Button1;
     private javax.swing.JLabel Contraseña;
     private javax.swing.JLabel Font;
     private javax.swing.JLabel Icono;
@@ -231,6 +267,7 @@ sonido.play();
     private javax.swing.JLabel Nombredeusuario;
     private javax.swing.JPasswordField Texto_contraseña;
     private javax.swing.JTextField Texto_usuario;
+    private javax.swing.JButton btn_salir;
     private javax.swing.JTextField jTextField1;
     // End of variables declaration//GEN-END:variables
 }

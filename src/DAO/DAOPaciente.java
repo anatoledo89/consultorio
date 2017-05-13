@@ -191,18 +191,19 @@ public class DAOPaciente {
        }
        
        
-       public boolean removeDoctor(String iddoctor,String nss)
+       public int removeDoctor(String nss)
        {
+           int row=0;
            try {
-             pst = cn.prepareStatement("Delete from pacientedoctor where iddoctor='"+iddoctor+"'and nss='"+nss+"');");
-              pst.executeUpdate();
+             pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+"';");
+      row=        pst.executeUpdate();
              
-              return true;
+             
          } catch (SQLException ex) {
              Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE, null, ex);
          }
-            
-           return false;
+             return row;
+           
        }
        
        public ArrayList<Doctor> getDoctorsPatientid(String nss) throws SQLException

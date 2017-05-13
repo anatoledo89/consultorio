@@ -193,7 +193,7 @@ public class Patient extends Person {
     @Override
     public String toString()
     {
-        return "Firstname=" + super.getFirstname() + ", \nLastname=" + super.getLastname() + ", \nage=" + super.getAge() + ", \naddress=" + super.getAddress() + ", \ntelephone=" + super.getTelephone() + ",\n email=" + super.getEmail() + "securityNumber=" + this.securityNumber + ", weight=" + this.weight + ", size=" + size + ", disease=" + disease + ", roomID=" + roomID + ", doctorID=" + Arrays.toString(doctorID) + ", status=" + status + '}';
+        return "<html>Nombre:" + super.getFirstname() + ", Apellido:" + super.getLastname() + ", <br>age=" + super.getAge() + ", address=" + super.getAddress() + ", \nsecurityNumber=" + this.securityNumber + "'</html>";
     }
 
 

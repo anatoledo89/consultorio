@@ -7,11 +7,13 @@ package Ventanas;
 
 import Clases.Doctor;
 import Clases.DoctorsOffice;
+import DAO.DAODoctor;
 import static Ventanas.Baja_consultorio.idconsultorio;
 import static Ventanas.Baja_consultorio.modif;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -28,6 +30,7 @@ public class Modify_Medicos extends javax.swing.JFrame {
     
     public Modify_Medicos() {
         initComponents();
+       setSize(1014,533);
         this.setLocationRelativeTo(null);
     }
 
@@ -40,59 +43,182 @@ public class Modify_Medicos extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        btn_regresar = new javax.swing.JButton();
+        jPanel6 = new javax.swing.JPanel();
+        jLabel13 = new javax.swing.JLabel();
+        jLabel14 = new javax.swing.JLabel();
+        btn_regresar1 = new javax.swing.JButton();
+        jPanel1 = new javax.swing.JPanel();
         lbl_modificarID = new javax.swing.JLabel();
         txt_modifyID = new javax.swing.JTextField();
         btn_modifyMedico = new javax.swing.JButton();
+        jPanel7 = new javax.swing.JPanel();
+        jLabel15 = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        btn_regresar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        jPanel6.setBackground(new java.awt.Color(153, 0, 51));
 
-        btn_regresar.setText("Regresar");
-        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
+        jLabel13.setFont(new java.awt.Font("American Captain", 0, 76)); // NOI18N
+        jLabel13.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel13.setText("Alta consultorios");
+        jLabel13.setToolTipText("");
+
+        jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/office.png"))); // NOI18N
+
+        btn_regresar1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/espalda.png"))); // NOI18N
+        btn_regresar1.setBorderPainted(false);
+        btn_regresar1.setContentAreaFilled(false);
+        btn_regresar1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_regresarActionPerformed(evt);
+                btn_regresar1ActionPerformed(evt);
             }
         });
 
-        lbl_modificarID.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
+        jPanel6.setLayout(jPanel6Layout);
+        jPanel6Layout.setHorizontalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel13)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(106, 106, 106)
+                .addComponent(btn_regresar1)
+                .addContainerGap())
+        );
+        jPanel6Layout.setVerticalGroup(
+            jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel13)
+                        .addGap(0, 32, Short.MAX_VALUE))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(btn_regresar1)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setUndecorated(true);
+        setPreferredSize(new java.awt.Dimension(1005, 651));
+
+        jPanel1.setBackground(new java.awt.Color(255, 255, 255));
+        jPanel1.setRequestFocusEnabled(false);
+        jPanel1.setVerifyInputWhenFocusTarget(false);
+
+        lbl_modificarID.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         lbl_modificarID.setText("Ingrese ID:");
 
-        btn_modifyMedico.setText("Modificar");
+        txt_modifyID.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_modifyIDActionPerformed(evt);
+            }
+        });
+
+        btn_modifyMedico.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/flecha-derecha.png"))); // NOI18N
+        btn_modifyMedico.setBorderPainted(false);
+        btn_modifyMedico.setContentAreaFilled(false);
         btn_modifyMedico.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 btn_modifyMedicoActionPerformed(evt);
             }
         });
 
+        jPanel7.setBackground(new java.awt.Color(153, 0, 51));
+
+        jLabel15.setFont(new java.awt.Font("American Captain", 0, 76)); // NOI18N
+        jLabel15.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel15.setText("Modificar medicos");
+        jLabel15.setToolTipText("");
+
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/pluma.png"))); // NOI18N
+
+        btn_regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/espalda.png"))); // NOI18N
+        btn_regresar.setBorderPainted(false);
+        btn_regresar.setContentAreaFilled(false);
+        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel7Layout = new javax.swing.GroupLayout(jPanel7);
+        jPanel7.setLayout(jPanel7Layout);
+        jPanel7Layout.setHorizontalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(36, 36, 36)
+                .addComponent(jLabel15)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
+                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(108, 108, 108)
+                .addComponent(btn_regresar)
+                .addGap(22, 22, 22))
+        );
+        jPanel7Layout.setVerticalGroup(
+            jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel15)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(jLabel16, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap())
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btn_regresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+
+        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
+        jPanel1.setLayout(jPanel1Layout);
+        jPanel1Layout.setHorizontalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGap(190, 190, 190)
+                .addComponent(lbl_modificarID)
+                .addGap(18, 18, 18)
+                .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(btn_modifyMedico)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+        );
+        jPanel1Layout.setVerticalGroup(
+            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel1Layout.createSequentialGroup()
+                .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 147, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(lbl_modificarID)
+                            .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(149, 149, 149))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addComponent(btn_modifyMedico)
+                        .addGap(134, 134, 134))))
+        );
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(303, Short.MAX_VALUE)
-                .addComponent(btn_regresar)
-                .addContainerGap())
-            .addGroup(layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(lbl_modificarID)
-                .addGap(27, 27, 27)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_modifyMedico)
-                    .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 217, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addGap(23, 23, 23)
-                .addComponent(btn_regresar)
-                .addGap(81, 81, 81)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(lbl_modificarID)
-                    .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(55, 55, 55)
-                .addComponent(btn_modifyMedico)
-                .addContainerGap(68, Short.MAX_VALUE))
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -105,11 +231,21 @@ public class Modify_Medicos extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void btn_modifyMedicoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modifyMedicoActionPerformed
+
+      
+        
+        if (txt_modifyID.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(rootPane, "Favor de ingresar un ID");
+        }
+        
+            
         try {
             // TODO add your handling code here:
             modif = 1;
             Doctor doctor =new Doctor();
             id = txt_modifyID.getText();
+            
             
             Alta_Medicos obj = new Alta_Medicos();
             if(modif==1)
@@ -120,15 +256,24 @@ public class Modify_Medicos extends javax.swing.JFrame {
             {
               obj.setVisible(false);
             }
-        } catch (SQLException ex) {
-            Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Modify_Medicos.class.getName()).log(Level.SEVERE, null, ex);
         }
        
                                             
 
     }//GEN-LAST:event_btn_modifyMedicoActionPerformed
+
+    private void txt_modifyIDActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_modifyIDActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_modifyIDActionPerformed
+
+    private void btn_regresar1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresar1ActionPerformed
+        Baja_consultorio.modif=0;
+        Menu_Clinica obj = new Menu_Clinica();
+        obj.setVisible(true);
+        this.setVisible(false);
+    }//GEN-LAST:event_btn_regresar1ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -165,6 +310,14 @@ public class Modify_Medicos extends javax.swing.JFrame {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_modifyMedico;
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JButton btn_regresar1;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel6;
+    private javax.swing.JPanel jPanel7;
     private javax.swing.JLabel lbl_modificarID;
     private javax.swing.JTextField txt_modifyID;
     // End of variables declaration//GEN-END:variables
