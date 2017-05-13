@@ -24,7 +24,7 @@ public class Base_dato {
     //        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");
     //Conexión a access con la librería ucanaccess
  
-          String ruta="jdbc:ucanaccess://C:/Users/A/consultorio.accdb";
+          String ruta="jdbc:ucanaccess://C:/Users/pamel/consultorio.accdb";
          
           connection=DriverManager.getConnection(ruta);
           //devolvemos la conexión para usarla en nuestras consultas
