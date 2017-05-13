@@ -115,6 +115,8 @@ public class Menu extends javax.swing.JFrame {
             }
         });
 
+        btn_reportes.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ventanas/historial-medico (2).png"))); // NOI18N
+
         jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Reportes");
