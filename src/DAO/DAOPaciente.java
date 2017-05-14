@@ -201,11 +201,13 @@ public class DAOPaciente {
        }
        
        
-       public int removeDoctor(String nss)
+       public int removeDoctor(String nss, int idpaciente)
        {
            int row=0;
            try {
              pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+"' and status=3;");
+      row=        pst.executeUpdate();
+      pst = cn.prepareStatement("Delete from cuarto where idpaciente='"+idpaciente+"';");
       row=        pst.executeUpdate();
              
              
@@ -285,13 +287,15 @@ public class DAOPaciente {
        return false;
        }
         
-       public boolean deletePatient(String nss)
+       public boolean deletePatient(String nss,int idpaciente)
        {
           
           try {
              String query = "Delete from paciente where nss="+nss+"";
              pst = cn.prepareStatement(query);
             pst.executeUpdate();
+             pst = cn.prepareStatement("Delete from cuarto where idpaciente='"+idpaciente+"';");
+           pst.executeUpdate();
              return true;
                         
              

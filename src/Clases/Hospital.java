@@ -18,7 +18,7 @@ public class Hospital {
     private Integer numOfRooms;
     private int numFloors;
     private DoctorsOffice[] offices;
-    private room []rooms;
+    private Room []rooms;
     private Doctor[] doctors;
     private Patient[]patients;
     private int contador_office;
@@ -27,7 +27,7 @@ public class Hospital {
     private int contador_patients;
 
     //Constructor con datos para copiar
-    public Hospital(String name, String address, String telephone, Integer numOfDoctorsOffices, Integer numOfRooms, DoctorsOffice[] offices, room[] rooms, Doctor[] doctors, Patient[] patients) {
+    public Hospital(String name, String address, String telephone, Integer numOfDoctorsOffices, Integer numOfRooms, DoctorsOffice[] offices, Room[] rooms, Doctor[] doctors, Patient[] patients) {
         this.contador_office = 0;
         this.contador_doctors = 0;
         this.contador_patients = 0;
@@ -137,7 +137,7 @@ public class Hospital {
         this.offices = offices;
     }
 
-    public void setRooms(room[] rooms) {
+    public void setRooms(Room[] rooms) {
         this.rooms = rooms;
     }
 
@@ -183,7 +183,7 @@ public class Hospital {
         return offices;
     }
 
-    public room[] getRooms() {
+    public Room[] getRooms() {
         return rooms;
     }
 
@@ -215,7 +215,7 @@ public class Hospital {
     
     }
     
-    public void addRoom(room room)
+    public void addRoom(Room room)
     {
         if (room != null)
         {

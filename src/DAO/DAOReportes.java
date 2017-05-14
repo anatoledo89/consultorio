@@ -8,6 +8,7 @@ package DAO;
 import Clases.Base_dato;
 import Clases.Doctor;
 import Clases.DoctorsOffice;
+import Clases.Room;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -29,7 +30,7 @@ public class DAOReportes {
          
     }
     
-    
+  
     public ArrayList<DoctorsOffice> consultorioclinica(int idhospital) throws SQLException
     {
         DoctorsOffice doffice=null;
@@ -38,10 +39,10 @@ public class DAOReportes {
         rs = pst.executeQuery();
         while (rs.next()) {
           doffice= new DoctorsOffice();
-doffice.setFloor(rs.getInt(""));
+doffice.setFloor(rs.getInt("piso"));
 doffice.setLastPayment(rs.getFloat("ultimo_pago"));
 doffice.setMonthlyRent(rs.getFloat("renta_mensual"));
-doffice.setDoctorID(rs.getString("doctorid"));
+doffice.setDoctorID(rs.getString("iddoctor"));
             lstdoffice.add(doffice);
         }
         return lstdoffice;
@@ -66,4 +67,24 @@ listdoctor.add(doctor);
     }
         return listdoctor;
     }
+   
+   public ArrayList<Room> cuartosclinica(int idhospital) throws SQLException
+   {
+       Room r=null;
+       ArrayList<Room> listroom=new ArrayList<>();
+       pst=cn.prepareStatement("Select * from cuarto where idhospital="+idhospital+"");
+       rs=pst.executeQuery();
+       while(rs.next())
+       {
+           r=new Room();
+           r.setPatientID(rs.getString("idpaciente"));
+           r.setRoomID(rs.getInt("idcuarto"));
+           listroom.add(r);
+           
+           
+       }
+       return listroom;
+       
+          }
+   
 }

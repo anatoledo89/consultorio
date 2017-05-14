@@ -5,18 +5,28 @@
  */
 package Ventanas;
 
+import Clases.DoctorsOffice;
+import DAO.DAOReportes;
+import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
+import java.sql.SQLException;
+import javax.swing.table.DefaultTableModel;
+
 /**
  *
  * @author pamel
  */
 public class datos_consultorio extends javax.swing.JFrame {
-
+   DefaultTableModel model;
+   String[] titles={"ID Doctor","Piso","Renta Mensual","Último Pago"};
+   String[] registros=new String[4];
+  
     /**
      * Creates new form datos_consultorio
      */
-    public datos_consultorio() {
+    public datos_consultorio() throws SQLException, ClassNotFoundException {
         initComponents();
         this.setLocationRelativeTo(null);
+        loadTable();
     }
 
     /**
@@ -131,40 +141,29 @@ public class datos_consultorio extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton2ActionPerformed
 
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(datos_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(datos_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(datos_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(datos_consultorio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                new datos_consultorio().setVisible(true);
-            }
-        });
-    }
+   private void loadTable() throws SQLException, ClassNotFoundException
+   {
+       DAOReportes daoreportes=new DAOReportes();
+      model = new DefaultTableModel(null,titles); 
+      
+      for(DoctorsOffice doffice:daoreportes.consultorioclinica(Reporte_consultorio.h.getIdhospital()))
+      {
+          registros[0]=doffice.getDoctorID();
+          registros[1]=Integer.toString(doffice.getFloor());
+          registros[2]=Float.toString(doffice.getMonthlyRent());
+          registros[3]=Float.toString(doffice.getLastPayment());
+          model.addRow(registros);
+         
+      }
+      
+      jTable1.setModel(model);
+      jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
+       jTable1.getColumnModel().getColumn(1).setPreferredWidth(30);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
+         jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
+      
+   }
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButton1;

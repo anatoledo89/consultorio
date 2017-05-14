@@ -139,7 +139,7 @@ Patient p=null;
        DAOPaciente dp;
     try {
         dp = new DAOPaciente();
-       if(  dp.removeDoctor(p.getSecurityNumber())!=0)
+       if(  dp.removeDoctor(p.getSecurityNumber(),p.getPatientID())!=0)
        {
            JOptionPane.showMessageDialog(rootPane, "Se ha dado de alta al paciente");
        }else

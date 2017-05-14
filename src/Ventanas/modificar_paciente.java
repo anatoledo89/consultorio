@@ -430,7 +430,7 @@ if(result == JOptionPane.YES_OPTION) {
          try {
              // TODO add your handling code here:
              DAOPaciente dAOPaciente=new DAOPaciente();
-             if(     dAOPaciente.deletePatient(p.getSecurityNumber()))
+             if(     dAOPaciente.deletePatient(p.getSecurityNumber(),p.getPatientID()))
              {
                  JOptionPane.showMessageDialog(rootPane, "Paciente borrado");
                  //borrar tambien en tabla pacientedoctor
