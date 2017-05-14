@@ -117,7 +117,7 @@ public class Interface extends javax.swing.JFrame {
         getContentPane().add(Iniciar_Sesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 410, 90, 30));
 
         Font.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/white bg.jpg"))); // NOI18N
-        getContentPane().add(Font, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 874, 530));
+        getContentPane().add(Font, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 960, 550));
 
         jTextField1.setText("jTextField1");
         getContentPane().add(jTextField1, new org.netbeans.lib.awtextra.AbsoluteConstraints(320, 460, -1, -1));

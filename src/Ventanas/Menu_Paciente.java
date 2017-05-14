@@ -33,33 +33,31 @@ public class Menu_Paciente extends javax.swing.JFrame {
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        btn_regresar = new javax.swing.JButton();
         btn_ingresar_paciente_m = new javax.swing.JButton();
         btn_modificacion_bajas = new javax.swing.JButton();
         btn_datos_paciente = new javax.swing.JButton();
-        btn_reporte_pacientes = new javax.swing.JButton();
         btn_dar_alta_paciente = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        jLabel2 = new javax.swing.JLabel();
+        jLabel3 = new javax.swing.JLabel();
+        jLabel4 = new javax.swing.JLabel();
+        jPanel4 = new javax.swing.JPanel();
+        jLabel10 = new javax.swing.JLabel();
+        jLabel11 = new javax.swing.JLabel();
+        jLabel12 = new javax.swing.JLabel();
+        btn_regresar = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
 
-        jPanel2.setBackground(new java.awt.Color(178, 43, 43));
+        jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setForeground(new java.awt.Color(192, 31, 31));
 
-        btn_regresar.setBackground(new java.awt.Color(153, 153, 153));
-        btn_regresar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
-        btn_regresar.setText("Regresar");
-        btn_regresar.setBorderPainted(false);
-        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_regresarActionPerformed(evt);
-            }
-        });
-
-        btn_ingresar_paciente_m.setBackground(new java.awt.Color(51, 51, 51));
+        btn_ingresar_paciente_m.setBackground(new java.awt.Color(255, 255, 255));
         btn_ingresar_paciente_m.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         btn_ingresar_paciente_m.setForeground(new java.awt.Color(255, 255, 255));
-        btn_ingresar_paciente_m.setText("Ingresar paciente");
+        btn_ingresar_paciente_m.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ingresar paciente.png"))); // NOI18N
+        btn_ingresar_paciente_m.setBorderPainted(false);
         btn_ingresar_paciente_m.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_ingresar_paciente_mMouseClicked(evt);
@@ -71,10 +69,9 @@ public class Menu_Paciente extends javax.swing.JFrame {
             }
         });
 
-        btn_modificacion_bajas.setBackground(new java.awt.Color(51, 51, 51));
+        btn_modificacion_bajas.setBackground(new java.awt.Color(255, 255, 255));
         btn_modificacion_bajas.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        btn_modificacion_bajas.setForeground(new java.awt.Color(255, 255, 255));
-        btn_modificacion_bajas.setText("Modificación y bajas");
+        btn_modificacion_bajas.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/alta y modificacion.png"))); // NOI18N
         btn_modificacion_bajas.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_modificacion_bajasMouseClicked(evt);
@@ -86,10 +83,11 @@ public class Menu_Paciente extends javax.swing.JFrame {
             }
         });
 
-        btn_datos_paciente.setBackground(new java.awt.Color(51, 51, 51));
+        btn_datos_paciente.setBackground(new java.awt.Color(255, 255, 255));
         btn_datos_paciente.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         btn_datos_paciente.setForeground(new java.awt.Color(255, 255, 255));
-        btn_datos_paciente.setText("Información de paciente");
+        btn_datos_paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/INFOO.png"))); // NOI18N
+        btn_datos_paciente.setToolTipText("");
         btn_datos_paciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_datos_pacienteMouseClicked(evt);
@@ -101,25 +99,10 @@ public class Menu_Paciente extends javax.swing.JFrame {
             }
         });
 
-        btn_reporte_pacientes.setBackground(new java.awt.Color(51, 51, 51));
-        btn_reporte_pacientes.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
-        btn_reporte_pacientes.setForeground(new java.awt.Color(255, 255, 255));
-        btn_reporte_pacientes.setText("Reporte de pacientes");
-        btn_reporte_pacientes.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                btn_reporte_pacientesMouseClicked(evt);
-            }
-        });
-        btn_reporte_pacientes.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btn_reporte_pacientesActionPerformed(evt);
-            }
-        });
-
-        btn_dar_alta_paciente.setBackground(new java.awt.Color(51, 51, 51));
+        btn_dar_alta_paciente.setBackground(new java.awt.Color(255, 255, 255));
         btn_dar_alta_paciente.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
         btn_dar_alta_paciente.setForeground(new java.awt.Color(255, 255, 255));
-        btn_dar_alta_paciente.setText("Dar de alta paciente");
+        btn_dar_alta_paciente.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/ALTAA.png"))); // NOI18N
         btn_dar_alta_paciente.addMouseListener(new java.awt.event.MouseAdapter() {
             public void mouseClicked(java.awt.event.MouseEvent evt) {
                 btn_dar_alta_pacienteMouseClicked(evt);
@@ -131,41 +114,124 @@ public class Menu_Paciente extends javax.swing.JFrame {
             }
         });
 
+        jLabel1.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel1.setText("Ingresar Paciente");
+
+        jLabel2.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel2.setText("Modificacion y Bajas");
+
+        jLabel3.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel3.setText("Informacion  Pacientes");
+
+        jLabel4.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel4.setText("Alta Pacientes");
+
+        jPanel4.setBackground(new java.awt.Color(153, 0, 51));
+
+        jLabel10.setFont(new java.awt.Font("American Captain", 0, 88)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("menu pacientes");
+
+        jLabel11.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/medicina.png"))); // NOI18N
+
+        jLabel12.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/medicina.png"))); // NOI18N
+
+        btn_regresar.setBackground(new java.awt.Color(153, 153, 153));
+        btn_regresar.setFont(new java.awt.Font("Tahoma", 1, 13)); // NOI18N
+        btn_regresar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ventanas/espalda.png"))); // NOI18N
+        btn_regresar.setBorderPainted(false);
+        btn_regresar.setContentAreaFilled(false);
+        btn_regresar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_regresarActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
+        jPanel4.setLayout(jPanel4Layout);
+        jPanel4Layout.setHorizontalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel11)
+                .addGap(66, 66, 66)
+                .addComponent(jLabel10)
+                .addGap(54, 54, 54)
+                .addComponent(jLabel12)
+                .addGap(61, 61, 61)
+                .addComponent(btn_regresar)
+                .addGap(32, 32, 32))
+        );
+        jPanel4Layout.setVerticalGroup(
+            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel4Layout.createSequentialGroup()
+                .addGap(23, 23, 23)
+                .addComponent(btn_regresar)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel4Layout.createSequentialGroup()
+                .addContainerGap(94, Short.MAX_VALUE)
+                .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel12)
+                    .addComponent(jLabel10, javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel11, javax.swing.GroupLayout.Alignment.TRAILING))
+                .addGap(78, 78, 78))
+        );
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(btn_regresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jPanel2Layout.createSequentialGroup()
-                .addGap(0, 57, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(btn_dar_alta_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_modificacion_bajas, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(btn_ingresar_paciente_m, javax.swing.GroupLayout.PREFERRED_SIZE, 392, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addComponent(btn_datos_paciente, javax.swing.GroupLayout.DEFAULT_SIZE, 392, Short.MAX_VALUE)
-                        .addComponent(btn_reporte_pacientes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
-                .addContainerGap(58, Short.MAX_VALUE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(20, 20, 20)
+                        .addComponent(btn_ingresar_paciente_m, javax.swing.GroupLayout.PREFERRED_SIZE, 241, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(42, 42, 42)
+                        .addComponent(jLabel1)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(22, 22, 22)
+                        .addComponent(btn_modificacion_bajas, javax.swing.GroupLayout.PREFERRED_SIZE, 279, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 26, Short.MAX_VALUE)
+                        .addComponent(btn_dar_alta_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(32, 32, 32))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel4)
+                        .addGap(89, 89, 89)))
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(btn_datos_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 253, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel3))
+                .addGap(24, 24, 24))
+            .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
         jPanel2Layout.setVerticalGroup(
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
-                .addContainerGap(75, Short.MAX_VALUE)
-                .addComponent(btn_ingresar_paciente_m)
-                .addGap(18, 18, 18)
-                .addComponent(btn_modificacion_bajas)
-                .addGap(18, 18, 18)
-                .addComponent(btn_dar_alta_paciente)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
-                .addComponent(btn_datos_paciente)
-                .addGap(18, 18, 18)
-                .addComponent(btn_reporte_pacientes)
-                .addGap(18, 18, 18)
-                .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(66, Short.MAX_VALUE))
+                .addGap(136, 136, 136)
+                .addComponent(jPanel4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_modificacion_bajas, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(btn_ingresar_paciente_m, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(jLabel4))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(btn_dar_alta_paciente, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(btn_datos_paciente, javax.swing.GroupLayout.PREFERRED_SIZE, 192, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addGap(35, 35, 35))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -176,9 +242,7 @@ public class Menu_Paciente extends javax.swing.JFrame {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+            .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
         );
 
         pack();
@@ -199,9 +263,7 @@ public class Menu_Paciente extends javax.swing.JFrame {
             Ingresar_paciente obj = new Ingresar_paciente();
             obj.setVisible(true);
             this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
+        } catch (SQLException | ClassNotFoundException ex) {
             Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }//GEN-LAST:event_btn_ingresar_paciente_mMouseClicked
@@ -219,22 +281,6 @@ public class Menu_Paciente extends javax.swing.JFrame {
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_datos_pacienteMouseClicked
-
-    private void btn_reporte_pacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_reporte_pacientesMouseClicked
-        try {
-            Reporte_paciente obj = new Reporte_paciente();
-            obj.setVisible(true);
-            this.setVisible(false);
-        } catch (SQLException ex) {
-            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        }
-    }//GEN-LAST:event_btn_reporte_pacientesMouseClicked
-
-    private void btn_reporte_pacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reporte_pacientesActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_btn_reporte_pacientesActionPerformed
 
     private void btn_modificacion_bajasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_modificacion_bajasActionPerformed
         try {
@@ -273,7 +319,14 @@ public class Menu_Paciente extends javax.swing.JFrame {
     private javax.swing.JButton btn_ingresar_paciente_m;
     private javax.swing.JButton btn_modificacion_bajas;
     private javax.swing.JButton btn_regresar;
-    private javax.swing.JButton btn_reporte_pacientes;
+    private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
+    private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel4;
     // End of variables declaration//GEN-END:variables
 }
