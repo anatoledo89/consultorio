@@ -7,7 +7,6 @@ package Ventanas;
 
 import Clases.DoctorsOffice;
 import DAO.DAOReportes;
-import com.sun.xml.internal.ws.api.streaming.XMLStreamReaderFactory;
 import java.sql.SQLException;
 import javax.swing.table.DefaultTableModel;
 
@@ -22,6 +21,8 @@ public class datos_consultorio extends javax.swing.JFrame {
   
     /**
      * Creates new form datos_consultorio
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public datos_consultorio() throws SQLException, ClassNotFoundException {
         initComponents();

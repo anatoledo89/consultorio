@@ -7,6 +7,7 @@ package Ventanas;
 
 import Clases.Hospital;
 import DAO.DAOHospital;
+import static Ventanas.Reporte_consultorio.h;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,9 +18,11 @@ import javax.swing.DefaultComboBoxModel;
  * @author pamel
  */
 public class Reporte_cuartos extends javax.swing.JFrame {
-
+ public static Hospital h=null;
     /**
      * Creates new form Reporte_cuartos
+     * @throws java.sql.SQLException
+     * @throws java.lang.ClassNotFoundException
      */
     public Reporte_cuartos() throws SQLException, ClassNotFoundException {
         initComponents();
@@ -126,7 +129,7 @@ public class Reporte_cuartos extends javax.swing.JFrame {
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(294, 294, 294)
                 .addComponent(combo_cuartos, javax.swing.GroupLayout.PREFERRED_SIZE, 441, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(36, 36, 36)
+                .addGap(18, 18, 18)
                 .addComponent(jButton1)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
@@ -140,7 +143,7 @@ public class Reporte_cuartos extends javax.swing.JFrame {
                         .addComponent(combo_cuartos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(130, 130, 130))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(65, 65, 65)
+                        .addGap(37, 37, 37)
                         .addComponent(jButton1)
                         .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
@@ -170,7 +173,7 @@ public class Reporte_cuartos extends javax.swing.JFrame {
      public void loadcmbHospital() throws SQLException, ClassNotFoundException
     {
         DAOHospital dAOHospital=new DAOHospital();
-        Hospital h=new Hospital();
+       
          DefaultComboBoxModel mode = new DefaultComboBoxModel();
           
             mode.removeAllElements();
@@ -179,55 +182,31 @@ public class Reporte_cuartos extends javax.swing.JFrame {
                 mode.addElement(hospital);
             }
             combo_cuartos.setModel(mode);
+            h=(Hospital)combo_cuartos.getModel().getSelectedItem();
            
         
         
     }
     private void combo_cuartosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_cuartosActionPerformed
         // TODO add your handling code here:
+          h=(Hospital)combo_cuartos.getModel().getSelectedItem();
     }//GEN-LAST:event_combo_cuartosActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
+     try {
+         // TODO add your handling code here:
+         datos_cuartos obj = new datos_cuartos();
+         obj.setVisible(true);
+         this.setVisible(false);
+     } catch (SQLException | ClassNotFoundException ex) {
+         Logger.getLogger(Reporte_cuartos.class.getName()).log(Level.SEVERE, null, ex);
+     }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments
      */
-    public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
-        //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
-        /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
-         * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
-         */
-        try {
-            for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
-                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
-                    break;
-                }
-            }
-        } catch (ClassNotFoundException | InstantiationException | IllegalAccessException | javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(Reporte_cuartos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
-        }
-        //</editor-fold>
-        
-        //</editor-fold>
-
-        /* Create and display the form */
-        java.awt.EventQueue.invokeLater(new Runnable() {
-            @Override
-            public void run() {
-                try {
-                    new Reporte_cuartos().setVisible(true);
-                } catch (SQLException ex) {
-                    Logger.getLogger(Reporte_cuartos.class.getName()).log(Level.SEVERE, null, ex);
-                } catch (ClassNotFoundException ex) {
-                    Logger.getLogger(Reporte_cuartos.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            }
-        });
-    }
+  
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;

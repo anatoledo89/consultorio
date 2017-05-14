@@ -221,9 +221,15 @@ public class Menu_Paciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_datos_pacienteMouseClicked
 
     private void btn_reporte_pacientesMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_reporte_pacientesMouseClicked
-       Reporte_paciente obj = new Reporte_paciente();
-       obj.setVisible(true);
-       this.setVisible(false);
+        try {
+            Reporte_paciente obj = new Reporte_paciente();
+            obj.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_btn_reporte_pacientesMouseClicked
 
     private void btn_reporte_pacientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_reporte_pacientesActionPerformed
