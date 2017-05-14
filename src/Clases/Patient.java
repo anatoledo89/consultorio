@@ -7,9 +7,6 @@ package Clases;
 
 import DAO.DAOPaciente;
 import java.sql.SQLException;
-import java.util.Arrays;
-import java.util.logging.Level;
-import java.util.logging.Logger;
 
 /**
  *
@@ -58,7 +55,7 @@ public class Patient extends Person {
         this.status = status;
     }
     
-    //Constructor que copia los datos de un objeto Patient
+    //Constructo11r que copia los datos de un objeto Patient
     public Patient(Patient p1)
     {
         this.securityNumber = p1.getSecurityNumber();

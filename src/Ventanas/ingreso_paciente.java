@@ -233,9 +233,7 @@ int status=0;
     try {
         // TODO add your handling code here:
         loadcmbDoctor();
-    } catch (SQLException ex) {
-        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
+    } catch (SQLException | ClassNotFoundException ex) {
         Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
     }
     }//GEN-LAST:event_jcmb_DepartamentoActionPerformed
@@ -252,9 +250,7 @@ int status=0;
         {
             JOptionPane.showMessageDialog(rootPane, "No se puede asignar más pacientes a este doctor");
         }
-    } catch (SQLException ex) {
-        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
-    } catch (ClassNotFoundException ex) {
+    } catch (SQLException | ClassNotFoundException ex) {
         Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
     }
         
