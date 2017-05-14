@@ -113,6 +113,11 @@ public class Reporte_paciente extends javax.swing.JFrame {
         jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ventanas/flecha-derecha.png"))); // NOI18N
         jButton1.setBorderPainted(false);
         jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -183,6 +188,19 @@ public class Reporte_paciente extends javax.swing.JFrame {
     private void combo_pacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_pacienteActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_combo_pacienteActionPerformed
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+          try {
+            // TODO add your handling code here:
+            DatosPacientes obj=new DatosPacientes();
+            obj.setVisible(true);
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
      * @param args the command line arguments

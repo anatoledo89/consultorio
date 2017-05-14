@@ -8,6 +8,7 @@ package DAO;
 import Clases.Base_dato;
 import Clases.Doctor;
 import Clases.Patient;
+import Clases.PatientDoctor;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -261,6 +262,39 @@ public class DAOPaciente {
         return d;
            
        }
+         
+         
+         public ArrayList<PatientDoctor> getPatientInfo() throws SQLException
+         {
+             ArrayList<PatientDoctor> pdlist=new ArrayList<>();
+             PatientDoctor pd=null;
+              pst = cn.prepareStatement("Select nss,primernombre,apellido,edad,direccion,telefono,email,peso,altura,enfermedad,"+
+                      "idcuarto,iddoctor from paciente "+
+                "inner join pacientedoctor on paciente.nss=pacientedoctor.nss");
+              rs = pst.executeQuery();
+        while (rs.next()) {
+        pd=new PatientDoctor();
+        pd.setFirstname(rs.getString("primernombre"));
+        pd.setLastname(rs.getString("apellido"));
+        pd.setAddress(rs.getString("direccion"));
+      pd.setAge(rs.getInt("edad"));
+      pd.setTel(rs.getString("telefono"));
+        pd.setEmail(rs.getString("email"));
+        pd.setSecurityNumber("nss");
+        pd.setRoomid(rs.getInt("idcuarto"));
+        pd.setSize(rs.getString("altura"));
+        pd.setWeight(rs.getString("peso"));
+        pd.setDisease(rs.getString("enfermedad"));
+        pd.setIddoctor(rs.getString("iddoctor"));
+        pdlist.add(pd);
+        
+      
+        
+            
+           
+        }
+        return pdlist;
+         }
        
        public boolean updatePatient(Patient p, String doctorid) 
        {
