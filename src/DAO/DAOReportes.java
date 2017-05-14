@@ -8,7 +8,6 @@ package DAO;
 import Clases.Base_dato;
 import Clases.Doctor;
 import Clases.DoctorsOffice;
-import Clases.Patient;
 import Clases.Room;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -88,33 +87,4 @@ listdoctor.add(doctor);
        
           }
    
-   public ArrayList<Patient> pacientesclinica(int idhospital) throws SQLException
-   {
-       Patient patient=null;
-        ArrayList<Patient> listpatient=new ArrayList<>();
-       pst=cn.prepareStatement("Select * from paciente where idhospital="+idhospital+"");
-       rs=pst.executeQuery();
-       while(rs.next())
-       {
-           patient=new Patient();
-         patient.setFirstname(rs.getString("primernombre"));
-            patient.setLastname(rs.getString("apellido"));
-            patient.setSecurityNumber(rs.getString("nss"));
-            patient.setAddress(rs.getString("direccion"));
-            patient.setAge(rs.getInt("edad"));
-            patient.setTelephone(rs.getString("telefono"));
-            patient.setEmail(rs.getString("email"));
-            patient.setWeight(rs.getFloat("peso"));
-            patient.setSize(rs.getFloat("altura"));
-            patient.setDisease(rs.getString("enfermedad"));
-            patient.setRoomID(rs.getInt("idcuarto"));
-          patient.setStatus(rs.getInt("status"));
-          patient.setRoomID(rs.getInt("idcuarto"));
-         
-           listpatient.add(patient);
-           
-       }
-       return listpatient;
-       
-   }
 }
