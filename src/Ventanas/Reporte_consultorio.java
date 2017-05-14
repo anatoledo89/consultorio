@@ -18,6 +18,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Reporte_consultorio extends javax.swing.JFrame {
 
+    public static Hospital h=null;
     /**
      * Creates new form Reporte_consultorio
      */
@@ -166,7 +167,7 @@ public class Reporte_consultorio extends javax.swing.JFrame {
      public void loadcmbHospital() throws SQLException, ClassNotFoundException
     {
         DAOHospital dAOHospital=new DAOHospital();
-        Hospital h=new Hospital();
+         h=new Hospital();
          DefaultComboBoxModel mode = new DefaultComboBoxModel();
           
             mode.removeAllElements();
@@ -176,23 +177,29 @@ public class Reporte_consultorio extends javax.swing.JFrame {
             }
             hospi_comb.setModel(mode);
            
-        
+        h=(Hospital)hospi_comb.getModel().getSelectedItem();
         
     }
     
     
     
     private void hospi_combActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospi_combActionPerformed
-       
+       h=(Hospital)hospi_comb.getModel().getSelectedItem();
        
         
     }//GEN-LAST:event_hospi_combActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        // TODO add your handling code here:
-       datos_consultorio obj = new datos_consultorio();
-      obj.setVisible(true);
-      this.setVisible(false);
+        try {
+            // TODO add your handling code here:
+            datos_consultorio obj = new datos_consultorio();
+            obj.setVisible(true);
+            this.setVisible(false);
+        } catch (SQLException ex) {
+            Logger.getLogger(Reporte_consultorio.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Reporte_consultorio.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**
