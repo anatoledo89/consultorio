@@ -277,7 +277,14 @@ public class Menu_Paciente extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_datos_pacienteActionPerformed
 
     private void btn_datos_pacienteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btn_datos_pacienteMouseClicked
-        Info_paciente obj = new Info_paciente();
+        Info_paciente obj = null;
+        try {
+            obj = new Info_paciente();
+        } catch (SQLException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        } catch (ClassNotFoundException ex) {
+            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+        }
       obj.setVisible(true);
       this.setVisible(false);
     }//GEN-LAST:event_btn_datos_pacienteMouseClicked
