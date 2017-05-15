@@ -16,7 +16,7 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author A
+ * @author pamel
  */
 public class Login {
   
@@ -25,22 +25,40 @@ public class Login {
    ResultSet rs;
    Connection cn;
     
+   /**
+    * 
+    * @throws SQLException
+    * @throws ClassNotFoundException 
+    */
     public Login() throws SQLException, ClassNotFoundException
     {
         //Obtenemos la conexión
   cn=bd.connect();
     }
     
+    
+    //esta es la funcion acceder que recibe un usuario y una contraseña
+    /**
+     * 
+     * @param usuario
+     * @param password
+     * @return
+     * @throws SQLException 
+     */
     public Usuario acceder(String usuario,char[] password) throws SQLException
     {
         try {
-            //Buscamos en la tabla un usuario que coincida con lo ingresado en la ventana de Interface
+            //Buscamos en la tabla de usuarios de la base de datos....
             Usuario u=null;
+            //en caso de que encuentre un usuario y una password que coincidan.. va a continuar al next
+            //si usuarios sera nulo y mas adelante en la ventana interface hay una validacion para
+            //que no pueda entrar y que despliege un mensajito :)
             String query="SELECT * FROM usuarios where usuario='"+usuario+"' and password='"+new String(password)+"'";
             pst=cn.prepareStatement(query);
             rs=pst.executeQuery();
             while(rs.next())
             {
+                //se le setea la info a ese usuario pero no sera usado mas adelante..
                 u=new Usuario();
                 u.setIdusuario(rs.getInt("Id"));
                 u.setUsuario(rs.getString("usuario"));

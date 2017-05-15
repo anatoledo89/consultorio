@@ -7,6 +7,7 @@ package Ventanas;
 
 import Clases.Hospital;
 import DAO.DAOHospital;
+import static Ventanas.Reporte_consultorio.h;
 import java.sql.SQLException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -17,7 +18,7 @@ import javax.swing.DefaultComboBoxModel;
  * @author pamel
  */
 public class Reporte_medico extends javax.swing.JFrame {
-
+public static Hospital h=null;
     /**
      * Creates new form Reporte_medico
      */
@@ -44,6 +45,7 @@ public class Reporte_medico extends javax.swing.JFrame {
         jLabel12 = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        btn_exit_menu2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -52,6 +54,11 @@ public class Reporte_medico extends javax.swing.JFrame {
 
         combo_medicos.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         combo_medicos.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        combo_medicos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                combo_medicosActionPerformed(evt);
+            }
+        });
 
         jPanel4.setBackground(new java.awt.Color(153, 0, 51));
 
@@ -112,16 +119,31 @@ public class Reporte_medico extends javax.swing.JFrame {
             }
         });
 
+        btn_exit_menu2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_exit_menu2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btn_exit_menu2.setBorderPainted(false);
+        btn_exit_menu2.setContentAreaFilled(false);
+        btn_exit_menu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_menu2ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel4, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(254, 254, 254)
-                .addComponent(combo_medicos, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(31, 31, 31)
-                .addComponent(jButton1)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(254, 254, 254)
+                        .addComponent(combo_medicos, javax.swing.GroupLayout.PREFERRED_SIZE, 439, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_exit_menu2)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -135,7 +157,9 @@ public class Reporte_medico extends javax.swing.JFrame {
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(61, 61, 61)
                         .addComponent(jButton1)))
-                .addContainerGap(127, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
+                .addComponent(btn_exit_menu2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -187,6 +211,16 @@ public class Reporte_medico extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void btn_exit_menu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_menu2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btn_exit_menu2ActionPerformed
+
+    private void combo_medicosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_combo_medicosActionPerformed
+        // TODO add your handling code here:
+        h=(Hospital)combo_medicos.getModel().getSelectedItem();
+       
+    }//GEN-LAST:event_combo_medicosActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -225,6 +259,7 @@ public class Reporte_medico extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_exit_menu2;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JComboBox combo_medicos;
     private javax.swing.JButton jButton1;

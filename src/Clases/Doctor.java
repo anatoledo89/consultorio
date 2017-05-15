@@ -11,6 +11,10 @@ import java.util.ArrayList;
  *
  * @author pamel
  */
+/**
+ * 
+ * @author pamel
+ */
 public class Doctor extends Person{
     //Declarando atributos...
     private String id;

@@ -46,6 +46,7 @@ public class Menu_Doctores extends javax.swing.JFrame {
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
+        btn_exit_menu = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -96,7 +97,6 @@ public class Menu_Doctores extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1005, 651));
         setSize(new java.awt.Dimension(1005, 651));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
@@ -146,14 +146,26 @@ public class Menu_Doctores extends javax.swing.JFrame {
             }
         });
 
+        btn_exit_menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_exit_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btn_exit_menu.setBorderPainted(false);
+        btn_exit_menu.setContentAreaFilled(false);
+        btn_exit_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_menuActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGap(147, 147, 147)
+                .addContainerGap()
+                .addComponent(btn_exit_menu)
+                .addGap(38, 38, 38)
                 .addComponent(jLabel8)
-                .addGap(66, 66, 66)
+                .addGap(132, 132, 132)
                 .addComponent(jLabel7)
                 .addGap(54, 54, 54)
                 .addComponent(jLabel9)
@@ -173,7 +185,9 @@ public class Menu_Doctores extends javax.swing.JFrame {
                             .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.TRAILING)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addContainerGap()
-                        .addComponent(btn_regresar)))
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(btn_exit_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_regresar))))
                 .addContainerGap(115, Short.MAX_VALUE))
         );
 
@@ -190,7 +204,7 @@ public class Menu_Doctores extends javax.swing.JFrame {
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, 1154, Short.MAX_VALUE)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap(136, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -275,6 +289,10 @@ public class Menu_Doctores extends javax.swing.JFrame {
       this.setVisible(false);
     }//GEN-LAST:event_btn_Eliminar_MedicosActionPerformed
 
+    private void btn_exit_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_menuActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_exit_menuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -311,6 +329,7 @@ public class Menu_Doctores extends javax.swing.JFrame {
     private javax.swing.JButton btn_Eliminar_Medicos;
     private javax.swing.JButton btn_Modificar_medicos;
     private javax.swing.JButton btn_darAlta_medicos;
+    private javax.swing.JButton btn_exit_menu;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;

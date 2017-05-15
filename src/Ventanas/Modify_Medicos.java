@@ -55,6 +55,8 @@ public class Modify_Medicos extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
+        btn_exit_menu1 = new javax.swing.JButton();
+        btn_exit_menu = new javax.swing.JButton();
 
         jPanel6.setBackground(new java.awt.Color(153, 0, 51));
 
@@ -107,7 +109,6 @@ public class Modify_Medicos extends javax.swing.JFrame {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
-        setPreferredSize(new java.awt.Dimension(1005, 651));
 
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
         jPanel1.setRequestFocusEnabled(false);
@@ -180,18 +181,33 @@ public class Modify_Medicos extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        btn_exit_menu1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_exit_menu1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btn_exit_menu1.setBorderPainted(false);
+        btn_exit_menu1.setContentAreaFilled(false);
+        btn_exit_menu1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_menu1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
-                .addGap(190, 190, 190)
-                .addComponent(lbl_modificarID)
-                .addGap(18, 18, 18)
-                .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(btn_modifyMedico)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(190, 190, 190)
+                        .addComponent(lbl_modificarID)
+                        .addGap(18, 18, 18)
+                        .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 372, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(btn_modifyMedico))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(btn_exit_menu1)))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
@@ -204,21 +220,43 @@ public class Modify_Medicos extends javax.swing.JFrame {
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                             .addComponent(lbl_modificarID)
                             .addComponent(txt_modifyID, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(149, 149, 149))
+                        .addGap(49, 49, 49)
+                        .addComponent(btn_exit_menu1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(btn_modifyMedico)
                         .addGap(134, 134, 134))))
         );
+
+        btn_exit_menu.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_exit_menu.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        btn_exit_menu.setBorderPainted(false);
+        btn_exit_menu.setContentAreaFilled(false);
+        btn_exit_menu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_exit_menuActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(458, 458, 458)
+                    .addComponent(btn_exit_menu)
+                    .addContainerGap(459, Short.MAX_VALUE)))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(layout.createSequentialGroup()
+                    .addGap(223, 223, 223)
+                    .addComponent(btn_exit_menu, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addContainerGap(223, Short.MAX_VALUE)))
         );
 
         pack();
@@ -291,6 +329,15 @@ public class Modify_Medicos extends javax.swing.JFrame {
         this.setVisible(false);
     }//GEN-LAST:event_btn_regresar1ActionPerformed
 
+    private void btn_exit_menuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_menuActionPerformed
+        System.exit(0);
+    }//GEN-LAST:event_btn_exit_menuActionPerformed
+
+    private void btn_exit_menu1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_menu1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_btn_exit_menu1ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -324,6 +371,8 @@ public class Modify_Medicos extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_exit_menu;
+    private javax.swing.JButton btn_exit_menu1;
     private javax.swing.JButton btn_modifyMedico;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JButton btn_regresar1;

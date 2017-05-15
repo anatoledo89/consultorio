@@ -17,19 +17,36 @@ import java.util.logging.Logger;
 
 /**
  *
- * @author A
+ * @author pamel
+ */
+/**
+ * 
+ * @author pamel
  */
 public class DAOHospital {
-    
+    //lo mismo que en DAODoctor
     Base_dato bd = new Base_dato();
     PreparedStatement pst;
     ResultSet rs;
     Connection cn;
 
+    /**
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
+    //funcion para conectar la base de datos
     public DAOHospital() throws SQLException, ClassNotFoundException {
         cn = bd.connect();
     }
     
+    /**
+     * 
+     * @param hospital
+     * @return 
+     */
+    //recibe un hospital y guarda sus datos en la base de datos con la sintaxis
+    //se le pone ´´ en caso de que sea string
     public boolean saveHospital(Hospital hospital) {
         try {
             String query = "Insert into hospital(nombre,direccion,telefono,noficinas,ncuartos) values"
@@ -47,12 +64,20 @@ public class DAOHospital {
         return false;
     }
     
+    /**
+     * 
+     * @return
+     * @throws SQLException 
+     */
+    //esta funcion carga los datos de un hospital dentro de un arraylist
+    //y regresar el arraylist ya con los datos del hospital
     public ArrayList<Hospital> loadhospital() throws SQLException {
         ArrayList<Hospital> lst = new ArrayList<>();
         Hospital h = null;
         pst = cn.prepareStatement("Select * from hospital");
         rs = pst.executeQuery();
         while (rs.next()) {
+            //la variable h usada se setea con lo datos de la base de datos 
             h = new Hospital();
             h.setIdhospital(rs.getInt("Id"));
             h.setName(rs.getString("nombre"));
@@ -67,6 +92,14 @@ public class DAOHospital {
         return lst;
     }
     
+    /**
+     * 
+     * @param idhospital
+     * @return
+     * @throws SQLException 
+     */
+    //selecciona el numero maximo de los id's ya que estos se autoincrementan de la tabla cuartos
+    //con el hospital id proporcionado
     public int getRoomID(int idhospital) throws SQLException
     {
         int ncuartos=0;

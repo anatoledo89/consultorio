@@ -24,26 +24,46 @@ Doctor doctor;
     /**
      * Creates new form Alta_Medicos
      */
+/**
+ * 
+ * @throws SQLException
+ * @throws ClassNotFoundException 
+ */
     public Alta_Medicos() throws SQLException, ClassNotFoundException {
         initComponents();
+        //esto es usado para que la ventana salga en medio 
         this.setLocationRelativeTo(null);
         
          try {
         // TODO add your handling code here:
+             //teclee ctrl y seleccione esta funcion para saber lo que hace
+             //cargamos la funcion aqui para que cuando inicie la ventana carge el 
+             //jcombo box
         loadcmbHospital();
     } catch (SQLException | ClassNotFoundException ex) {
         Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
     }
          
+         //esta es una variable estatica con valor 0,cuando damos clic en modificar
+         //en la ventana modifypacient la variable se conviert en 1 
+         // usamos la variable estatica por que usamos la misma ventana para modificar los datos
+         //y no tener que crear otra ventana
         if (Modify_Medicos.modif==1)
         {
+            // se carga la informacion del cdoctor
             loadDoctorsdata();
+            //en caso de que la variable estatica sea 1 
+            // el boton crear doctor, cambia de nombre a modificar 
             crearDoctor.setText("Modificar");
+            //y con esto haccemos que desaparezca el texto que tiene previamente 
             txt_ID.setEnabled(false);
             hospi.setEnabled(false);
         }else
         {
+            //si la variable es diferente a 1 
+            //entonces el boton para crear pacientes obtiene el nombre crear 
             crearDoctor.setText("Crear");
+            
         txt_ID.setEnabled(true);
          hospi.setEnabled(true);
         }
@@ -374,6 +394,14 @@ Doctor doctor;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
+    /**
+     * 
+     * @param evt 
+     * esto es para cambiar de ventanas, ya que todas la interface son clases que no tienen
+     * atributos solamente se crea un nuevo objeto de dicha clase y 
+     * con .setVisible, hacemos que este objeto deje de ser visible 
+     */
+   
     private void btn_regresarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_regresarActionPerformed
     Modify_Medicos.modif=0;
     Menu_Doctores obj = new Menu_Doctores();
@@ -381,16 +409,34 @@ Doctor doctor;
       this.setVisible(false);
     }//GEN-LAST:event_btn_regresarActionPerformed
 
+    /**
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     * esta funcion es para cargar los datos de los doctores...
+     * 
+     */
+    
         public void loadDoctorsdata() throws SQLException, ClassNotFoundException
     {
+        //creamos un objeto DAO (DATA OBJECT ACCESS)
+        //cremaos un objeto doctor y un objeto hopital
         DAODoctor doctor=new DAODoctor();
         Doctor d=null;
         Hospital h=null;
+        //con esto accedemos a la base de datos  para obtener la informacion del 
+        //doctor
         d = doctor.getDoctor(Modify_Medicos.id);
+        //con esto accedesmos a la base de datos para obtener el id del hospital en el 
+        //cual se encuentra el doctor
       h= doctor.gethospitalbyId(d.getIdhospital());
         if(d!=null)
+            //si d pasa en la funcion getDoctor se va a actualizar y dejara de ser nulo 
+            // en caso de que no sea nulo 
         {
+            //con esto obtenemos el modelo de la jcombo box, obtenemos la informacion que se haya seleccionado
         hospi.getModel().setSelectedItem(h);
+        //seteamos 
         txt_nombre.setText(d.getFirstname());
         txt_apellido.setText(d.getLastname());
         txt_cedula.setText(d.getLicense());
@@ -403,6 +449,7 @@ Doctor doctor;
         
         }else
         {
+            //en caso de ser nulo significa que no hay un id parecido 
             JOptionPane.showMessageDialog(rootPane, "No se ha encontrado ningún registro");
              Modify_Medicos.modif=0;
    
@@ -412,12 +459,19 @@ Doctor doctor;
         
     }
     
-    
+    /**
+     * funcion para crear un doctor
+     * @param evt 
+     */
     
     private void crearDoctorActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_crearDoctorActionPerformed
         // TODO add your handling code here:
+        //declaramos una variable que almacene los datos de txt_edad 
+        //ya que txt_edad es un int pero txt field solo agarra datos string
+        //lo convertimos con INTEGER 
         int edad = Integer.parseInt(txt_edad.getText());
         
+        //si alguno de los txtFields esta vacion entondes te pide que ingreses todos los campos
         if (txt_nombre.getText().matches("")||txt_apellido.getText().matches("")||
                 txt_edad.getText().matches("")||txt_direccion.getText().matches("")
                 ||txt_telefono.getText().matches("")||txt_email.getText().matches("")||
@@ -427,6 +481,7 @@ Doctor doctor;
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
         }
         
+        //si la edad es mayor a 104 años entonces te pide que verifiques la edad
             if (edad>104)
             {
                 JOptionPane.showMessageDialog(rootPane, "Edad invalida, favor de verificar");
@@ -434,8 +489,11 @@ Doctor doctor;
         
         else 
         {
+            // con la variable estatica que comentamos anteriormente 
+            //en caso de que modif sea == 0 entonces vamos a crear un doctor
             if(Modify_Medicos.modif==0)
             {
+                //llamamos a la funcion cargar datos que encontrara mas abajo11
           cargardatos();
         
             

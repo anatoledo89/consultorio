@@ -12,14 +12,17 @@ package Clases;
 import java.io.File;
 import java.sql.*;
 public class Base_dato {
-   
+    
+    
+   //Variable conection para conectarse a la base de datos
+    /**
+     * 
+     */
      Connection connection = null;
        
  
         public Connection connect() throws SQLException, ClassNotFoundException
         {
-        
-            
        
        try {
     //        Class.forName("sun.jdbc.odbc.JdbcOdbcDriver");

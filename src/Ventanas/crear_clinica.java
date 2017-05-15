@@ -257,7 +257,8 @@ public class crear_clinica extends javax.swing.JFrame {
     private void jtbnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbnCrearActionPerformed
         // TODO add your handling code here:
         if(jtxtNombre.getText().matches("") || jtxtDireccion.getText().matches("") || jtxtTelefono.getText().matches("")
-                || jtxtHabitaciones.getText().matches("") || jtxtConsultorios.getText().matches(""))
+                || jtxtHabitaciones.getText().matches("") || jtxtConsultorios.getText().matches("")
+                )
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
         }
@@ -271,6 +272,7 @@ public class crear_clinica extends javax.swing.JFrame {
                 h.setTelephone(jtxtTelefono.getText());
                 h.setNumOfRooms(Integer.parseInt(jtxtHabitaciones.getText()));
                 h.setNumOfDoctorsOffices(Integer.parseInt(jtxtConsultorios.getText()));
+               
              if(  daohospital.saveHospital(h))
              {
                  JOptionPane.showMessageDialog(rootPane, "El hospital ha sido dado de alta");
@@ -297,8 +299,7 @@ public class crear_clinica extends javax.swing.JFrame {
 
     private void jtxtTelefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtTelefonoKeyTyped
         // TODO add your handling code here:
-              if(!Character.isDigit(evt.getKeyChar()))
-     {evt.consume();}
+              
     }//GEN-LAST:event_jtxtTelefonoKeyTyped
 
     private void jtxtTelefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtxtTelefonoActionPerformed
