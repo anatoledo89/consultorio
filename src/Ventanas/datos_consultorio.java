@@ -53,6 +53,7 @@ public class datos_consultorio extends javax.swing.JFrame {
 
         jScrollPane1.setBackground(new java.awt.Color(255, 255, 255));
 
+        jTable1.setFont(new java.awt.Font("Arial", 0, 24)); // NOI18N
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -64,6 +65,7 @@ public class datos_consultorio extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTable1.setRowHeight(30);
         jScrollPane1.setViewportView(jTable1);
 
         jLabel1.setFont(new java.awt.Font("American Captain", 0, 90)); // NOI18N
@@ -158,10 +160,10 @@ public class datos_consultorio extends javax.swing.JFrame {
       }
       
       jTable1.setModel(model);
-      jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);
-       jTable1.getColumnModel().getColumn(1).setPreferredWidth(30);
-        jTable1.getColumnModel().getColumn(2).setPreferredWidth(100);
-         jTable1.getColumnModel().getColumn(3).setPreferredWidth(100);
+      jTable1.getColumnModel().getColumn(0).setPreferredWidth(50);
+       jTable1.getColumnModel().getColumn(1).setPreferredWidth(50);
+        jTable1.getColumnModel().getColumn(2).setPreferredWidth(150);
+         jTable1.getColumnModel().getColumn(3).setPreferredWidth(150);
       
    }
     

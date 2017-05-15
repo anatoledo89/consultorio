@@ -74,10 +74,10 @@ public class datos_cuartos extends javax.swing.JFrame {
         });
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(1013, 720));
 
         jPanel1.setBackground(new java.awt.Color(153, 0, 0));
 
+        table.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         table.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
@@ -89,6 +89,7 @@ public class datos_cuartos extends javax.swing.JFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        table.setRowHeight(30);
         jScrollPane1.setViewportView(table);
 
         jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N

@@ -191,15 +191,17 @@ public class Reporte_paciente extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-          try {
+         
             // TODO add your handling code here:
-            DatosPacientes obj=new DatosPacientes();
-            obj.setVisible(true);
-        } catch (SQLException ex) {
-            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
-        } catch (ClassNotFoundException ex) {
-            Logger.getLogger(Menu_Paciente.class.getName()).log(Level.SEVERE, null, ex);
+            DatosPacientes obj = null;
+        try {
+            obj = new DatosPacientes();
+        } catch (SQLException | ClassNotFoundException ex) {
+            Logger.getLogger(Reporte_paciente.class.getName()).log(Level.SEVERE, null, ex);
         }
+            obj.setVisible(true);
+            this.setVisible(false);
+        
     }//GEN-LAST:event_jButton1ActionPerformed
 
     /**

@@ -15,7 +15,7 @@ import javax.swing.table.DefaultTableModel;
 
 /**
  *
- * @author A
+ * @author pamela
  */
 public class DatosPacientes extends javax.swing.JFrame {
 DefaultTableModel model;
