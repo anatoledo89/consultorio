@@ -40,12 +40,12 @@ Doctor doctor;
             loadDoctorsdata();
             crearDoctor.setText("Modificar");
             txt_ID.setEnabled(false);
-            jcomb_hospital.setEnabled(false);
+            hospi.setEnabled(false);
         }else
         {
             crearDoctor.setText("Crear");
         txt_ID.setEnabled(true);
-         jcomb_hospital.setEnabled(true);
+         hospi.setEnabled(true);
         }
     }
 
@@ -59,7 +59,7 @@ Doctor doctor;
     private void initComponents() {
 
         jPanel2 = new javax.swing.JPanel();
-        jcomb_hospital = new javax.swing.JComboBox();
+        hospi = new javax.swing.JComboBox();
         txt_cedula = new javax.swing.JTextField();
         txt_department = new javax.swing.JTextField();
         txt_ID = new javax.swing.JTextField();
@@ -83,6 +83,7 @@ Doctor doctor;
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
+        jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -90,11 +91,11 @@ Doctor doctor;
         jPanel2.setBackground(new java.awt.Color(255, 255, 255));
         jPanel2.setPreferredSize(new java.awt.Dimension(1005, 651));
 
-        jcomb_hospital.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jcomb_hospital.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
-        jcomb_hospital.addActionListener(new java.awt.event.ActionListener() {
+        hospi.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        hospi.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        hospi.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jcomb_hospitalActionPerformed(evt);
+                hospiActionPerformed(evt);
             }
         });
 
@@ -223,13 +224,27 @@ Doctor doctor;
             }
         });
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/salida.png"))); // NOI18N
+        jButton1.setBorderPainted(false);
+        jButton1.setContentAreaFilled(false);
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel6Layout = new javax.swing.GroupLayout(jPanel6);
         jPanel6.setLayout(jPanel6Layout);
         jPanel6Layout.setHorizontalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(36, 36, 36)
-                .addComponent(jLabel13)
+                .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addGap(36, 36, 36)
+                        .addComponent(jLabel13))
+                    .addGroup(jPanel6Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jButton1)))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -239,19 +254,20 @@ Doctor doctor;
         jPanel6Layout.setVerticalGroup(
             jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel6Layout.createSequentialGroup()
+                .addGap(21, 21, 21)
                 .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
+                        .addGap(14, 14, 14)
                         .addComponent(jLabel14, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                     .addGroup(jPanel6Layout.createSequentialGroup()
-                        .addGap(89, 89, 89)
-                        .addComponent(jLabel13)
-                        .addGap(0, 0, Short.MAX_VALUE)))
+                        .addGroup(jPanel6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel6Layout.createSequentialGroup()
+                                .addComponent(jButton1)
+                                .addGap(43, 43, 43)
+                                .addComponent(jLabel13))
+                            .addComponent(btn_regresar))
+                        .addGap(0, 13, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel6Layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(btn_regresar)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
@@ -265,7 +281,7 @@ Doctor doctor;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jcomb_hospital, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(hospi, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_telefono)
@@ -305,9 +321,9 @@ Doctor doctor;
             jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 81, Short.MAX_VALUE)
-                .addComponent(jcomb_hospital, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(63, 63, 63)
+                .addGap(38, 38, 38)
+                .addComponent(hospi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombre)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -374,7 +390,7 @@ Doctor doctor;
       h= doctor.gethospitalbyId(d.getIdhospital());
         if(d!=null)
         {
-        jcomb_hospital.getModel().setSelectedItem(h);
+        hospi.getModel().setSelectedItem(h);
         txt_nombre.setText(d.getFirstname());
         txt_apellido.setText(d.getLastname());
         txt_cedula.setText(d.getLicense());
@@ -474,12 +490,12 @@ Doctor doctor;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
-    private void jcomb_hospitalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jcomb_hospitalActionPerformed
+    private void hospiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospiActionPerformed
    
         
         
         
-    }//GEN-LAST:event_jcomb_hospitalActionPerformed
+    }//GEN-LAST:event_hospiActionPerformed
 
     private void txt_telefonoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_telefonoActionPerformed
         // TODO add your handling code here:
@@ -547,6 +563,11 @@ Doctor doctor;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
 
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jButton1ActionPerformed
+
     
      public void loadcmbHospital() throws SQLException, ClassNotFoundException
     {
@@ -559,7 +580,7 @@ Doctor doctor;
             for (Hospital hospital : dAOHospital.loadhospital()) {
                 mode.addElement(hospital);
             }
-            jcomb_hospital.setModel(mode);
+            hospi.setModel(mode);
            
         
         
@@ -581,6 +602,8 @@ Doctor doctor;
      */
    private void cargardatos()
    {   doctor = new Doctor();
+    Hospital h=new Hospital();
+    h=(Hospital)hospi.getSelectedItem();
            
         doctor.setFirstname(txt_nombre.getText());
             doctor.setLastname(txt_apellido.getText());
@@ -591,16 +614,18 @@ Doctor doctor;
             doctor.setId(txt_ID.getText());
             doctor.setDepartment(txt_department.getText());
             doctor.setLicense(txt_cedula.getText());
+            doctor.setIdhospital(h.getIdhospital());
    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btn_regresar;
     private javax.swing.JButton crearDoctor;
+    private javax.swing.JComboBox hospi;
+    private javax.swing.JButton jButton1;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel6;
-    private javax.swing.JComboBox jcomb_hospital;
     private javax.swing.JLabel lbl_apellido;
     private javax.swing.JLabel lbl_direccion;
     private javax.swing.JLabel lbl_edad;
