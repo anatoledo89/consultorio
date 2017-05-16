@@ -49,10 +49,10 @@ public class DAOHospital {
     //se le pone ´´ en caso de que sea string
     public boolean saveHospital(Hospital hospital) {
         try {
-            String query = "Insert into hospital(nombre,direccion,telefono,noficinas,ncuartos) values"
+            String query = "Insert into hospital(nombre,direccion,telefono,noficinas,ncuartos,npisos) values"
                     + "('" + hospital.getName() + "','" + hospital.getAddress() + "'"
                     + ",'" + hospital.getTelephone() + "','"
-                    + hospital.getNumOfDoctorsOffices() + "'," + hospital.getNumOfRooms() + ");";
+                    + hospital.getNumOfDoctorsOffices() + "'," + hospital.getNumOfRooms() + ","+hospital.getNumFloors()+");";
             pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -85,6 +85,7 @@ public class DAOHospital {
             h.setTelephone(rs.getString("telefono"));
             h.setNumOfRooms(rs.getInt("ncuartos"));
             h.setNumOfDoctorsOffices(rs.getInt("noficinas"));
+            h.setNumFloors(rs.getInt("npisos"));
             
             
             lst.add(h);
@@ -105,6 +106,19 @@ public class DAOHospital {
         int ncuartos=0;
        
         pst = cn.prepareStatement("Select max(idcuarto) as roomid from cuarto where idhospital="+idhospital+"");
+        rs = pst.executeQuery();
+            while (rs.next()) {
+          ncuartos=rs.getInt("roomid");
+        }
+        return ncuartos;
+    }
+    
+    
+    public int getMaxNumbFloor(int idhospital) throws SQLException
+    {
+        int ncuartos=0;
+       
+        pst = cn.prepareStatement("Select npisos from hospital where idhospital="+idhospital+"");
         rs = pst.executeQuery();
             while (rs.next()) {
           ncuartos=rs.getInt("roomid");

@@ -55,6 +55,8 @@ public class crear_clinica extends javax.swing.JFrame {
         btn_regresar = new javax.swing.JButton();
         jLabel7 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jtxtPisos = new javax.swing.JFormattedTextField();
 
         jLabel1.setText("jLabel1");
 
@@ -177,6 +179,16 @@ public class crear_clinica extends javax.swing.JFrame {
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
+        jLabel9.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
+        jLabel9.setText("No. Pisos:");
+
+        jtxtPisos.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        jtxtPisos.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                jtxtPisosKeyTyped(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -191,14 +203,16 @@ public class crear_clinica extends javax.swing.JFrame {
                             .addComponent(jLabel2)
                             .addComponent(jLabel3)
                             .addComponent(jLabel4)
-                            .addComponent(jLabel5))
+                            .addComponent(jLabel5)
+                            .addComponent(jLabel9))
                         .addGap(23, 23, 23)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jtxtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 423, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, 327, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jtxtConsultorios, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jtxtHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(jtxtHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jtxtPisos, javax.swing.GroupLayout.PREFERRED_SIZE, 173, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addGap(286, 286, 286))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jtbnCrear)
@@ -208,7 +222,7 @@ public class crear_clinica extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 58, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 59, Short.MAX_VALUE)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jtxtNombre, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -229,7 +243,11 @@ public class crear_clinica extends javax.swing.JFrame {
                             .addComponent(jLabel6)
                             .addComponent(jtxtHabitaciones, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addComponent(jtxtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(58, 58, 58)
+                .addGap(32, 32, 32)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(jtxtPisos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
                 .addComponent(jtbnCrear)
                 .addGap(30, 30, 30))
         );
@@ -257,7 +275,7 @@ public class crear_clinica extends javax.swing.JFrame {
     private void jtbnCrearActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jtbnCrearActionPerformed
         // TODO add your handling code here:
         if(jtxtNombre.getText().matches("") || jtxtDireccion.getText().matches("") || jtxtTelefono.getText().matches("")
-                || jtxtHabitaciones.getText().matches("") || jtxtConsultorios.getText().matches("")
+                || jtxtHabitaciones.getText().matches("") || jtxtConsultorios.getText().matches("") || jtxtPisos.getText().matches("")
                 )
         {
             JOptionPane.showMessageDialog(rootPane, "Por favor ingrese todos los campos");
@@ -272,6 +290,7 @@ public class crear_clinica extends javax.swing.JFrame {
                 h.setTelephone(jtxtTelefono.getText());
                 h.setNumOfRooms(Integer.parseInt(jtxtHabitaciones.getText()));
                 h.setNumOfDoctorsOffices(Integer.parseInt(jtxtConsultorios.getText()));
+                h.setNumFloors(Integer.parseInt(jtxtPisos.getText()));
                
              if(  daohospital.saveHospital(h))
              {
@@ -330,6 +349,12 @@ public class crear_clinica extends javax.swing.JFrame {
           } 
     }//GEN-LAST:event_jtxtNombreKeyTyped
 
+    private void jtxtPisosKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jtxtPisosKeyTyped
+        // TODO add your handling code here:
+           if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_jtxtPisosKeyTyped
+
     /**
      * @param args the command line arguments
      */
@@ -341,6 +366,7 @@ public class crear_clinica extends javax.swing.JFrame {
         jtxtHabitaciones.setText("");
         jtxtTelefono.setText("");
         jtxtConsultorios.setText("");
+        jtxtPisos.setText("");
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -353,6 +379,7 @@ public class crear_clinica extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JButton jtbnCrear;
@@ -360,6 +387,7 @@ public class crear_clinica extends javax.swing.JFrame {
     private javax.swing.JTextField jtxtDireccion;
     private javax.swing.JFormattedTextField jtxtHabitaciones;
     private javax.swing.JTextField jtxtNombre;
+    private javax.swing.JFormattedTextField jtxtPisos;
     private javax.swing.JTextField jtxtTelefono;
     // End of variables declaration//GEN-END:variables
 }

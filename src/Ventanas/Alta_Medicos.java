@@ -21,6 +21,7 @@ import javax.swing.DefaultComboBoxModel;
  */
 public class Alta_Medicos extends javax.swing.JFrame {
 Doctor doctor;
+ Hospital h=null;
     /**
      * Creates new form Alta_Medicos
      */
@@ -104,6 +105,8 @@ Doctor doctor;
         jLabel14 = new javax.swing.JLabel();
         btn_regresar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
+        lbl_licensia1 = new javax.swing.JLabel();
+        txt_piso = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setUndecorated(true);
@@ -286,9 +289,23 @@ Doctor doctor;
                                 .addGap(43, 43, 43)
                                 .addComponent(jLabel13))
                             .addComponent(btn_regresar))
-                        .addGap(0, 13, Short.MAX_VALUE)))
+                        .addGap(0, 9, Short.MAX_VALUE)))
                 .addContainerGap())
         );
+
+        lbl_licensia1.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        lbl_licensia1.setText("Piso:");
+
+        txt_piso.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_pisoActionPerformed(evt);
+            }
+        });
+        txt_piso.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                txt_pisoKeyTyped(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -301,7 +318,6 @@ Doctor doctor;
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addGap(52, 52, 52)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(hospi, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(lbl_telefono)
@@ -326,13 +342,19 @@ Doctor doctor;
                             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addComponent(lbl_id, javax.swing.GroupLayout.PREFERRED_SIZE, 117, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(lbl_especialidad, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                            .addComponent(lbl_licensia))
+                            .addComponent(lbl_licensia)
+                            .addComponent(lbl_licensia1))
                         .addGap(18, 18, 18)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(txt_cedula, javax.swing.GroupLayout.DEFAULT_SIZE, 199, Short.MAX_VALUE)
-                            .addComponent(txt_department)
-                            .addComponent(txt_ID))))
-                .addGap(0, 0, Short.MAX_VALUE))
+                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(txt_piso)
+                            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(txt_department)
+                                .addComponent(txt_ID)
+                                .addComponent(txt_cedula, javax.swing.GroupLayout.PREFERRED_SIZE, 199, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                        .addGap(115, 115, 115))
+                    .addGroup(jPanel2Layout.createSequentialGroup()
+                        .addComponent(hospi, javax.swing.GroupLayout.PREFERRED_SIZE, 473, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(76, 76, 76))))
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -343,7 +365,7 @@ Doctor doctor;
                 .addComponent(jPanel6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(38, 38, 38)
                 .addComponent(hospi, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 45, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 39, Short.MAX_VALUE)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_nombre)
                     .addComponent(txt_nombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -364,7 +386,9 @@ Doctor doctor;
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_direccion)
-                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txt_direccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(lbl_licensia1)
+                    .addComponent(txt_piso, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(lbl_telefono)
@@ -498,6 +522,9 @@ Doctor doctor;
         
             
             try {
+               
+                if(h.getNumFloors()>=Integer.parseInt(txt_piso.getText()))
+                {
                 DAODoctor daodoc=new DAODoctor();
               if(  daodoc.alta_doctor(doctor))
               {
@@ -508,6 +535,11 @@ Doctor doctor;
               {
                 JOptionPane.showMessageDialog(rootPane, "Ocurrió un error, llene todos los campos ");
               }
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(rootPane, "Ingrese un número de piso inferior");
+                }
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(Alta_Medicos.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -549,7 +581,7 @@ Doctor doctor;
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
     private void hospiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospiActionPerformed
-   
+h=(Hospital)hospi.getModel().getSelectedItem();
         
         
         
@@ -626,6 +658,16 @@ Doctor doctor;
         System.exit(0);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    private void txt_pisoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_pisoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_pisoActionPerformed
+
+    private void txt_pisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pisoKeyTyped
+        // TODO add your handling code here:
+          if(!Character.isDigit(evt.getKeyChar()))
+     {evt.consume();}
+    }//GEN-LAST:event_txt_pisoKeyTyped
+
     
      public void loadcmbHospital() throws SQLException, ClassNotFoundException
     {
@@ -654,13 +696,14 @@ Doctor doctor;
          txt_ID.setText("");
          txt_department.setText("");
          txt_cedula.setText("");
+         txt_piso.setText("");
      }
     /**
      * @param args the command line arguments
      */
    private void cargardatos()
    {   doctor = new Doctor();
-    Hospital h=new Hospital();
+    
     h=(Hospital)hospi.getSelectedItem();
            
         doctor.setFirstname(txt_nombre.getText());
@@ -673,6 +716,7 @@ Doctor doctor;
             doctor.setDepartment(txt_department.getText());
             doctor.setLicense(txt_cedula.getText());
             doctor.setIdhospital(h.getIdhospital());
+            doctor.setNpiso(Integer.parseInt(txt_piso.getText()));
    }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -691,6 +735,7 @@ Doctor doctor;
     private javax.swing.JLabel lbl_especialidad;
     private javax.swing.JLabel lbl_id;
     private javax.swing.JLabel lbl_licensia;
+    private javax.swing.JLabel lbl_licensia1;
     private javax.swing.JLabel lbl_nombre;
     private javax.swing.JLabel lbl_telefono;
     private javax.swing.JTextField txt_ID;
@@ -701,6 +746,7 @@ Doctor doctor;
     private javax.swing.JTextField txt_edad;
     private javax.swing.JTextField txt_email;
     private javax.swing.JTextField txt_nombre;
+    private javax.swing.JTextField txt_piso;
     private javax.swing.JTextField txt_telefono;
     // End of variables declaration//GEN-END:variables
 

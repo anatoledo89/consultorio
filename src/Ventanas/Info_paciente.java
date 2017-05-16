@@ -232,19 +232,25 @@ public class Info_paciente extends javax.swing.JFrame {
           registros[5]=pat.getEmail();
           registros[6]=pat.getSecurityNumber();
           registros[7]=Float.toString(pat.getWeight());
-          registros[9]=Float.toString(pat.getSize());
+          registros[8]=Float.toString(pat.getSize());
           registros[9]=pat.getDisease();
           registros[10]=Integer.toString(pat.getRoomID());
+      
+          String[] doctors=new String[5];
+          doctors=pat.getDoctorID();
+          int num = 0;
           for (int i = 11; i<15;i++)
           {
-              int num = 0;
-              registros[i]=pat.getDoctorID()[num];
+             
+              
+              registros[i]=doctors[num];
               num++;
           }
           registros[16]=Integer.toString(pat.getStatus());      
           model.addRow(registros);
          
       }
+      
       
       jTable1.setModel(model);
       jTable1.getColumnModel().getColumn(0).setPreferredWidth(30);

@@ -303,6 +303,8 @@ public class Alta_consultorios extends javax.swing.JFrame {
             doctorsOffice.setDoctorID(d.getId());
             
             try {
+                if(h.getNumFloors()>=doctorsOffice.getFloor())
+                {
                 DAOConsultorio daoconsultorio=new DAOConsultorio();
               if(  daoconsultorio.saveConsultorio(doctorsOffice))
               {
@@ -312,6 +314,8 @@ public class Alta_consultorios extends javax.swing.JFrame {
               {
                 JOptionPane.showMessageDialog(rootPane, "Ocurrió un error");
               }
+                }else
+                {JOptionPane.showMessageDialog(rootPane, "Ingrese un número de pisos inferior");}
             } catch (SQLException | ClassNotFoundException ex) {
                 Logger.getLogger(Alta_consultorios.class.getName()).log(Level.SEVERE, null, ex);
             }

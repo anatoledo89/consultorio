@@ -205,10 +205,16 @@ public static Hospital h=null;
     }//GEN-LAST:event_btn_regresarActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+    try {
         // TODO add your handling code here:
         datos_medicos obj = new datos_medicos();
         obj.setVisible(true);
         this.setVisible(false);
+    } catch (SQLException ex) {
+        Logger.getLogger(Reporte_medico.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(Reporte_medico.class.getName()).log(Level.SEVERE, null, ex);
+    }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void btn_exit_menu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_exit_menu2ActionPerformed

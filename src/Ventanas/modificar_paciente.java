@@ -50,8 +50,8 @@ private int status=0;
         cmbBusqueda = new javax.swing.JComboBox();
         btn_buscarpaciente = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
-        jcmb_Departamento = new javax.swing.JComboBox<String>();
-        jcmbDoctor = new javax.swing.JComboBox<String>();
+        jcmb_Departamento = new javax.swing.JComboBox<>();
+        jcmbDoctor = new javax.swing.JComboBox<>();
         txtpeso = new javax.swing.JTextField();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
@@ -147,14 +147,14 @@ private int status=0;
         jLabel4.setForeground(new java.awt.Color(255, 255, 255));
         jLabel4.setText("Doctores:");
 
-        jcmb_Departamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmb_Departamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcmb_Departamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmb_DepartamentoActionPerformed(evt);
             }
         });
 
-        jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         txtpeso.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         txtpeso.addActionListener(new java.awt.event.ActionListener() {
@@ -211,6 +211,7 @@ private int status=0;
             }
         });
 
+        buttonGroup1.add(jbtnIngreso);
         jbtnIngreso.setText("Ingreso");
         jbtnIngreso.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -218,6 +219,7 @@ private int status=0;
             }
         });
 
+        buttonGroup1.add(jbtnTratamiento);
         jbtnTratamiento.setText("Tratamiento");
         jbtnTratamiento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -225,6 +227,7 @@ private int status=0;
             }
         });
 
+        buttonGroup1.add(jbtnAlta);
         jbtnAlta.setText("Alta");
         jbtnAlta.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -236,7 +239,7 @@ private int status=0;
 
         jLabel13.setFont(new java.awt.Font("American Captain", 0, 76)); // NOI18N
         jLabel13.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel13.setText("Crear Clinica");
+        jLabel13.setText("Paciente");
         jLabel13.setToolTipText("");
 
         jLabel14.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Imagenes/navegador.png"))); // NOI18N
@@ -260,7 +263,7 @@ private int status=0;
                 .addComponent(jLabel13)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 215, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 131, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(btn_regresar)
                 .addContainerGap())
         );

@@ -18,8 +18,8 @@ import javax.swing.table.DefaultTableModel;
  */
 public class datos_medicos extends javax.swing.JFrame {
 DefaultTableModel model;
-   String[] titles={"id","Primer Nombre","Apellido","Edad","Direccion","Telefono","Email","Departamento","Licencia","ID hospital"};
-   String[] registros=new String[10];
+   String[] titles={"id","Primer Nombre","Apellido","Edad","Direccion","Telefono","Email","Departamento","Licencia","ID hospital","Piso"};
+   String[] registros=new String[11];
     /**
      * Creates new form datos_medicos
      * @throws java.sql.SQLException
@@ -171,6 +171,7 @@ DefaultTableModel model;
           registros[7]=doctors.getDepartment();
           registros[8]=doctors.getLicense();
           registros[9]=Integer.toString(doctors.getIdhospital());
+          registros[10]=Integer.toString(doctors.getNpiso());
          
           model.addRow(registros);
          
@@ -187,7 +188,7 @@ DefaultTableModel model;
          jTable1.getColumnModel().getColumn(7).setPreferredWidth(150);
          jTable1.getColumnModel().getColumn(8).setPreferredWidth(50);
        jTable1.getColumnModel().getColumn(9).setPreferredWidth(50);
-      
+       jTable1.getColumnModel().getColumn(9).setPreferredWidth(50);
       
    }
     

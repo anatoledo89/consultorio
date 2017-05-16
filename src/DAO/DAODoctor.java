@@ -62,6 +62,7 @@ public class DAODoctor {
             d.setDepartment("departamento");
             d.setLicense(rs.getString("licencia"));
             d.setIdhospital(rs.getInt("idhospital"));
+            d.setNpiso(rs.getInt("piso"));
             
             lst.add(d);
         }
@@ -83,7 +84,7 @@ public class DAODoctor {
                     + "('" + doctor.getId() + "','" + doctor.getFirstname() + "','" + doctor.getLastname()+ "'"
                     + "," +doctor.getAge() + ",'"
                     + doctor.getAddress() + "','" + doctor.getTelephone() + "','" + doctor.getEmail() + "'" + 
-                     ",'" + doctor.getDepartment() + "','" + doctor.getLicense()+"','"+doctor.getIdhospital()+"')";
+                     ",'" + doctor.getDepartment() + "','" + doctor.getLicense()+"','"+doctor.getIdhospital()+"','"+doctor.getNpiso()+"')";
   pst = cn.prepareStatement(query);
             pst.executeUpdate();
             return true;
@@ -179,6 +180,7 @@ public class DAODoctor {
            doctor.setDepartment(rs.getString("departamento"));
            doctor.setLicense(rs.getString("licencia"));
            doctor.setIdhospital(rs.getInt("idhospital"));
+           doctor.setNpiso(rs.getInt("piso"));
         }
         return doctor;
         

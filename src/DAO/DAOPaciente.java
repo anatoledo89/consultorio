@@ -156,12 +156,19 @@ public class DAOPaciente {
      //con todos sus atributos
       public Patient patienteSearchbyID(int id) throws SQLException
     {
+        String[] doctors =new String[5];
+     int   cont=0;
         Patient patient=null;
         //selecciona a un paciente que tenga el mismo id, si lo encuentra procede al next 
-          pst = cn.prepareStatement("Select * from paciente where Id="+id+"");
+          pst = cn.prepareStatement("Select Id, nss,primernombre,apellido,edad,direccion,telefono,email,peso,altura,enfermedad," +
+                  "idcuarto,iddoctor,status,idhospital from paciente " +
+"inner join pacientedoctor on paciente.nss=pacientedoctor.nss where Id="+id+"");
         rs = pst.executeQuery();
         //si encuentra un id entonces procede a los sets
             while (rs.next()) {
+                
+                
+                doctors[cont]=rs.getString("iddoctor");
             patient=new Patient();
        patient.setPatientID(rs.getInt("Id"));
             patient.setFirstname(rs.getString("primernombre"));
@@ -176,10 +183,15 @@ public class DAOPaciente {
             patient.setDisease(rs.getString("enfermedad"));
             patient.setRoomID(rs.getInt("idcuarto"));
           patient.setStatus(rs.getInt("status"));
+        
           patient.setHospitalID(rs.getInt("idhospital"));
           patient.setRoomID(rs.getInt("idcuarto"));
+            cont++;
             
-            
+            }
+            if(patient!=null)
+            {
+                  patient.setDoctorID(doctors);
             }
         //regresa un objeto tipo paciente ya con todos sus datos
         return patient;
@@ -252,7 +264,7 @@ public class DAOPaciente {
        public boolean addDoctor(String iddoctor, String nss, int status,int idpaciente,int idhospital, int idcuarto) 
        {
          try {
-             pst = cn.prepareStatement("Insert into pacientedoctor(iddoctor,nss) values('"+iddoctor+"','"+nss+"');");
+             pst = cn.prepareStatement("Insert into pacientedoctor(iddoctor,nss,status) values('"+iddoctor+"','"+nss+"',"+status+");");
               pst.executeUpdate();
               pst=cn.prepareStatement("Update paciente set status="+status+" where nss='"+nss+"';");
               pst.executeUpdate();
@@ -281,12 +293,13 @@ public class DAOPaciente {
            try {
                //borra al doctor de la lista de doctores de dicho paciente, solo en caso de que
                //su estatus sea dado de alta
-             pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+";");
+             pst = cn.prepareStatement("Delete from pacientedoctor where nss='"+nss+"' and status=2;");
       row=        pst.executeUpdate();
       //y tambien se libera el cuarto
       pst = cn.prepareStatement("Delete from cuarto where idpaciente='"+idpaciente+"';");
       row=        pst.executeUpdate();
-             
+          pst = cn.prepareStatement("Delete from paciente where Id='"+idpaciente+"';");
+      row=        pst.executeUpdate();   
              
          } catch (SQLException ex) {
              Logger.getLogger(DAOPaciente.class.getName()).log(Level.SEVERE, null, ex);
@@ -419,7 +432,7 @@ public class DAOPaciente {
              
            
                String query2 = "Update pacientedoctor "+
-                     "SET iddoctor='"+doctorid+"' where nss='"+p.getSecurityNumber()+"'";
+                     "SET iddoctor='"+doctorid+"',status='"+p.getStatus()+"' where nss='"+p.getSecurityNumber()+"'";
                pst = cn.prepareStatement(query2);
              pst.executeUpdate();
                      
@@ -442,8 +455,8 @@ public class DAOPaciente {
           
           try {
               //borramos al paciente de la tabla pacientes de la base de datos dependiendo su numero 
-              //de seguro social 
-             String query = "Delete from paciente where nss="+nss+"";
+              //de seguro social y su status
+             String query = "Delete from paciente where nss='"+nss+"' and status=2";
              pst = cn.prepareStatement(query);
             pst.executeUpdate();
             //y tambien borramos el cuarto en donde esta hospedado el paciente dependiendo su id

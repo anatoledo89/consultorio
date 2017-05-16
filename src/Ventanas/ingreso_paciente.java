@@ -31,10 +31,31 @@ int status=0;
      */
     public ingreso_paciente() throws SQLException, ClassNotFoundException {
         initComponents();
-        jrb_ingreso.setSelected(true);
+         this.setLocationRelativeTo(null);
+           p=   Ingresar_paciente.paciente;
+            jrb_ingreso.setSelected(true);
         loadcmbDepartament();
         loadcmbDoctor();
-         this.setLocationRelativeTo(null);
+        if(p!=null)
+        {
+            
+       
+         jLabel6.setVisible(false);
+         cmbBusqueda.setVisible(false);
+         txt_busqueda.setVisible(false);
+         btn_buscarpaciente.setVisible(false);
+         jTextArea1.setVisible(false);
+        
+        }else
+        { jLabel6.setVisible(true);
+         cmbBusqueda.setVisible(true);
+         txt_busqueda.setVisible(true);
+         btn_buscarpaciente.setVisible(true);
+          jTextArea1.setVisible(true);
+           
+            
+            //buscar al paciente si no ingresaron uno nuevo
+        }
          
     
     }
@@ -81,8 +102,8 @@ int status=0;
         btn_regresar1 = new javax.swing.JButton();
         jButton3 = new javax.swing.JButton();
         jPanel1 = new javax.swing.JPanel();
-        jcmb_Departamento = new javax.swing.JComboBox<String>();
-        jcmbDoctor = new javax.swing.JComboBox<String>();
+        jcmb_Departamento = new javax.swing.JComboBox<>();
+        jcmbDoctor = new javax.swing.JComboBox<>();
         jbtnAsignar = new javax.swing.JButton();
         jLabel4 = new javax.swing.JLabel();
         jrb_ingreso = new javax.swing.JRadioButton();
@@ -94,6 +115,12 @@ int status=0;
         btn_regresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         jButton4 = new javax.swing.JButton();
+        cmbBusqueda = new javax.swing.JComboBox();
+        txt_busqueda = new javax.swing.JTextField();
+        btn_buscarpaciente = new javax.swing.JButton();
+        jLabel6 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        jTextArea1 = new javax.swing.JTextArea();
 
         jLabel5.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
         jLabel5.setText("Número de seguridad:");
@@ -165,7 +192,7 @@ int status=0;
         jPanel1.setBackground(new java.awt.Color(255, 255, 255));
 
         jcmb_Departamento.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmb_Departamento.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmb_Departamento.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
         jcmb_Departamento.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jcmb_DepartamentoActionPerformed(evt);
@@ -173,7 +200,7 @@ int status=0;
         });
 
         jcmbDoctor.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
-        jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jcmbDoctor.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
 
         jbtnAsignar.setIcon(new javax.swing.ImageIcon(getClass().getResource("/Ventanas/flecha-derecha.png"))); // NOI18N
         jbtnAsignar.setText("Asignar");
@@ -246,18 +273,18 @@ int status=0;
         );
         jPanel7Layout.setVerticalGroup(
             jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(89, 89, 89)
-                    .addComponent(jLabel16)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGroup(jPanel7Layout.createSequentialGroup()
-                    .addGap(35, 35, 35)
-                    .addComponent(btn_regresar)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
             .addGroup(jPanel7Layout.createSequentialGroup()
                 .addGap(22, 22, 22)
                 .addComponent(jLabel17, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel7Layout.createSequentialGroup()
+                .addGroup(jPanel7Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel16))
+                    .addGroup(jPanel7Layout.createSequentialGroup()
+                        .addGap(35, 35, 35)
+                        .addComponent(btn_regresar)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jLabel1.setFont(new java.awt.Font("Arial", 1, 18)); // NOI18N
@@ -272,6 +299,31 @@ int status=0;
             }
         });
 
+        cmbBusqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cmbBusqueda.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "Por nombre", "Por ID", "Por número de seguro" }));
+
+        txt_busqueda.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txt_busqueda.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txt_busquedaActionPerformed(evt);
+            }
+        });
+
+        btn_buscarpaciente.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        btn_buscarpaciente.setText("Buscar");
+        btn_buscarpaciente.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btn_buscarpacienteActionPerformed(evt);
+            }
+        });
+
+        jLabel6.setFont(new java.awt.Font("Arial", 1, 24)); // NOI18N
+        jLabel6.setText("Buscar al paciente");
+
+        jTextArea1.setColumns(20);
+        jTextArea1.setRows(5);
+        jScrollPane1.setViewportView(jTextArea1);
+
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -279,22 +331,30 @@ int status=0;
             .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGap(35, 35, 35)
-                        .addComponent(jLabel4)
-                        .addGap(479, 479, 479))
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addComponent(jrb_ingreso)
-                            .addGap(56, 56, 56)
-                            .addComponent(jrb_tratamiento))
-                        .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(jLabel1))
                     .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addGap(320, 320, 320)
-                        .addComponent(jrbAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addComponent(jrbAlta, javax.swing.GroupLayout.PREFERRED_SIZE, 130, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(jrb_ingreso)
+                                .addGap(56, 56, 56)
+                                .addComponent(jrb_tratamiento))
+                            .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel1)
+                            .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, 579, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel4)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addComponent(cmbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 179, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(txt_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, 274, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(18, 18, 18)
+                                .addComponent(btn_buscarpaciente))
+                            .addComponent(jLabel6))))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 201, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(47, 47, 47))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jButton4)
@@ -306,13 +366,23 @@ int status=0;
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                 .addComponent(jPanel7, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(55, 55, 55)
-                .addComponent(jLabel4)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel6)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(cmbBusqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(txt_busqueda, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(btn_buscarpaciente))
+                        .addGap(26, 26, 26)
+                        .addComponent(jLabel4)
+                        .addGap(22, 22, 22)
+                        .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 176, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addComponent(jcmb_Departamento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 22, Short.MAX_VALUE)
-                .addComponent(jcmbDoctor, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(55, 55, 55)
                 .addComponent(jLabel1)
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
@@ -363,7 +433,7 @@ int status=0;
     try {
         // TODO add your handling code here:
         Doctor d=(Doctor)    jcmbDoctor.getModel().getSelectedItem();
-       p=   Ingresar_paciente.paciente;
+     
         if(p.setNewDoc(d.getId(),status,p.getPatientID(),p.getHospitalID(),p.getRoomID()))
         {
             JOptionPane.showMessageDialog(rootPane, "Paciente asignado");
@@ -408,12 +478,57 @@ int status=0;
         System.exit(0);
     }//GEN-LAST:event_jButton4ActionPerformed
 
- 
+    private void txt_busquedaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_busquedaActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txt_busquedaActionPerformed
+
+    private void btn_buscarpacienteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_buscarpacienteActionPerformed
+
+        
+    try {
+        // TODO add your handling code here:
+        buscar();
+       jTextArea1.setText(p.getFirstname()+ " "+p.getLastname()+" "+p.getSecurityNumber());
+    } catch (SQLException ex) {
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    } catch (ClassNotFoundException ex) {
+        Logger.getLogger(ingreso_paciente.class.getName()).log(Level.SEVERE, null, ex);
+    }
+           
+     
+
+    }//GEN-LAST:event_btn_buscarpacienteActionPerformed
+
+   private void buscar() throws SQLException, ClassNotFoundException
+   {
+       DAOPaciente daopaciente=new DAOPaciente();
+       
+       p=null;
+      
+       switch(cmbBusqueda.getSelectedIndex())
+       {
+           case 0:
+               p=daopaciente.patienteSearchbyName(txt_busqueda.getText());
+             
+               break;
+           case 1:
+               p=daopaciente.patienteSearchbyID(Integer.parseInt(txt_busqueda.getText()));
+               
+               break;
+           case 2:
+               p=daopaciente.patienteSearchbyNumberSec(txt_busqueda.getText());
+              
+               break;
+       }
+       
+   }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btn_buscarpaciente;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JButton btn_regresar1;
     private javax.swing.ButtonGroup buttonGroup1;
+    private javax.swing.JComboBox cmbBusqueda;
     private javax.swing.JButton jButton3;
     private javax.swing.JButton jButton4;
     private javax.swing.JLabel jLabel1;
@@ -424,14 +539,18 @@ int status=0;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
+    private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JTextArea jTextArea1;
     private javax.swing.JButton jbtnAsignar;
     private javax.swing.JComboBox<String> jcmbDoctor;
     private javax.swing.JComboBox<String> jcmb_Departamento;
     private javax.swing.JRadioButton jrbAlta;
     private javax.swing.JRadioButton jrb_ingreso;
     private javax.swing.JRadioButton jrb_tratamiento;
+    private javax.swing.JTextField txt_busqueda;
     // End of variables declaration//GEN-END:variables
 }

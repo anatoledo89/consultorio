@@ -24,6 +24,7 @@ public class Doctor extends Person{
     private int contadorP = 0;
     private int size = 10;
     private int idhospital=0;
+    private int npiso;
     
 //constructor con valores de atributos 
     public Doctor(String id, String department, String license) {
@@ -96,7 +97,16 @@ public class Doctor extends Person{
         return patientSet;
     }
     
-    private void resize(){
+ 
+    public int getNpiso() {
+        return npiso;
+    }
+
+    public void setNpiso(int npiso) {
+        this.npiso = npiso;
+    }
+    
+       private void resize(){
             //Creamos primero un arreglo del mismo amaño que el actual
       /*      String []aux = new String[this.size];
             //Ahora respaldamos el arreglo actual en este nuevo arreglo
@@ -110,8 +120,7 @@ public class Doctor extends Person{
                this.patientSet[i]=aux[i];
            }*/
     }
-    
-    
+
     public boolean addPatientID(String securityNumber)
     {
         
