@@ -22,6 +22,9 @@ import java.util.logging.Logger;
  */
 public class DAOConsultorio {
    
+    /**
+     * 
+     */
     //DAO --> DATA OBJECT ACCESS
     //sirve para acceder a la informacion del objeto en la base de datos
     //se crea un objeto del tipo base de datos para poder acceder 
@@ -30,16 +33,25 @@ public class DAOConsultorio {
     PreparedStatement pst;
     ResultSet rs;
     Connection cn;
+    /**
+     * 
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
     //funcion para conectar.
     public DAOConsultorio() throws SQLException, ClassNotFoundException
     {
     cn = bd.connect();
     }
-    
-    //en esta funcion, usamos la sintaxis para guardar la informacion de un objeto 
+    /**
+     *  //en esta funcion, usamos la sintaxis para guardar la informacion de un objeto 
     //y la "depositamos" en la base de datos, hacemos un try catch (recomendado por netbeans)
     //esta funcion recibe un objeto consultorio y ya de ahi agarra los datos, todo lo que agarra
     //lo pone en un string para que sea mandado a una funcion que sera guardada en pst
+     * @param consultorio
+     * @return 
+     */
+   
     public boolean saveConsultorio(DoctorsOffice consultorio)
     {
         
@@ -101,11 +113,11 @@ public class DAOConsultorio {
         
     }
     /**
-     * 
+     * funcion para borrar un doctor igual desde la base de datos
      * @param iddoctorsoffice
      * @return 
      */
-    //funcion para borrar un doctor igual desde la base de datos
+    
     public boolean deleteDoctorsOffice(int iddoctorsoffice)
     {
           try {

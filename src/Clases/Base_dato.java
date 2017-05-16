@@ -21,6 +21,13 @@ public class Base_dato {
      Connection connection = null;
        
  
+     /**
+      * funcion para conectar 
+      * 
+      * @return
+      * @throws SQLException
+      * @throws ClassNotFoundException 
+      */
         public Connection connect() throws SQLException, ClassNotFoundException
         {
        

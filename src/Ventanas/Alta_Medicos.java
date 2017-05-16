@@ -580,6 +580,11 @@ Doctor doctor;
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_cedulaActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * con esto obtienes la informacion del hospital
+     */
     private void hospiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_hospiActionPerformed
 h=(Hospital)hospi.getModel().getSelectedItem();
         
@@ -591,6 +596,11 @@ h=(Hospital)hospi.getModel().getSelectedItem();
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_telefonoActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * si lo escrito no es digito no te permite ingresarlo
+     */
     private void txt_telefonoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_telefonoKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar()))
@@ -601,16 +611,28 @@ h=(Hospital)hospi.getModel().getSelectedItem();
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_edadActionPerformed
 
+    /**
+     * 
+    */
     private void txt_edadKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_edadKeyTyped
         // TODO add your handling code here:
         if(!Character.isDigit(evt.getKeyChar()))
      {evt.consume();}
     }//GEN-LAST:event_txt_edadKeyTyped
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txt_direccionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_direccionActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_direccionActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     * si lo que ingresa en digito no te permite 
+     */
     private void txt_nombreKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_nombreKeyTyped
         // TODO add your handling code here:
         char letras = evt.getKeyChar();
@@ -624,6 +646,10 @@ h=(Hospital)hospi.getModel().getSelectedItem();
               
     }//GEN-LAST:event_txt_nombreKeyTyped
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txt_apellidoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_apellidoKeyTyped
         // TODO add your handling code here:
          char letras = evt.getKeyChar();
@@ -636,6 +662,11 @@ h=(Hospital)hospi.getModel().getSelectedItem();
           } 
     }//GEN-LAST:event_txt_apellidoKeyTyped
 
+    /**
+     * 
+     * @param evt 
+     * lo mismo 
+     */
     private void txt_departmentKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_departmentKeyTyped
         // TODO add your handling code here:
          char letras = evt.getKeyChar();
@@ -649,10 +680,18 @@ h=(Hospital)hospi.getModel().getSelectedItem();
         
     }//GEN-LAST:event_txt_departmentKeyTyped
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txt_nombreActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txt_nombreActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_nombreActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         System.exit(0);
@@ -662,6 +701,10 @@ h=(Hospital)hospi.getModel().getSelectedItem();
         // TODO add your handling code here:
     }//GEN-LAST:event_txt_pisoActionPerformed
 
+    /**
+     * 
+     * @param evt 
+     */
     private void txt_pisoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txt_pisoKeyTyped
         // TODO add your handling code here:
           if(!Character.isDigit(evt.getKeyChar()))
@@ -669,6 +712,11 @@ h=(Hospital)hospi.getModel().getSelectedItem();
     }//GEN-LAST:event_txt_pisoKeyTyped
 
     
+    /**
+     * sirve para cargar la jcombbox
+     * @throws SQLException
+     * @throws ClassNotFoundException 
+     */
      public void loadcmbHospital() throws SQLException, ClassNotFoundException
     {
         DAOHospital dAOHospital=new DAOHospital();
@@ -685,6 +733,10 @@ h=(Hospital)hospi.getModel().getSelectedItem();
         
         
     }
+    
+     /**
+      * funcion que pone "" en el textfield para que se borre la informacion 
+      */
     private void clearField()
      {
          txt_nombre.setText(" ");
@@ -699,6 +751,7 @@ h=(Hospital)hospi.getModel().getSelectedItem();
          txt_piso.setText("");
      }
     /**
+     * cargar los datos de los doctores
      * @param args the command line arguments
      */
    private void cargardatos()
